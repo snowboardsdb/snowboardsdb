@@ -1,0 +1,29 @@
+BrandName = "Gnu"
+Season = "W2022_2023"
+
+[Snowboards.MEN]
+
+Riders = "MEN"
+
+Urls = [
+    "https://www.gnu.com/money",
+    "https://www.gnu.com/head-space",
+    "https://www.gnu.com/head-space-x-worble",
+    "https://www.gnu.com/4x4",
+    "https://www.gnu.com/gwo",
+    "https://www.gnu.com/finest",
+    "https://www.gnu.com/riders-choice",
+    "https://www.gnu.com/rc-c3",
+    "https://www.gnu.com/banked-country",
+    "https://www.gnu.com/banked-country-split",
+    "https://www.gnu.com/antigravity",
+    "https://www.gnu.com/essential-service",
+    "https://www.gnu.com/gremlin",
+    "https://www.gnu.com/gremlin-x-airblaster",
+    "https://www.gnu.com/hyper",
+    "https://www.gnu.com/gorp-split",
+]
+
+[Snowboards.WOMEN]
+
+Riders = "WOMEN"

@@ -1,0 +1,40 @@
+BrandName = "Lib Tech"
+Season = "W2022_2023"
+
+[Snowboards.MEN]
+
+Riders = "MEN"
+
+Urls = [
+    "https://www.lib-tech.com/box-scratcher",
+    "https://www.lib-tech.com/cold-brew",
+    "https://www.lib-tech.com/lost-rocket",
+    "https://www.lib-tech.com/quiver-killer",
+    "https://www.lib-tech.com/rasman",
+    "https://www.lib-tech.com/magic-bm",
+    "https://www.lib-tech.com/ejack-knife",
+    "https://www.lib-tech.com/brd",
+    "https://www.lib-tech.com/skunk-ape",
+    "https://www.lib-tech.com/golden-orca",
+    "https://www.lib-tech.com/split-brd",
+    "https://www.lib-tech.com/stumpape",
+    "https://www.lib-tech.com/trs-hp",
+    "https://www.lib-tech.com/box-knife",
+    "https://www.lib-tech.com/retro-ripper",
+    "https://www.lib-tech.com/double-dip",
+    "https://www.lib-tech.com/orca",
+    "https://www.lib-tech.com/jamie-lynn-96",
+    "https://www.lib-tech.com/wayfinder",
+    "https://www.lib-tech.com/terrain-wrecker",
+    "https://www.lib-tech.com/orca-split",
+    "https://www.lib-tech.com/t-rice-pro",
+    "https://www.lib-tech.com/lost-short-fat",
+    "https://www.lib-tech.com/jamie-lynn",
+    "https://www.lib-tech.com/apex-orca",
+    "https://www.lib-tech.com/skate-banana",
+    "https://www.lib-tech.com/dynamo",
+]
+
+[Snowboards.WOMEN]
+
+Riders = "WOMEN"

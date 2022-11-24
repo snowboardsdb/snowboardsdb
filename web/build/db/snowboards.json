@@ -1,0 +1,210 @@
+[
+    {
+      "brandname": "Gnu",
+      "name": "Money",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "144",
+        "148",
+        "150W",
+        "152",
+        "154W",
+        "156",
+        "158W",
+        "159"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Head Space",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "146",
+        "149",
+        "152",
+        "155",
+        "155W",
+        "158"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Head Space x Worble",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "152",
+        "155"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "4x4",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "157",
+        "160"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "GWO",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "147",
+        "150",
+        "153",
+        "156",
+        "156W",
+        "159",
+        "159W",
+        "162W"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Finest",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "148",
+        "151",
+        "154",
+        "155W",
+        "157",
+        "159"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Riders Choice",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "151.5",
+        "154.5",
+        "155W",
+        "157.5",
+        "158W",
+        "159.5",
+        "161.5",
+        "162W"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "RC C3",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "154.5",
+        "157.5",
+        "158W",
+        "159.5",
+        "162W"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Banked Country",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "155",
+        "159",
+        "160W",
+        "162",
+        "163W"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Banked Country Split",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "155",
+        "159",
+        "162"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Antigravity",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "150",
+        "153",
+        "156",
+        "159",
+        "159W",
+        "162",
+        "162W"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Essential Service",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "155",
+        "157",
+        "158W",
+        "159",
+        "160W"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Gremlin",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "148",
+        "152",
+        "155",
+        "158"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Gremlin x Airblaster",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "148",
+        "155"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "Hyper",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "154",
+        "157",
+        "159W",
+        "160"
+      ]
+    },
+    {
+      "brandname": "Gnu",
+      "name": "GORP Split",
+      "season": "W2022_2023",
+      "riders": "MEN",
+      "sizes": [
+        "151",
+        "159",
+        "163"
+      ]
+    },
+
+  {"brandname":"Lib Tech","name":"Box Scratcher","season":"W2022_2023","riders":"MEN","sizes":["147","151","153W","154","156W","157"]},{"brandname":"Lib Tech","name":"Cold Brew","season":"W2022_2023","riders":"MEN","sizes":["149","153","155W","157","158W","161","163W"]},{"brandname":"Lib Tech","name":"Rocket","season":"W2022_2023","riders":"MEN","sizes":["152.5 (615 sq in)","157.5 (653 sq in)","161.5 (674 sq in)"]},{"brandname":"Lib Tech","name":"Quiver Killer","season":"W2022_2023","riders":"MEN","sizes":["154","159"]},{"brandname":"Lib Tech","name":"Rasman","season":"W2022_2023","riders":"MEN","sizes":["157","159","161"]},{"brandname":"Lib Tech","name":"Magic BM","season":"W2022_2023","riders":"MEN","sizes":["154","157","161"]},{"brandname":"Lib Tech","name":"Ejack Knife","season":"W2022_2023","riders":"MEN","sizes":["154","157","159","159W","162W"]},{"brandname":"Lib Tech","name":"BRD","season":"W2022_2023","riders":"MEN","sizes":["153","156","159","162W","167W"]},{"brandname":"Lib Tech","name":"Skunk Ape II","season":"W2022_2023","riders":"MEN","sizes":["161W","165W","169W","170UW","172W","173UW"]},{"brandname":"Lib Tech","name":"Golden Orca","season":"W2022_2023","riders":"MEN","sizes":["150","153","157","161"]},{"brandname":"Lib Tech","name":"Split BRD","season":"W2022_2023","riders":"MEN","sizes":["151 (601 sq in)","156 (619 sq in)","159 (658 sq in)","162W (689 sq in)","167W (724 sq in)"]},{"brandname":"Lib Tech","name":"Stump Ape","season":"W2022_2023","riders":"MEN","sizes":["157W","161W"]},{"brandname":"Lib Tech","name":"TRS","season":"W2022_2023","riders":"MEN","sizes":["154","157","157W","159","159W","162"]},{"brandname":"Lib Tech","name":"Box Knife","season":"W2022_2023","riders":"MEN","sizes":["148","151","154","157","157W","160W"]},{"brandname":"Lib Tech","name":"Retro Ripper","season":"W2022_2023","riders":"MEN","sizes":["156 (615 sq in)","161 (655 sq in)","166 (696 sq in)"]},{"brandname":"Lib Tech","name":"Double Dip","season":"W2022_2023","riders":"MEN","sizes":["159 (664 sq in)","163 (693 sq in)"]},{"brandname":"Lib Tech","name":"T.Rice Orca","season":"W2022_2023","riders":"MEN","sizes":["138","144","147","150","153","156","159","162"]},{"brandname":"Lib Tech","name":"Jamie Lynn '96","season":"W2022_2023","riders":"MEN","sizes":["154","157"]},{"brandname":"Lib Tech","name":"MC Wayfinder II","season":"W2022_2023","riders":"MEN","sizes":["155 (665 sq in)"]},{"brandname":"Lib Tech","name":"Terrain Wrecker","season":"W2022_2023","riders":"MEN","sizes":["152","154","156W","157","160","161W"]},{"brandname":"Lib Tech","name":"Orca Split","season":"W2022_2023","riders":"MEN","sizes":["150","153","156","159"]},{"brandname":"Lib Tech","name":"T.Rice Pro","season":"W2022_2023","riders":"MEN","sizes":["153","155","157","157W","159","161","161W","164","164W"]},{"brandname":"Lib Tech","name":"Jamie Lynn Short Wide","season":"W2022_2023","riders":"MEN","sizes":["150 (648 sq in)"]},{"brandname":"Lib Tech","name":"Jamie Lynn","season":"W2022_2023","riders":"MEN","sizes":["150","156","159","160W"]},{"brandname":"Lib Tech","name":"Apex Orca","season":"W2022_2023","riders":"MEN","sizes":["153","156","159"]},{"brandname":"Lib Tech","name":"Skate Banana","season":"W2022_2023","riders":"MEN","sizes":["150","152","153W","154","156","156W","159","159W","162W"]},{"brandname":"Lib Tech","name":"Dynamo","season":"W2022_2023","riders":"MEN","sizes":["150","153","156","156W","159","159W","162","162W","165W"]}
+  ]
