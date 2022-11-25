@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { BrowserRouter, Link, LinkProps, Routes, Route, useParams} from "react-router-dom"
+import { HashRouter, Link, LinkProps, Routes, Route, useParams} from "react-router-dom"
 
-import { Anchor, AnchorProps, Box, Button, Grid, Grommet, Heading, Image, Main, Text } from "grommet"
+import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, LayerExtendedProps, Main, RadioButtonGroup, RadioButtonGroupExtendedProps, Text } from "grommet"
+import { Table, TableHeader, TableRow, TableCell, TableBody, TableProps } from "grommet"
+import { FormClose, LinkPrevious } from "grommet-icons"
 
 import { useLiveQuery } from "dexie-react-hooks"
-import { db as dexsnowboards, useSnowboards, useSeasons, populate,  Season, Brand as BrandType  } from "./db/db"
+import { db as dexsnowboards, useSnowboards, useSeasons } from "./db/db"
+
+import { Season, Brand as BrandType, Snowboard, Spec  } from "./db/model"
 
 const theme = {
     global: {
@@ -18,7 +22,7 @@ const theme = {
 
 function App() {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Grommet theme={theme}>
                 <Routes>
                     <Route path="/">
@@ -29,7 +33,7 @@ function App() {
                     </Route>
                 </Routes>
             </Grommet>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
@@ -71,14 +75,11 @@ function Brands() {
 
     return (
         <Main pad="medium">
-            <Heading level={3}>
-                <AnchorLink to="/">Snowboards</AnchorLink>
-                <Button label="Sync" onClick={() => {
-                    dexsnowboards.brands.clear()
-                    dexsnowboards.snowboards.clear()
-                    populate()
-                }}/>
-            </Heading>
+            <Box direction="row" height="xxsmall" margin={{ vertical: "medium" }} pad={{ horizontal: "large" }}>
+                <Heading level={3} alignSelf="center" margin={{ vertical: "none" }}>
+                    <AnchorLink to="/">Snowboards</AnchorLink>
+                </Heading>
+            </Box>
 
             <Grid gap="large" columns="medium">
                 {letters?.map(letter => {
@@ -110,28 +111,46 @@ function Brands() {
 function Brand() {
     const { brand, season } = useParams()
 
-    const snowboards = useSnowboards({ brandname: brand, season }, [ brand, season ])
+    const [ filter, setFilter ] = useState<{ brandname?: string, season?: string, riders?: string, }>({ brandname: brand, season })
+
+    const snowboards = useSnowboards(filter, [ filter ])
 
     const seasons = useSeasons({ brandname: brand }, [ brand ])
 
+    const [ pickedSnowboard, setPickedSnowboard ] = useState<Snowboard | undefined>()
+
     return (
         <Main pad="medium">
-            <Heading level={3}><AnchorLink to="/">Snowbords</AnchorLink></Heading>
-            <Heading level={3} margin={{top: "none"}}>{brand}</Heading>
-            {seasons &&
-                <Box direction="row" gap="small" margin={{ bottom: "large" }}>
-                    {seasons.map((val) => {
-                        return (
-                            <Box key={val}><Button primary={val === season} label={<Text size="small" weight="bold">{seasonName(val)}</Text>} size="small" href={`/${brand}/${val}`}/></Box>
-                        )
-                    })}
-                </Box>
-            }
-            <Grid gap="medium" columns={["small", "small", "small", "small", "small"]}>
+            <Box direction="row" margin={{ vertical: "medium" }} height="xxsmall">
+                <Button icon={<LinkPrevious/>} href="/"/>
+                <Heading level={3} margin="none" alignSelf="center" color="brand">{brand}</Heading>
+            </Box>
+
+            <Box direction="row" margin={{ bottom: "large" }} pad={{ horizontal: "large" }} gap="large">
+                {seasons &&
+                    <Box direction="row" gap="small">
+                        {seasons.map((val) => {
+                            return (
+                                <Box key={val}><Button primary={val === season} label={<Text size="small" weight="bold">{seasonName(val)}</Text>} size="small" href={`/${brand}/${val}`}/></Box>
+                            )
+                        })}
+                    </Box>
+                }
+
+                <Riders onChangeRiders={(riders: string) => setFilter({ ...filter, riders })}/>
+            </Box>
+
+            <Grid gap="medium" columns="small">
                 {snowboards && snowboards.map(
-                    ({ brandname, season, name }) => {
+                    (snowboard) => {
+                        const { brandname, season, name, sizes } = snowboard
+
                         return (
-                            <Box key={`${brandname}-${season}-${name}`} gap="small">
+                            <Box
+                                key={`${brandname}-${season}-${name}`}
+                                gap="small"
+                                onClick={() => setPickedSnowboard(snowboard)}
+                            >
                                 <Box width="small" height="small">
                                     <Image
                                         fit="contain"
@@ -140,13 +159,169 @@ function Brand() {
                                     />    
                                 </Box>
                                 <Box align="center">{name}</Box>
+                                <Box direction="row" wrap justify="center">
+                                    {sizes.map(size => {
+                                        return (
+                                            <Box
+                                                key={size}
+                                                pad={{horizontal: "xsmall"}}
+                                                background="light-3"
+                                                round="small"
+                                                margin="xxsmall"
+                                            >
+                                                <Text size="small" color="dark-2">{size}</Text>
+                                            </Box>
+                                        )
+                                    })}
+                                </Box>
                             </Box>
                         )
                     }
                 )}
             </Grid>
+
+            {pickedSnowboard && pickedSnowboard.specs &&
+                <SnowboardLayer
+                    snowboard={pickedSnowboard}
+                    onClickOutside={() => setPickedSnowboard(undefined)}
+                    onEsc={() => setPickedSnowboard(undefined)}
+                    onClickClose={() => setPickedSnowboard(undefined)}
+                />
+            }
         </Main>
     )
+}
+
+function SnowboardLayer({
+    snowboard: { brandname, name, season, specs },
+    onClickClose,
+    ...layerProps
+}: {
+    snowboard: Snowboard,
+    onClickClose?: () => void,
+} & LayerExtendedProps) {
+    return (
+        <Layer {...layerProps}>
+            <Box pad="medium" gap="medium" fill>
+                <Box direction="row" justify="between" align="center">
+                    <Heading level={3} margin="none">{brandname} {name} {season.replace(/W\d{4}_(\d{4})/, "$1")}</Heading>
+                    <Button icon={ <FormClose/> } onClick={onClickClose}/>
+                </Box>
+                <Box width="xlarge">
+                    <MervinSpecsTable specs={specs}/>
+                </Box>
+            </Box>
+        </Layer>
+    )
+}
+
+function MervinSpecsTable({
+    specs,
+    ...tableProps
+}: {
+    specs: {[key: string]: Spec}
+} & TableProps) {
+    return (
+        <Table {...tableProps}>
+            <TableHeader>
+                <TableRow>
+                    <TableCell size="xxsmall">Size</TableCell>
+                    <TableCell align="center">Contact Length</TableCell>
+                    <TableCell align="center">Side Cut</TableCell>
+                    <TableCell align="center">Nose Width</TableCell>
+                    <TableCell align="center">Tail Width</TableCell>
+                    <TableCell align="center">Waist Width</TableCell>
+                    <TableCell align="center">Stance</TableCell>
+                    <TableCell align="center">Set Back</TableCell>
+                    <TableCell align="center">Flex</TableCell>
+                    <TableCell align="center">Riders Weight</TableCell>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {Object.keys(specs).sort().map(key => {
+                    const {
+                        size, wide, contactLength, sidecut,
+                        noseWidth, tailWidth, waistWidth,
+                        stanceMin, stanceMax, stanceSetBack, stanceSetBack_in,
+                        flex, weightMin,
+                    } = specs[key]
+
+                    return (
+                        <TableRow key={key}>
+                            <TableCell><Text weight="bold">{size}{wide && "W"}</Text></TableCell>
+                            <TableCell align="right">{contactLength}</TableCell>
+                            <TableCell align="right">{sidecut}</TableCell>
+                            <TableCell align="right">{noseWidth.toLocaleString()}</TableCell>
+                            <TableCell align="right">{tailWidth}</TableCell>
+                            <TableCell align="right">{waistWidth}</TableCell>
+                            <TableCell align="right">{stanceMin}&ndash;{stanceMax}</TableCell>
+                            <TableCell align="right">
+                                {setBack({ stanceSetBack, stanceSetBack_in })}
+                            </TableCell>
+                            <TableCell align="right">{flex}</TableCell>
+                            <TableCell align="right">{weightMin}+ kg</TableCell>
+                        </TableRow>
+                    )
+                })}
+            </TableBody>
+        </Table>
+    )
+}
+
+function Riders({
+    onChangeRiders,
+    ...props
+}: {
+    onChangeRiders?: (val: string) => void,
+} & BoxExtendedProps) {
+    const [value, setValue] = useState<string>("")
+
+    return (
+        <RadioButtonGroup
+            {...props}
+            name="riders"
+            direction="row"
+            gap="xsmall"
+            options={["MEN", "WOMEN", "YOUTH"]}
+            value={value}
+            onChange={(event) => {
+                setValue(event.target.value)
+                onChangeRiders && onChangeRiders(event.target.value)
+            }}
+        >
+            {(option: string, { checked, focus, hover }: { checked: boolean, focus: boolean, hover: boolean }) => {
+                let background;
+                if (checked) background = 'brand';
+                else if (hover) background = 'light-4';
+                else if (focus) background = 'light-4';
+                else background = 'light-2';
+                return (
+                    // <Box background={background} pad="xsmall">{option}</Box>
+                    <Box background={background} pad={{ vertical: "xsmall", horizontal: "medium"}} round="medium">
+                        <Text size="small" weight="bold">{option}</Text>
+                    </Box>
+                );
+            }}
+        </RadioButtonGroup>
+    )
+}
+
+function setBack({ stanceSetBack, stanceSetBack_in }: { stanceSetBack?: number, stanceSetBack_in?: number }): string {
+    if (!stanceSetBack && !stanceSetBack_in) {
+        return "0"
+    }
+
+    const setback = []
+
+    if (stanceSetBack) {
+        setback.push(`${stanceSetBack}cm`)
+    }
+
+    if (stanceSetBack_in) {
+        setback.push(`${stanceSetBack_in}″`)
+    }
+
+    return setback.join(" / ")
 }
 
 function seasonName(season: Season): string {

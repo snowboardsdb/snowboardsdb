@@ -3,12 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
-	"io"
 	"log"
 	"net/http"
-	"os"
-	"path"
-	"path/filepath"
 	"regexp"
 	"strings"
 )
@@ -54,51 +50,11 @@ func libtech(url string, defaults Snowboard) (*Snowboard, error) {
 
 	attr, ok := doc.Find(".gallery-placeholder._block-content-loading img").First().Attr("src")
 	if ok {
-		_, err := downloadImageLibtech(attr, snowboard)
+		_, err := downloadImage(attr, snowboard)
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	return &snowboard, nil
-}
-
-func downloadImageLibtech(url string, board Snowboard) (string, error) {
-	var (
-		dirname = fmt.Sprintf("images/%s/%s/%s/", board.BrandName, board.Season, board.Name)
-
-		filename = fmt.Sprintf(
-			"%s_%s_%s%s",
-			board.BrandName,
-			board.Season, board.Name,
-			filepath.Ext(url),
-		)
-	)
-
-	resp, err := http.Get(url)
-	if err != nil {
-		return "", err
-	}
-
-	defer resp.Body.Close()
-
-	if resp.StatusCode == http.StatusOK {
-		if err := ensureDir(dirname); err != nil {
-			return "", err
-		}
-
-		println(path.Join(dirname, filename))
-
-		file, err := os.Create(path.Join(dirname, filename))
-
-		defer file.Close()
-
-		if err != nil {
-			return "", err
-		} else if _, err := io.Copy(file, resp.Body); err != nil {
-			return "", err
-		}
-	}
-
-	return filename, nil
 }

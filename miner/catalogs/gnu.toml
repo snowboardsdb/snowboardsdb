@@ -27,3 +27,25 @@ Urls = [
 [Snowboards.WOMEN]
 
 Riders = "WOMEN"
+
+Urls = [
+    "https://www.gnu.com/b-nice",
+    "https://www.gnu.com/free-spirit",
+    "https://www.gnu.com/chromatic",
+    "https://www.gnu.com/ladies-choice",
+    "https://www.gnu.com/pro-choice",
+    "https://www.gnu.com/gloss",
+    "https://www.gnu.com/barrett-split",
+    "https://www.gnu.com/barrett",
+    "https://www.gnu.com/velvet",
+    "https://www.gnu.com/ravish",
+]
+
+[Snowboards.YOUTH]
+
+Riders = "YOUTH"
+
+Urls = [
+    "https://www.gnu.com/recess",
+    "https://www.gnu.com/young-money",
+]

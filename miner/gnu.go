@@ -3,17 +3,14 @@ package main
 import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
-	"io"
 	"log"
 	"net/http"
-	"os"
-	"path"
-	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 )
 
-func gnu(url string, defaults Snowboard) (*Snowboard, error) {
+func gnu(url string, defaults Snowboard, noImages *bool) (*Snowboard, error) {
 	var (
 		snowboard = defaults
 	)
@@ -52,63 +49,125 @@ func gnu(url string, defaults Snowboard) (*Snowboard, error) {
 		snowboard.Sizes = append(snowboard.Sizes, sel.Text())
 	})
 
-	attr, ok := doc.Find(".gallery-placeholder._block-content-loading img").First().Attr("src")
-	if ok {
-		_, err := downloadImageGnu(attr, snowboard)
-		if err != nil {
-			return nil, err
+	snowboard.Spec = gnuSpecs(doc)
+
+	if noImages == nil || !*noImages {
+		attr, ok := doc.Find(".gallery-placeholder._block-content-loading img").First().Attr("src")
+		if ok {
+			_, err := downloadImage(attr, snowboard)
+			if err != nil {
+				return nil, err
+			}
 		}
 	}
 
 	return &snowboard, nil
 }
 
-func downloadImageGnu(url string, board Snowboard) (string, error) {
+func gnuSpecs(doc *goquery.Document) map[string]Spec {
 	var (
-		dirname = fmt.Sprintf("images/%s/%s/%s/", board.BrandName, board.Season, board.Name)
-
-		filename = fmt.Sprintf(
-			"%s_%s_%s%s",
-			board.BrandName,
-			board.Season, board.Name,
-			filepath.Ext(url),
-		)
+		res = make(map[string]Spec)
 	)
 
-	resp, err := http.Get(url)
-	if err != nil {
-		return "", err
-	}
+	doc.Find(".product.specification table tbody tr").Each(func(i int, sel *goquery.Selection) {
+		var (
+			size = sel.Find("td:nth-child(1)").Text()
+		)
 
-	defer resp.Body.Close()
-
-	if resp.StatusCode == http.StatusOK {
-		if err := ensureDir(dirname); err != nil {
-			return "", err
+		if size == "" {
+			return
 		}
 
-		println(path.Join(dirname, filename))
+		var (
+			spec = Spec{}
+		)
 
-		file, err := os.Create(path.Join(dirname, filename))
-
-		defer file.Close()
-
-		if err != nil {
-			return "", err
-		} else if _, err := io.Copy(file, resp.Body); err != nil {
-			return "", err
+		if val, err := strconv.ParseFloat(strings.ReplaceAll(size, "W", ""), 64); err == nil {
+			spec.Length = val
 		}
-	}
 
-	return filename, nil
-}
+		spec.Wide = strings.Contains(size, "W")
 
-func ensureDir(path string) error {
-	err := os.MkdirAll(path, os.ModeDir|os.ModePerm)
+		if val, err := strconv.ParseFloat(sel.Find("td:nth-child(2)").Text(), 64); err == nil {
+			spec.ContactLength = val
+		}
 
-	if os.IsExist(err) {
-		return nil
-	}
+		if val, err := strconv.ParseFloat(sel.Find("td:nth-child(3)").Text(), 64); err == nil {
+			spec.Sidecut = val
+		}
 
-	return err
+		if nose, tail, ok := strings.Cut(sel.Find("td:nth-child(4)").Text(), " / "); ok {
+			if val, err := strconv.ParseFloat(nose, 64); err == nil {
+				spec.NoseWidth = val
+			}
+
+			if val, err := strconv.ParseFloat(tail, 64); err == nil {
+				spec.TailWidth = val
+			}
+		}
+
+		if waist, err := strconv.ParseFloat(sel.Find("td:nth-child(5)").Text(), 64); err == nil {
+			spec.WaistWidth = waist
+		}
+
+		if minMax, setBack, ok := strings.Cut(sel.Find("td:nth-child(6)").Text(), " / "); ok {
+			if min, max, ok := strings.Cut(minMax, "-"); ok {
+				if val, err := strconv.ParseFloat(strings.ReplaceAll(min, `"`, ""), 64); err == nil {
+					spec.StanceMinIn = val
+				}
+
+				if val, err := strconv.ParseFloat(strings.ReplaceAll(max, `"`, ""), 64); err == nil {
+					spec.StanceMaxIn = val
+				}
+			}
+
+			if val, err := strconv.ParseFloat(strings.ReplaceAll(setBack, `"`, ""), 64); err == nil {
+				spec.StanceSetBackIn = newof(val)
+			}
+		}
+
+		if minMax, setBack, ok := strings.Cut(sel.Find("td:nth-child(7)").Text(), " / "); ok {
+			if min, max, ok := strings.Cut(minMax, " - "); ok {
+				if val, err := strconv.ParseFloat(strings.ReplaceAll(min, ",", "."), 64); err == nil {
+					spec.StanceMin = val
+				}
+
+				if val, err := strconv.ParseFloat(strings.ReplaceAll(max, ",", "."), 64); err == nil {
+					spec.StanceMax = val
+				}
+			}
+
+			if val, err := strconv.ParseFloat(
+				strings.ReplaceAll(strings.ReplaceAll(setBack, ` cm`, ""), ",", "."),
+				64,
+			); err == nil {
+				spec.StanceSetBack = newof(val)
+			}
+		}
+
+		if val, err := strconv.ParseFloat(sel.Find("td:nth-child(8)").Text(), 64); err == nil {
+			spec.Flex = val
+		}
+
+		if weightMin, weightMax, ok := strings.Cut(sel.Find("td:nth-child(9)").Text(), "-"); ok {
+			if val, err := strconv.ParseFloat(weightMin, 64); err == nil {
+				spec.WeightMinLbs = val
+			}
+
+			if val, err := strconv.ParseFloat(weightMax, 64); err == nil {
+				spec.WeightMaxLbs = val
+			}
+		}
+
+		if val, err := strconv.ParseFloat(
+			regexp.MustCompile(`[^\d]`).ReplaceAllString(sel.Find("td:nth-child(10)").Text(), ""),
+			64,
+		); err == nil {
+			spec.WeightMin = val
+		}
+
+		res[size] = spec
+	})
+
+	return res
 }

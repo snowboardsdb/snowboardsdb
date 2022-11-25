@@ -38,3 +38,22 @@ Urls = [
 [Snowboards.WOMEN]
 
 Riders = "WOMEN"
+
+Urls = [
+    "https://www.lib-tech.com/lost-rocket",
+    "https://www.lib-tech.com/glider",
+    "https://www.lib-tech.com/cortado",
+    "https://www.lib-tech.com/ryme",
+    "https://www.lib-tech.com/dynamiss",
+    "https://www.lib-tech.com/no-43",
+]
+
+[Snowboards.YOUTH]
+
+Riders = "WOMYOUTHEN"
+
+Urls = [
+    "https://www.lib-tech.com/banana-blaster",
+    "https://www.lib-tech.com/t-ripper",
+    "https://www.lib-tech.com/dynasword",
+]

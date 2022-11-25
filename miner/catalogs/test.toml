@@ -1,0 +1,14 @@
+BrandName = "Gnu"
+Season = "W2022_2023"
+
+[Snowboards.MEN]
+
+Riders = "MEN"
+
+Urls = [
+    "https://www.gnu.com/money",
+]
+
+[Snowboards.WOMEN]
+
+Riders = "WOMEN"
