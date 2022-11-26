@@ -14,7 +14,7 @@ export class Snowboards extends Dexie {
     constructor() {
         super("Snowboards")
 
-        this.version(5).stores({
+        this.version(6).stores({
             snowboards: '++id, brandname, season, [brandname+season], [brandname+season+riders]',
             brands: '++id, name'
         })

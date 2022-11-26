@@ -13,10 +13,15 @@ import { Season, Brand as BrandType, Snowboard, Spec  } from "./db/model"
 const theme = {
     global: {
         font: {
-            family: 'Roboto',
-            size: '18px',
-            height: '20px',
+            family: "Roboto",
+            size: "18px",
+            height: "20px",
         },
+        focus: {
+            outline: {
+                size: "0"
+            }
+        }
     },
 }
 
@@ -131,7 +136,13 @@ function Brand() {
                     <Box direction="row" gap="small">
                         {seasons.map((val) => {
                             return (
-                                <Box key={val}><Button primary={val === season} label={<Text size="small" weight="bold">{seasonName(val)}</Text>} size="small" href={`/${brand}/${val}`}/></Box>
+                                <AnchorLink to={`/${brand}/${val}`}
+                                    label={
+                                        <Box key={val} background="brand" pad={{ vertical: "xsmall", horizontal: "medium"}} round="medium">
+                                            <Text size="small" weight="bold">{seasonName(val)}</Text>
+                                        </Box>
+                                    }
+                                />
                             )
                         })}
                     </Box>
