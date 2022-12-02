@@ -6,9 +6,5 @@ Season = "W2022_2023"
 Riders = "MEN"
 
 Urls = [
-    "https://www.gnu.com/money",
+    "https://www.lib-tech.com/lost-rocket",
 ]
-
-[Snowboards.WOMEN]
-
-Riders = "WOMEN"

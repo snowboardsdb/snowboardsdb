@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func Test_gnuSpecs(t *testing.T) {
+func Test_mervinSpecs(t *testing.T) {
 	var (
 		antigravity *goquery.Document
 
@@ -44,10 +44,10 @@ func Test_gnuSpecs(t *testing.T) {
 					WaistWidth:      25,
 					StanceMin:       47,
 					StanceMax:       59,
-					StanceSetBack:   2.5,
+					StanceSetBack:   newof(2.5),
 					StanceMinIn:     18.5,
 					StanceMaxIn:     23.25,
-					StanceSetBackIn: 1,
+					StanceSetBackIn: newof(1.0),
 					Flex:            5,
 					WeightMin:       40,
 					WeightMinLbs:    100,
@@ -59,8 +59,8 @@ func Test_gnuSpecs(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := gnuSpecs(tt.args.doc); !reflect.DeepEqual(got["150"], tt.want["150"]) {
-				t.Errorf("gnuSpecs() = %v, want %v", got["150"], tt.want["150"])
+			if got := mervinSpecs(tt.args.doc); !reflect.DeepEqual(got["150"], tt.want["150"]) {
+				t.Errorf("mervinSpecs() = %v, want %v", got["150"], tt.want["150"])
 			}
 		})
 	}

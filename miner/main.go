@@ -95,6 +95,7 @@ type Spec struct {
 	BoardWeight         float64  `json:"boardWeight,omitempty"`
 	BoardWeightLbs      float64  `json:"boardWeight_lbs,omitempty"`
 	SurfaceArea         float64  `json:"surfaceArea,omitempty"`
+	SurfaceAreaIn       float64  `json:"surfaceArea_in,omitempty"`
 	Sidecut             float64  `json:"sidecut,omitempty"`
 	NoseWidth           float64  `json:"noseWidth,omitempty"`
 	NoseLength          float64  `json:"noseLength,omitempty"`

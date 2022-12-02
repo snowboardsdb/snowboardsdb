@@ -50,7 +50,7 @@ Urls = [
 
 [Snowboards.YOUTH]
 
-Riders = "WOMYOUTHEN"
+Riders = "YOUTH"
 
 Urls = [
     "https://www.lib-tech.com/banana-blaster",

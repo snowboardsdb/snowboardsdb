@@ -1,0 +1,16 @@
+BrandName = "Roxy"
+Season = "W2022_2023"
+
+[Snowboards.WOMEN]
+
+Riders = "WOMEN"
+
+Urls = [
+    "https://roxy.mervin.com/xoxo-pro",
+    "https://roxy.mervin.com/xoxo",
+    "https://roxy.mervin.com/smoothie",
+    "https://roxy.mervin.com/breeze",
+    "https://roxy.mervin.com/raina",
+    "https://roxy.mervin.com/dawn",
+    "https://roxy.mervin.com/poppy-package",
+]
