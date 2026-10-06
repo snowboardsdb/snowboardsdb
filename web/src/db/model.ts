@@ -12,7 +12,7 @@ export type Snowboard = {
     name: string
     brandname: string,
     season: Season,
-    rider: Rider,
+    riders: Rider,
     sizes: string[],
     countur?: Countur,
     technology?: Technology[],

@@ -14,8 +14,8 @@ export class Snowboards extends Dexie {
     constructor() {
         super("Snowboards")
 
-        this.version(6).stores({
-            snowboards: '++id, brandname, season, [brandname+season], [brandname+season+riders]',
+        this.version(9).stores({
+            snowboards: '++id, brandname, season, [brandname+season]',
             brands: '++id, name'
         })
     }
@@ -29,26 +29,16 @@ db.on("ready", async function(db) {
     inst.snowboards.clear()
     inst.brands.clear()
 
-    const snowboards = await fetchSnowboards("/db/snowboards.json")
+    inst.brands.bulkAdd(await (await fetch("/snowboards/brands.json")).json())
 
-    inst.snowboards.bulkAdd(snowboards)
-
-    const brands = await fetchSnowboards("/db/brands.json")
-
-    inst.brands.bulkAdd(brands)
+    // inst.snowboards.bulkAdd(await (await fetch("/snowboards/gnu.json")).json())
+    inst.snowboards.bulkAdd(await (await fetch("/snowboards/gnu_23.json")).json())
+    inst.snowboards.bulkAdd(await (await fetch("/snowboards/jones_23.json")).json())
+    inst.snowboards.bulkAdd(await (await fetch("/snowboards/lib-tech_23.json")).json())
+    inst.snowboards.bulkAdd(await (await fetch("/snowboards/roxy_23.json")).json())
 })
 
 db.open()
-
-export async function populate() {
-    const snowboards = await fetchSnowboards("/db/snowboards.json")
-
-    db.snowboards.bulkAdd(snowboards)
-
-    const brands = await fetchSnowboards("/db/brands.json")
-
-    db.brands.bulkAdd(brands)
-}
 
 async function fetchSnowboards(url: string): Promise<Snowboard[]> {
     const response = await fetch(url)
@@ -62,10 +52,26 @@ async function fetchBrands(url: string): Promise<Brand[]> {
     return await response.json()
 }
 
-export function useSnowboards(filter: { brandname?: string, season?: string, name?: string, riders?: string }, deps?: any[]) {
+export function useSnowboards(
+    query: { brandname?: string, season?: string, name?: string },
+    filter: { riders?: string[] },
+    deps?: any[]
+) {
     const [ snowboards, setSnowboards ] = useState<Snowboard[]>([])
 
-    const list = useLiveQuery(() => db.snowboards.where(filter).toArray(), deps)
+    const f = (val: Snowboard) => {
+        if (!val || !val.riders) {
+            return true
+        }
+
+        if (filter.riders) {
+            return filter.riders.filter(x => val.riders.includes(x)).length > 0
+        }
+
+        return true
+    }
+
+    const list = useLiveQuery(() => db.snowboards.where(query).and(f).sortBy("name"), deps)
 
     useEffect(() => {
         if (list) {
@@ -79,7 +85,7 @@ export function useSnowboards(filter: { brandname?: string, season?: string, nam
 export function useSeasons({ brandname }: { brandname?: string }, deps?: any[]) {
     const [ seasons, setSeasons ] = useState<Season[]>([])
 
-    const list = useSnowboards({ brandname }, deps)
+    const list = useSnowboards({ brandname }, {}, deps)
 
     useEffect(() => {
         if (list) {

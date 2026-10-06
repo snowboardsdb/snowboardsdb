@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { HashRouter, Link, LinkProps, Routes, Route, useParams} from "react-router-dom"
 
-import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, LayerExtendedProps, Main, RadioButtonGroup, RadioButtonGroupExtendedProps, Text } from "grommet"
+import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, LayerExtendedProps, Main, RadioButtonGroup, Tab, Tabs, Text } from "grommet"
 import { Table, TableHeader, TableRow, TableCell, TableBody, TableProps } from "grommet"
 import { FormClose, LinkPrevious } from "grommet-icons"
 
@@ -116,9 +116,11 @@ function Brands() {
 function Brand() {
     const { brand, season } = useParams()
 
-    const [ filter, setFilter ] = useState<{ brandname?: string, season?: string, riders?: string, }>({ brandname: brand, season })
+    const [ query ] = useState<{ brandname?: string, season?: string, riders?: string[], }>({ brandname: brand, season })
 
-    const snowboards = useSnowboards(filter, [ filter ])
+    const [ filter, setFilter ] = useState<{ riders?: string[], }>({})
+
+    const snowboards = useSnowboards(query, filter, [ query, filter ])
 
     const seasons = useSeasons({ brandname: brand }, [ brand ])
 
@@ -137,6 +139,7 @@ function Brand() {
                         {seasons.map((val) => {
                             return (
                                 <AnchorLink to={`/${brand}/${val}`}
+                                    key={val}
                                     label={
                                         <Box key={val} background="brand" pad={{ vertical: "xsmall", horizontal: "medium"}} round="medium">
                                             <Text size="small" weight="bold">{seasonName(val)}</Text>
@@ -148,17 +151,17 @@ function Brand() {
                     </Box>
                 }
 
-                <Riders onChangeRiders={(riders: string) => setFilter({ ...filter, riders })}/>
+                <Riders onChangeRiders={(riders: string) => setFilter({ ...filter, riders: [riders] })}/>
             </Box>
 
             <Grid gap="medium" columns="small">
                 {snowboards && snowboards.map(
-                    (snowboard) => {
+                    (snowboard, i) => {
                         const { brandname, season, name, sizes } = snowboard
 
                         return (
                             <Box
-                                key={`${brandname}-${season}-${name}`}
+                                key={`${i}-${brandname}-${season}-${name}`}
                                 gap="small"
                                 onClick={() => setPickedSnowboard(snowboard)}
                             >
@@ -169,12 +172,12 @@ function Brand() {
                                         fallback="/snowboards/blank.png"
                                     />    
                                 </Box>
-                                <Box align="center">{name}</Box>
+                                <Box style={{textAlign: "center"}}><Text>{name}</Text></Box>
                                 <Box direction="row" wrap justify="center">
-                                    {sizes.map(size => {
+                                    {sizes.map((size, i) => {
                                         return (
                                             <Box
-                                                key={size}
+                                                key={`${i}-${size}`}
                                                 pad={{horizontal: "xsmall"}}
                                                 background="light-3"
                                                 round="small"
@@ -214,13 +217,29 @@ function SnowboardLayer({
     return (
         <Layer {...layerProps}>
             <Box pad="medium" gap="medium" fill>
-                <Box direction="row" justify="between" align="center">
+                <Box direction="row" justify="between">
                     <Heading level={3} margin="none">{brandname} {name} {season.replace(/W\d{4}_(\d{4})/, "$1")}</Heading>
                     <Button icon={ <FormClose/> } onClick={onClickClose}/>
                 </Box>
-                <Box width="xlarge">
-                    <MervinSpecsTable specs={specs}/>
-                </Box>
+                <Tabs alignControls="start" justify="center">
+                    <Tab title="Snowboard">
+                        <Box margin={{ top: "medium" }}>
+                            <Image
+                                fit="contain"
+                                src={`/snowboards/${brandname}/${season}/${name}/${brandname}_${season}_${name}.jpg`}
+                                fallback="/snowboards/blank.png"
+                            />
+                        </Box>
+                    </Tab>
+                    <Tab title="Specifications">
+                        <Box width="xlarge" overflow={{horizontal: "auto"}} margin={{ top: "medium" }}>
+                            <MervinSpecsTable specs={specs}/>
+                        </Box>
+                    </Tab>
+                    <Tab title="Technologies">
+                        <Box margin={{ top: "medium" }}></Box>
+                    </Tab>
+                </Tabs>
             </Box>
         </Layer>
     )
@@ -236,7 +255,7 @@ function MervinSpecsTable({
         <Table {...tableProps}>
             <TableHeader>
                 <TableRow>
-                    <TableCell size="xxsmall">Size</TableCell>
+                    <TableCell size="xxsmall" style={{position:"sticky"}}>Size</TableCell>
                     <TableCell align="center">Contact Length</TableCell>
                     <TableCell align="center">Side Cut</TableCell>
                     <TableCell align="center">Nose Width</TableCell>
@@ -259,7 +278,60 @@ function MervinSpecsTable({
 
                     return (
                         <TableRow key={key}>
-                            <TableCell><Text weight="bold">{size}{wide && "W"}</Text></TableCell>
+                            <TableCell style={{position:"sticky"}}><Text weight="bold">{size}{wide && "W"}</Text></TableCell>
+                            <TableCell align="right">{contactLength}</TableCell>
+                            <TableCell align="right">{sidecut}</TableCell>
+                            <TableCell align="right">{noseWidth.toLocaleString()}</TableCell>
+                            <TableCell align="right">{tailWidth}</TableCell>
+                            <TableCell align="right">{waistWidth}</TableCell>
+                            <TableCell align="right">{stanceMin}&ndash;{stanceMax}</TableCell>
+                            <TableCell align="right">
+                                {setBack({ stanceSetBack, stanceSetBack_in })}
+                            </TableCell>
+                            <TableCell align="right">{flex}</TableCell>
+                            <TableCell align="right">{weightMin}+ kg</TableCell>
+                        </TableRow>
+                    )
+                })}
+            </TableBody>
+        </Table>
+    )
+}
+
+function JonesSpecsTable({
+    specs,
+    ...tableProps
+}: {
+    specs: {[key: string]: Spec}
+} & TableProps) {
+    return (
+        <Table {...tableProps}>
+            <TableHeader>
+                <TableRow>
+                    <TableCell size="xxsmall" style={{position:"sticky"}}>Size</TableCell>
+                    <TableCell align="center">Contact Length</TableCell>
+                    <TableCell align="center">Side Cut</TableCell>
+                    <TableCell align="center">Nose Width</TableCell>
+                    <TableCell align="center">Tail Width</TableCell>
+                    <TableCell align="center">Waist Width</TableCell>
+                    <TableCell align="center">Stance</TableCell>
+                    <TableCell align="center">Set Back</TableCell>
+                    <TableCell align="center">Flex</TableCell>
+                    <TableCell align="center">Riders Weight</TableCell>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {Object.keys(specs).sort().map(key => {
+                    const {
+                        size, wide, contactLength, sidecut,
+                        noseWidth, tailWidth, waistWidth,
+                        stanceMin, stanceMax, stanceSetBack, stanceSetBack_in,
+                        flex, weightMin,
+                    } = specs[key]
+
+                    return (
+                        <TableRow key={key}>
+                            <TableCell style={{position:"sticky"}}><Text weight="bold">{size}{wide && "W"}</Text></TableCell>
                             <TableCell align="right">{contactLength}</TableCell>
                             <TableCell align="right">{sidecut}</TableCell>
                             <TableCell align="right">{noseWidth.toLocaleString()}</TableCell>
