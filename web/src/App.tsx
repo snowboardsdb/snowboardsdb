@@ -103,12 +103,19 @@ function Brands() {
                                 <Text weight="bold" size="large" color="dark-6">{letter}</Text>
                             </Box>
                             <Grid gap="small" alignContent="start">
-                                {brands.filter(({ name }) => name[0].toUpperCase() === letter).map(({ name }) => {
+                                {brands.filter(({ name }) => name[0].toUpperCase() === letter).map(({ name, nameImage, logo }) => {
+                                    const label = nameImage ?
+                                        <img src={nameImage.src} alt={name} style={{ height: `${nameImage.height}px`, width: "auto" }} /> :
+                                        name
+
                                     return (
-                                        <Box key={name}>
+                                        <Box key={name} direction="row" align="center" gap="xsmall" height="28px">
+                                            {logo &&
+                                                <img src={logo.src} alt="" style={{ height: `${logo.height}px`, width: "auto" }} />
+                                            }
                                             {hasSnowboards?.includes(name) ?
-                                                <AnchorLink to={`/${name}/W2022_2023`} size="large">{name}</AnchorLink> :
-                                                <Text size="large" color="dark-3">{name}</Text>
+                                                <AnchorLink to={`/${name}/W2022_2023`} size="large">{label}</AnchorLink> :
+                                                nameImage ? label : <Text size="large" color="dark-3">{label}</Text>
                                             }
                                         </Box>
                                     )

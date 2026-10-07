@@ -1,5 +1,12 @@
+type BrandImage = {
+    src: string
+    height: number
+}
+
 export type Brand = {
     name: string
+    nameImage?: BrandImage
+    logo?: BrandImage
 }
 
 export enum Rider {
