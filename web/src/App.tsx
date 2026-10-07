@@ -25,6 +25,15 @@ const theme = {
     },
 }
 
+const imageBaseUrl = "https://storage.yandexcloud.net/snowboardsdb/images"
+
+function snowboardImageUrl({ brandname, season, name }: Snowboard): string {
+    const extension = brandname === "Roxy" && season === "W2022_2023" && name === "Poppy Package" ? "png" : "jpg"
+    const filename = `${brandname}_${season}_${name}.${extension}`
+
+    return `${imageBaseUrl}/${[brandname, season, name, filename].map(encodeURIComponent).join("/")}`
+}
+
 function App() {
     return (
         <HashRouter>
@@ -168,7 +177,7 @@ function Brand() {
                                 <Box width="small" height="small">
                                     <Image
                                         fit="contain"
-                                        src={`/snowboards/${brandname}/${season}/${name}/${brandname}_${season}_${name}.jpg`}
+                                        src={snowboardImageUrl(snowboard)}
                                         fallback="/snowboards/blank.png"
                                     />    
                                 </Box>
@@ -207,13 +216,15 @@ function Brand() {
 }
 
 function SnowboardLayer({
-    snowboard: { brandname, name, season, specs },
+    snowboard,
     onClickClose,
     ...layerProps
 }: {
     snowboard: Snowboard,
     onClickClose?: () => void,
 } & LayerExtendedProps) {
+    const { brandname, name, season, specs } = snowboard
+
     return (
         <Layer {...layerProps}>
             <Box pad="medium" gap="medium" fill>
@@ -226,7 +237,7 @@ function SnowboardLayer({
                         <Box margin={{ top: "medium" }}>
                             <Image
                                 fit="contain"
-                                src={`/snowboards/${brandname}/${season}/${name}/${brandname}_${season}_${name}.jpg`}
+                                src={snowboardImageUrl(snowboard)}
                                 fallback="/snowboards/blank.png"
                             />
                         </Box>
