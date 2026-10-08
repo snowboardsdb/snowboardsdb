@@ -27,7 +27,9 @@ const theme = {
 
 const imageBaseUrl = "https://storage.yandexcloud.net/snowboardsdb/images"
 
-function snowboardImageUrl({ brandname, season, name }: Snowboard): string {
+function snowboardImageUrl({ brandname, season, name, imageUrl }: Snowboard): string {
+    if (imageUrl) return imageUrl
+
     const extension = brandname === "Roxy" && season === "W2022_2023" && name === "Poppy Package" ? "png" : "jpg"
     const filename = `${brandname}_${season}_${name}.${extension}`
 
@@ -85,7 +87,14 @@ function Brands() {
         }, [] as string[]))
     }, [ brands ])
 
-    const hasSnowboards = useLiveQuery(() => dexsnowboards.snowboards.orderBy("brandname").uniqueKeys())
+    const latestSeasons = useLiveQuery(async () => {
+        const snowboards = await dexsnowboards.snowboards.toArray()
+        return snowboards.reduce((seasons, snowboard) => {
+            const current = seasons[snowboard.brandname]
+            if (!current || current < snowboard.season) seasons[snowboard.brandname] = snowboard.season
+            return seasons
+        }, {} as Record<string, Season>)
+    })
 
     const renderBrand = ({ name, nameImage, logo }: BrandType) => {
         const label = nameImage ?
@@ -97,8 +106,8 @@ function Brands() {
                 {logo &&
                     <img src={logo.src} alt="" style={{ height: `${logo.height}px`, width: "auto" }} />
                 }
-                {hasSnowboards?.includes(name) ?
-                    <AnchorLink to={`/${name}/W2022_2023`} size="large">{label}</AnchorLink> :
+                {latestSeasons?.[name] ?
+                    <AnchorLink to={`/${name}/${latestSeasons[name]}`} size="large">{label}</AnchorLink> :
                     nameImage ? label : <Text size="large" color="dark-3">{label}</Text>
                 }
             </Box>
@@ -224,6 +233,7 @@ function Brand() {
 
             {pickedSnowboard && pickedSnowboard.specs &&
                 <SnowboardLayer
+                    key={`${pickedSnowboard.brandname}-${pickedSnowboard.season}-${pickedSnowboard.name}`}
                     snowboard={pickedSnowboard}
                     onClickOutside={() => setPickedSnowboard(undefined)}
                     onEsc={() => setPickedSnowboard(undefined)}
@@ -242,7 +252,11 @@ function SnowboardLayer({
     snowboard: Snowboard,
     onClickClose?: () => void,
 } & LayerExtendedProps) {
-    const { brandname, name, season, specs } = snowboard
+    const { brandname, name, season, specs, sizes, imagesBySize } = snowboard
+    const [selectedSize, setSelectedSize] = useState(
+        sizes.find(size => imagesBySize?.[size]) || sizes[0]
+    )
+    const selectedImageUrl = imagesBySize ? imagesBySize[selectedSize] : snowboardImageUrl(snowboard)
 
     return (
         <Layer {...layerProps}>
@@ -254,16 +268,23 @@ function SnowboardLayer({
                 <Tabs alignControls="start" justify="center">
                     <Tab title="Snowboard">
                         <Box margin={{ top: "medium" }}>
-                            <Image
-                                fit="contain"
-                                src={snowboardImageUrl(snowboard)}
-                                fallback="/snowboards/blank.png"
-                            />
+                            {imagesBySize &&
+                                <Box direction="row" wrap gap="xsmall" justify="center" margin={{ bottom: "medium" }}>
+                                    {sizes.map(size =>
+                                        <Button key={size} label={size} primary={size === selectedSize}
+                                            onClick={() => setSelectedSize(size)}/>
+                                    )}
+                                </Box>
+                            }
+                            {selectedImageUrl ?
+                                <Image fit="contain" src={selectedImageUrl} fallback="/snowboards/blank.png"/> :
+                                <Text textAlign="center">Image unavailable for this size</Text>
+                            }
                         </Box>
                     </Tab>
                     <Tab title="Specifications">
                         <Box width="xlarge" overflow={{horizontal: "auto"}} margin={{ top: "medium" }}>
-                            <MervinSpecsTable specs={specs}/>
+                            {brandname === "CAPiTA" ? <CapitaSpecsTable specs={specs}/> : <MervinSpecsTable specs={specs}/>}
                         </Box>
                     </Tab>
                     <Tab title="Technologies">
@@ -272,6 +293,48 @@ function SnowboardLayer({
                 </Tabs>
             </Box>
         </Layer>
+    )
+}
+
+function CapitaSpecsTable({
+    specs,
+    ...tableProps
+}: {
+    specs: {[key: string]: Spec}
+} & TableProps) {
+    return (
+        <Table {...tableProps}>
+            <TableHeader>
+                <TableRow>
+                    <TableCell>Size</TableCell>
+                    <TableCell>Effective edge (mm)</TableCell>
+                    <TableCell>Sidecut (m)</TableCell>
+                    <TableCell>Nose (cm)</TableCell>
+                    <TableCell>Tail (cm)</TableCell>
+                    <TableCell>Waist (cm)</TableCell>
+                    <TableCell>Taper (mm)</TableCell>
+                    <TableCell>Ref. stance (cm)</TableCell>
+                    <TableCell>Rider weight (kg)</TableCell>
+                    <TableCell>Boot size</TableCell>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {Object.entries(specs).map(([key, spec]) => (
+                    <TableRow key={key}>
+                        <TableCell><Text weight="bold">{key}</Text></TableCell>
+                        <TableCell align="right">{spec.effectiveEdge}</TableCell>
+                        <TableCell align="right">{spec.sidecut}</TableCell>
+                        <TableCell align="right">{spec.noseWidth}</TableCell>
+                        <TableCell align="right">{spec.tailWidth}</TableCell>
+                        <TableCell align="right">{spec.waistWidth}</TableCell>
+                        <TableCell align="right">{spec.taper}</TableCell>
+                        <TableCell align="right">{spec.referenceStance}</TableCell>
+                        <TableCell align="right">{spec.weightMin}–{spec.weightMax}</TableCell>
+                        <TableCell>{spec.bootSize}</TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
     )
 }
 
@@ -311,7 +374,7 @@ function MervinSpecsTable({
                             <TableCell style={{position:"sticky"}}><Text weight="bold">{size}{wide && "W"}</Text></TableCell>
                             <TableCell align="right">{contactLength}</TableCell>
                             <TableCell align="right">{sidecut}</TableCell>
-                            <TableCell align="right">{noseWidth.toLocaleString()}</TableCell>
+                            <TableCell align="right">{noseWidth?.toLocaleString()}</TableCell>
                             <TableCell align="right">{tailWidth}</TableCell>
                             <TableCell align="right">{waistWidth}</TableCell>
                             <TableCell align="right">{stanceMin}&ndash;{stanceMax}</TableCell>
@@ -364,7 +427,7 @@ function JonesSpecsTable({
                             <TableCell style={{position:"sticky"}}><Text weight="bold">{size}{wide && "W"}</Text></TableCell>
                             <TableCell align="right">{contactLength}</TableCell>
                             <TableCell align="right">{sidecut}</TableCell>
-                            <TableCell align="right">{noseWidth.toLocaleString()}</TableCell>
+                            <TableCell align="right">{noseWidth?.toLocaleString()}</TableCell>
                             <TableCell align="right">{tailWidth}</TableCell>
                             <TableCell align="right">{waistWidth}</TableCell>
                             <TableCell align="right">{stanceMin}&ndash;{stanceMax}</TableCell>

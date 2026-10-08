@@ -20,10 +20,14 @@ export type Snowboard = {
     name: string
     brandname: string,
     season: Season,
-    riders: Rider,
+    riders: Rider[],
     sizes: string[],
     countur?: Countur,
     technology?: Technology[],
+    type?: "SNOWBOARD" | "SPLITBOARD",
+    imageUrl?: string,
+    imagesBySize?: { [size: string]: string },
+    sourceUrl?: string,
     specs: {
         [key: string]: Spec
     }
@@ -32,18 +36,23 @@ export type Snowboard = {
 export type Spec = {
     size: number,
     wide: boolean,
-    contactLength: number,
-    sidecut: number,
-    noseWidth: number,
-    noseLength: number,
-    tailWidth: number,
-    waistWidth: number,
-    stanceMin: number,
-    stanceMax: number,
+    contactLength?: number,
+    effectiveEdge?: number,
+    sidecut?: number | string,
+    noseWidth?: number,
+    noseLength?: number,
+    tailWidth?: number,
+    waistWidth?: number,
+    taper?: number | null,
+    stanceMin?: number,
+    stanceMax?: number,
+    referenceStance?: number,
     stanceSetBack?: number,
     stanceSetBack_in?: number,
-    flex: number,
-    weightMin: number,
+    flex?: number,
+    weightMin?: number,
+    weightMax?: number,
+    bootSize?: string,
 }
 
 export enum Season {
@@ -55,6 +64,7 @@ export enum Season {
     W2020_2021 = "W2020_2021",
     W2021_2022 = "W2021_2022",
     W2022_2023 = "W2022_2023",
+    W2026_2027 = "W2026_2027",
 }
 
 enum MervinCountur {
