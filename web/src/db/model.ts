@@ -5,6 +5,7 @@ type BrandImage = {
 
 export type Brand = {
     name: string
+    siteUrl?: string
     nameImage?: BrandImage
     logo?: BrandImage
 }

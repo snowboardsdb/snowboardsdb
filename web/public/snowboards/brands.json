@@ -3,10 +3,23 @@
     "name": "Academy"
   },
   {
+    "name": "Aggression"
+  },
+  {
+    "name": "Allian"
+  },
+  {
     "name": "Amplid"
   },
   {
     "name": "Anticonf"
+  },
+  {
+    "name": "APO",
+    "siteUrl": "https://apo-snow.com/"
+  },
+  {
+    "name": "Apocalypse"
   },
   {
     "name": "Arbor"
@@ -18,7 +31,19 @@
     "name": "Atirom-AVS"
   },
   {
+    "name": "Atlantis"
+  },
+  {
     "name": "Atom"
+  },
+  {
+    "name": "Atomic"
+  },
+  {
+    "name": "Avalanche"
+  },
+  {
+    "name": "Barfoot"
   },
   {
     "name": "Bataleon"
@@ -31,13 +56,20 @@
     "name": "Bear Powder Surfs"
   },
   {
+    "name": "BF"
+  },
+  {
     "name": "Birdhouse"
+  },
+  {
+    "name": "Black Snow"
   },
   {
     "name": "BlackFire"
   },
   {
-    "name": "BF"
+    "name": "Borealis",
+    "siteUrl": "https://borealis-snowboards.com/"
   },
   {
     "name": "Buddy Buddy"
@@ -56,13 +88,33 @@
     }
   },
   {
-    "name": "Chimera"
+    "name": "Cardiff Snowcraft",
+    "siteUrl": "https://www.cardiffsnow.com/"
   },
   {
     "name": "Chamonix"
   },
   {
+    "name": "Checker Pig"
+  },
+  {
+    "name": "Chimera"
+  },
+  {
+    "name": "Coalition Snow",
+    "siteUrl": "https://www.coalitionsnow.com/"
+  },
+  {
+    "name": "Crazy Banana"
+  },
+  {
+    "name": "Current Boards"
+  },
+  {
     "name": "DC"
+  },
+  {
+    "name": "Death Label"
   },
   {
     "name": "Deus Ex Machina"
@@ -71,19 +123,32 @@
     "name": "Dinosaurs Will Die"
   },
   {
+    "name": "Division 23"
+  },
+  {
+    "name": "Donek",
+    "siteUrl": "https://donek.com/"
+  },
+  {
+    "name": "Dope"
+  },
+  {
     "name": "Drake"
   },
   {
     "name": "Duotone"
   },
   {
-    "name": "Dope"
-  },
-  {
     "name": "Dupraz"
   },
   {
+    "name": "Dynastar"
+  },
+  {
     "name": "Easy"
+  },
+  {
+    "name": "Elan"
   },
   {
     "name": "Elevated Surfcraft"
@@ -95,13 +160,23 @@
     "name": "Evol"
   },
   {
+    "name": "F2",
+    "siteUrl": "https://www.f2boards.com/"
+  },
+  {
     "name": "Fanatic"
+  },
+  {
+    "name": "Fischer"
   },
   {
     "name": "Fjell"
   },
   {
     "name": "Flow"
+  },
+  {
+    "name": "FNTC"
   },
   {
     "name": "Forum"
@@ -122,10 +197,8 @@
     "name": "Ghetto"
   },
   {
-    "name": "Gray"
-  },
-  {
-    "name": "Goodboards"
+    "name": "Gilson",
+    "siteUrl": "https://gilsonsnow.com/"
   },
   {
     "name": "Gnu",
@@ -135,7 +208,32 @@
     }
   },
   {
+    "name": "Goodboards"
+  },
+  {
+    "name": "Gordon & Smith"
+  },
+  {
+    "name": "Gray"
+  },
+  {
+    "name": "H-Street"
+  },
+  {
     "name": "Head"
+  },
+  {
+    "name": "Heavy Tools"
+  },
+  {
+    "name": "Hightide",
+    "siteUrl": "https://hightidemfg.com/"
+  },
+  {
+    "name": "Hooger Booger"
+  },
+  {
+    "name": "Hot"
   },
   {
     "name": "House"
@@ -144,10 +242,17 @@
     "name": "Imperivm"
   },
   {
+    "name": "ISGIP",
+    "siteUrl": "https://isgip.ru/"
+  },
+  {
     "name": "Joint"
   },
   {
     "name": "Jones"
+  },
+  {
+    "name": "Joyride"
   },
   {
     "name": "K2"
@@ -156,10 +261,21 @@
     "name": "Kemper"
   },
   {
+    "name": "Kessler",
+    "siteUrl": "https://kessler-swiss.com/"
+  },
+  {
+    "name": "Kissmark"
+  },
+  {
     "name": "Konvoi"
   },
   {
     "name": "Korua Shapes"
+  },
+  {
+    "name": "Lago Snowboards",
+    "siteUrl": "https://www.lagosnowboards.com/"
   },
   {
     "name": "Lamar"
@@ -178,19 +294,38 @@
     "name": "Lobster"
   },
   {
+    "name": "Look"
+  },
+  {
     "name": "Ltd"
+  },
+  {
+    "name": "Luckyboo"
+  },
+  {
+    "name": "Luxury"
   },
   {
     "name": "Marhar Snowboards"
   },
   {
+    "name": "Mistral"
+  },
+  {
     "name": "Monument Snowboards"
   },
   {
-    "name": "Moss Snowstick"
+    "name": "Moonchild"
   },
   {
-    "name": "Moonchild"
+    "name": "Morrow"
+  },
+  {
+    "name": "MOSS Snowboards",
+    "siteUrl": "https://mosssnowboards.co.jp/"
+  },
+  {
+    "name": "Moss Snowstick"
   },
   {
     "name": "Never Summer"
@@ -217,13 +352,32 @@
     "name": "November"
   },
   {
+    "name": "Offshore",
+    "siteUrl": "https://offshoresnowshapes.com/"
+  },
+  {
     "name": "Ogasaka"
+  },
+  {
+    "name": "OJK",
+    "siteUrl": "https://ojksnowboards.jp/"
   },
   {
     "name": "Option"
   },
   {
+    "name": "Outflow"
+  },
+  {
+    "name": "Oxess",
+    "siteUrl": "https://oxess.ch/"
+  },
+  {
     "name": "Pallas"
+  },
+  {
+    "name": "Pepper Boards",
+    "siteUrl": "https://pepperboards.ru/"
   },
   {
     "name": "Phantom"
@@ -259,22 +413,29 @@
     "name": "Readymade"
   },
   {
+    "name": "Replant"
+  },
+  {
+    "name": "Rhyme Backcountry"
+  },
+  {
     "name": "RICE28"
   },
   {
     "name": "Ride"
   },
   {
-    "name": "Rhyme Backcountry"
-  },
-  {
     "name": "Rome"
   },
   {
-    "name": "Rosignol"
+    "name": "Rossignol",
+    "siteUrl": "https://www.rossignol.com/"
   },
   {
     "name": "Roxy"
+  },
+  {
+    "name": "Sabrina"
   },
   {
     "name": "Salomon"
@@ -295,6 +456,20 @@
     "name": "Secca"
   },
   {
+    "name": "SG Snowboards",
+    "siteUrl": "https://www.sgsnowboards.com/"
+  },
+  {
+    "name": "Shift"
+  },
+  {
+    "name": "Shorty's"
+  },
+  {
+    "name": "Signal",
+    "siteUrl": "https://signalexp.com/"
+  },
+  {
     "name": "Silbaerg"
   },
   {
@@ -302,6 +477,15 @@
   },
   {
     "name": "Slash"
+  },
+  {
+    "name": "Smokin"
+  },
+  {
+    "name": "Snowtech"
+  },
+  {
+    "name": "Spoon"
   },
   {
     "name": "Spread"
@@ -331,6 +515,15 @@
     "name": "The Interior Plain Project"
   },
   {
+    "name": "TJ-Brand"
+  },
+  {
+    "name": "Type-A"
+  },
+  {
+    "name": "Unit Mfg"
+  },
+  {
     "name": "United Shapes"
   },
   {
@@ -346,10 +539,34 @@
     "name": "Vimana"
   },
   {
+    "name": "Vision"
+  },
+  {
+    "name": "Voile",
+    "siteUrl": "https://www.voile.com/"
+  },
+  {
+    "name": "Völkl"
+  },
+  {
+    "name": "Weekend"
+  },
+  {
     "name": "West"
   },
   {
     "name": "Weston"
+  },
+  {
+    "name": "Wild Duck"
+  },
+  {
+    "name": "Wild Snowboards",
+    "siteUrl": "https://wildsnowboards.com/"
+  },
+  {
+    "name": "Winterstick",
+    "siteUrl": "https://www.winterstick.com/"
   },
   {
     "name": "Wired"
@@ -366,5 +583,15 @@
   },
   {
     "name": "Yunika"
+  },
+  {
+    "name": "Zuma"
+  },
+  {
+    "name": "011 Artistic",
+    "siteUrl": "https://www.011artistic.com/"
+  },
+  {
+    "name": "5150"
   }
 ]
