@@ -1,0 +1,3635 @@
+[
+  {
+    "brandname": "CAPiTA",
+    "name": "SUPER D.O.A.",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "152",
+      "154",
+      "156",
+      "158",
+      "160",
+      "155W",
+      "158W",
+      "161W",
+      "163W"
+    ],
+    "specs": {
+      "152": {
+        "size": 152,
+        "wide": false,
+        "effectiveEdge": 1207,
+        "sidecut": 7.8,
+        "noseWidth": 29.2,
+        "tailWidth": 29.2,
+        "waistWidth": 24.8,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 68
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1222,
+        "sidecut": 7.9,
+        "noseWidth": 29.5,
+        "tailWidth": 29.5,
+        "waistWidth": 25.0,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1233,
+        "sidecut": 8.0,
+        "noseWidth": 29.7,
+        "tailWidth": 29.7,
+        "waistWidth": 25.2,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 1256,
+        "sidecut": 8.1,
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.4,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "160": {
+        "size": 160,
+        "wide": false,
+        "effectiveEdge": 1270,
+        "sidecut": 8.2,
+        "noseWidth": 30.4,
+        "tailWidth": 30.4,
+        "waistWidth": 25.7,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 100
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1205,
+        "sidecut": 8.1,
+        "noseWidth": 30.2,
+        "tailWidth": 30.2,
+        "waistWidth": 25.8,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158W": {
+        "size": 158,
+        "wide": true,
+        "effectiveEdge": 1249,
+        "sidecut": 8.2,
+        "noseWidth": 30.5,
+        "tailWidth": 30.5,
+        "waistWidth": 26.0,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "161W": {
+        "size": 161,
+        "wide": true,
+        "effectiveEdge": 1280,
+        "sidecut": 8.3,
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.2,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 100
+      },
+      "163W": {
+        "size": 163,
+        "wide": true,
+        "effectiveEdge": 1294,
+        "sidecut": 8.4,
+        "noseWidth": 31.1,
+        "tailWidth": 31.1,
+        "waistWidth": 26.3,
+        "referenceStance": 58.4,
+        "weightMin": 77,
+        "weightMax": 104
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/SUPER%20D.O.A./CAPiTA_W2024_2025_SUPER%20D.O.A..png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "AERONAUT",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "153",
+      "155",
+      "157",
+      "159",
+      "161",
+      "156W",
+      "158W",
+      "160W",
+      "162W"
+    ],
+    "specs": {
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1200,
+        "sidecut": "8.3/7.3",
+        "noseWidth": 29.2,
+        "tailWidth": 28.7,
+        "waistWidth": 24.7,
+        "taper": 5.0,
+        "referenceStance": 53.3,
+        "weightMin": 52,
+        "weightMax": 79
+      },
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1215,
+        "sidecut": "8.4/7.4",
+        "noseWidth": 29.6,
+        "tailWidth": 29.1,
+        "waistWidth": 25.0,
+        "taper": 5.0,
+        "referenceStance": 55.9,
+        "weightMin": 56,
+        "weightMax": 83
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1230,
+        "sidecut": "8.5/7.5",
+        "noseWidth": 30.0,
+        "tailWidth": 29.5,
+        "waistWidth": 25.3,
+        "taper": 5.0,
+        "referenceStance": 55.9,
+        "weightMin": 61,
+        "weightMax": 88
+      },
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1245,
+        "sidecut": "8.6/7.6",
+        "noseWidth": 30.4,
+        "tailWidth": 29.9,
+        "waistWidth": 25.6,
+        "taper": 5.0,
+        "referenceStance": 55.9,
+        "weightMin": 65,
+        "weightMax": 92
+      },
+      "161": {
+        "size": 161,
+        "wide": false,
+        "effectiveEdge": 1260,
+        "sidecut": "8.7/7.7",
+        "noseWidth": 30.8,
+        "tailWidth": 30.3,
+        "waistWidth": 25.9,
+        "taper": 5.0,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      },
+      "156W": {
+        "size": 156,
+        "wide": true,
+        "effectiveEdge": 1222,
+        "sidecut": "8.5/7.5",
+        "noseWidth": 30.6,
+        "tailWidth": 30.1,
+        "waistWidth": 26.0,
+        "taper": 5.0,
+        "referenceStance": 55.9,
+        "weightMin": 61,
+        "weightMax": 88
+      },
+      "158W": {
+        "size": 158,
+        "wide": true,
+        "effectiveEdge": 1237,
+        "sidecut": "8.6/7.6",
+        "noseWidth": 31.0,
+        "tailWidth": 30.5,
+        "waistWidth": 26.3,
+        "taper": 5.0,
+        "referenceStance": 55.9,
+        "weightMin": 65,
+        "weightMax": 92
+      },
+      "160W": {
+        "size": 160,
+        "wide": true,
+        "effectiveEdge": 1252,
+        "sidecut": "8.7/7.7",
+        "noseWidth": 31.4,
+        "tailWidth": 30.9,
+        "waistWidth": 26.6,
+        "taper": 5.0,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      },
+      "162W": {
+        "size": 162,
+        "wide": true,
+        "effectiveEdge": 1267,
+        "sidecut": "8.8/7.8",
+        "noseWidth": 31.8,
+        "tailWidth": 31.3,
+        "waistWidth": 26.9,
+        "taper": 5.0,
+        "referenceStance": 58.4,
+        "weightMin": 77,
+        "weightMax": 104
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/AERONAUT/CAPiTA_W2024_2025_AERONAUT.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "D.O.A.",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "148",
+      "150",
+      "152",
+      "154",
+      "156",
+      "158",
+      "160",
+      "162",
+      "164",
+      "151W",
+      "153W",
+      "155W",
+      "157W",
+      "159W",
+      "161W",
+      "163W"
+    ],
+    "specs": {
+      "148": {
+        "size": 148,
+        "wide": false,
+        "effectiveEdge": 1176,
+        "sidecut": 7.6,
+        "noseWidth": 28.7,
+        "tailWidth": 28.7,
+        "waistWidth": 24.4,
+        "referenceStance": 50.8,
+        "weightMin": 40,
+        "weightMax": 68
+      },
+      "150": {
+        "size": 150,
+        "wide": false,
+        "effectiveEdge": 1191,
+        "sidecut": 7.7,
+        "noseWidth": 29.0,
+        "tailWidth": 29.0,
+        "waistWidth": 24.6,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "152": {
+        "size": 152,
+        "wide": false,
+        "effectiveEdge": 1207,
+        "sidecut": 7.8,
+        "noseWidth": 29.2,
+        "tailWidth": 29.2,
+        "waistWidth": 24.8,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 68
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1222,
+        "sidecut": 7.9,
+        "noseWidth": 29.5,
+        "tailWidth": 29.5,
+        "waistWidth": 25.0,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1233,
+        "sidecut": 8.0,
+        "noseWidth": 29.8,
+        "tailWidth": 29.8,
+        "waistWidth": 25.2,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 1256,
+        "sidecut": 8.1,
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.4,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "160": {
+        "size": 160,
+        "wide": false,
+        "effectiveEdge": 1270,
+        "sidecut": 8.2,
+        "noseWidth": 30.4,
+        "tailWidth": 30.4,
+        "waistWidth": 25.7,
+        "referenceStance": 55.9,
+        "weightMin": 72,
+        "weightMax": 100
+      },
+      "162": {
+        "size": 162,
+        "wide": false,
+        "effectiveEdge": 1287,
+        "sidecut": 8.3,
+        "noseWidth": 30.6,
+        "tailWidth": 30.6,
+        "waistWidth": 25.9,
+        "referenceStance": 58.4,
+        "weightMin": 82,
+        "weightMax": 110
+      },
+      "164": {
+        "size": 164,
+        "wide": false,
+        "effectiveEdge": 1301,
+        "sidecut": 8.4,
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.1,
+        "referenceStance": 58.4,
+        "weightMin": 86,
+        "weightMax": 111
+      },
+      "151W": {
+        "size": 151,
+        "wide": true,
+        "effectiveEdge": 1170,
+        "sidecut": 7.9,
+        "noseWidth": 29.7,
+        "tailWidth": 29.7,
+        "waistWidth": 25.5,
+        "referenceStance": 53.3,
+        "weightMin": 49,
+        "weightMax": 68
+      },
+      "153W": {
+        "size": 153,
+        "wide": true,
+        "effectiveEdge": 1185,
+        "sidecut": 8.0,
+        "noseWidth": 29.9,
+        "tailWidth": 29.9,
+        "waistWidth": 25.6,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1205,
+        "sidecut": 8.1,
+        "noseWidth": 30.2,
+        "tailWidth": 30.2,
+        "waistWidth": 25.8,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "157W": {
+        "size": 157,
+        "wide": true,
+        "effectiveEdge": 1239,
+        "sidecut": 8.1,
+        "noseWidth": 30.5,
+        "tailWidth": 30.5,
+        "waistWidth": 26.0,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "159W": {
+        "size": 159,
+        "wide": true,
+        "effectiveEdge": 1259,
+        "sidecut": 8.2,
+        "noseWidth": 30.7,
+        "tailWidth": 30.7,
+        "waistWidth": 26.1,
+        "referenceStance": 55.9,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "161W": {
+        "size": 161,
+        "wide": true,
+        "effectiveEdge": 1280,
+        "sidecut": 8.3,
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.2,
+        "referenceStance": 58.4,
+        "weightMin": 73,
+        "weightMax": 100
+      },
+      "163W": {
+        "size": 163,
+        "wide": true,
+        "effectiveEdge": 1294,
+        "sidecut": 8.4,
+        "noseWidth": 31.1,
+        "tailWidth": 31.1,
+        "waistWidth": 26.3,
+        "referenceStance": 58.4,
+        "weightMin": 77,
+        "weightMax": 104
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+    "imagesBySize": {
+      "148": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "150": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "152": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "154": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "156": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "158": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "160": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "162": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "164": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A..png",
+      "151W": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A._W.png",
+      "153W": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A._W.png",
+      "155W": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A._W.png",
+      "157W": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A._W.png",
+      "159W": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A._W.png",
+      "161W": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A._W.png",
+      "163W": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/D.O.A./CAPiTA_W2024_2025_D.O.A._W.png"
+    }
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "BIRDS OF A FEATHER",
+    "season": "W2024_2025",
+    "riders": [
+      "WOMEN"
+    ],
+    "sizes": [
+      "140",
+      "142",
+      "144",
+      "146",
+      "148",
+      "150",
+      "152",
+      "154",
+      "148W",
+      "150W",
+      "152W",
+      "154W"
+    ],
+    "specs": {
+      "140": {
+        "size": 140,
+        "wide": false,
+        "effectiveEdge": 1103,
+        "sidecut": 6.6,
+        "noseWidth": 27.0,
+        "tailWidth": 27.0,
+        "waistWidth": 22.6,
+        "referenceStance": 48.3,
+        "weightMin": 38,
+        "weightMax": 61
+      },
+      "142": {
+        "size": 142,
+        "wide": false,
+        "effectiveEdge": 1118,
+        "sidecut": 6.8,
+        "noseWidth": 27.3,
+        "tailWidth": 27.3,
+        "waistWidth": 22.9,
+        "referenceStance": 48.3,
+        "weightMin": 41,
+        "weightMax": 64
+      },
+      "144": {
+        "size": 144,
+        "wide": false,
+        "effectiveEdge": 1136,
+        "sidecut": 7.0,
+        "noseWidth": 27.6,
+        "tailWidth": 27.6,
+        "waistWidth": 23.2,
+        "referenceStance": 48.3,
+        "weightMin": 43,
+        "weightMax": 66
+      },
+      "146": {
+        "size": 146,
+        "wide": false,
+        "effectiveEdge": 1151,
+        "sidecut": 7.2,
+        "noseWidth": 27.9,
+        "tailWidth": 27.9,
+        "waistWidth": 23.5,
+        "referenceStance": 50.8,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "148": {
+        "size": 148,
+        "wide": false,
+        "effectiveEdge": 1170,
+        "sidecut": 7.4,
+        "noseWidth": 28.2,
+        "tailWidth": 28.2,
+        "waistWidth": 23.8,
+        "referenceStance": 50.8,
+        "weightMin": 47,
+        "weightMax": 70
+      },
+      "150": {
+        "size": 150,
+        "wide": false,
+        "effectiveEdge": 1186,
+        "sidecut": 7.6,
+        "noseWidth": 28.5,
+        "tailWidth": 28.5,
+        "waistWidth": 24.1,
+        "referenceStance": 53.3,
+        "weightMin": 49,
+        "weightMax": 73
+      },
+      "152": {
+        "size": 152,
+        "wide": false,
+        "effectiveEdge": 1202,
+        "sidecut": 7.8,
+        "noseWidth": 28.8,
+        "tailWidth": 28.8,
+        "waistWidth": 24.4,
+        "referenceStance": 53.3,
+        "weightMin": 52,
+        "weightMax": 75
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1218,
+        "sidecut": 8.0,
+        "noseWidth": 29.2,
+        "tailWidth": 29.2,
+        "waistWidth": 24.7,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 77
+      },
+      "148W": {
+        "size": 148,
+        "wide": true,
+        "effectiveEdge": 1176,
+        "sidecut": 7.6,
+        "noseWidth": 28.7,
+        "tailWidth": 28.7,
+        "waistWidth": 24.4,
+        "referenceStance": 50.8,
+        "weightMin": 49,
+        "weightMax": 73
+      },
+      "150W": {
+        "size": 150,
+        "wide": true,
+        "effectiveEdge": 1191,
+        "sidecut": 7.7,
+        "noseWidth": 28.9,
+        "tailWidth": 28.9,
+        "waistWidth": 24.6,
+        "referenceStance": 53.3,
+        "weightMin": 52,
+        "weightMax": 75
+      },
+      "152W": {
+        "size": 152,
+        "wide": true,
+        "effectiveEdge": 1207,
+        "sidecut": 7.8,
+        "noseWidth": 29.2,
+        "tailWidth": 29.2,
+        "waistWidth": 24.8,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 80
+      },
+      "154W": {
+        "size": 154,
+        "wide": true,
+        "effectiveEdge": 1222,
+        "sidecut": 7.9,
+        "noseWidth": 29.5,
+        "tailWidth": 29.5,
+        "waistWidth": 25.0,
+        "referenceStance": 53.3,
+        "weightMin": 56,
+        "weightMax": 81
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/BIRDS%20OF%20A%20FEATHER/CAPiTA_W2024_2025_BIRDS%20OF%20A%20FEATHER.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "OUTERSPACE LIVING",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "150",
+      "152",
+      "154",
+      "156",
+      "158",
+      "160",
+      "155W",
+      "157W",
+      "159W",
+      "161W"
+    ],
+    "specs": {
+      "150": {
+        "size": 150,
+        "wide": false,
+        "effectiveEdge": 1136,
+        "sidecut": 7.6,
+        "noseWidth": 28.5,
+        "tailWidth": 28.5,
+        "waistWidth": 24.6,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "152": {
+        "size": 152,
+        "wide": false,
+        "effectiveEdge": 1152,
+        "sidecut": 7.7,
+        "noseWidth": 28.8,
+        "tailWidth": 28.8,
+        "waistWidth": 24.8,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 72
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1168,
+        "sidecut": 7.8,
+        "noseWidth": 29.1,
+        "tailWidth": 29.1,
+        "waistWidth": 25.0,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1184,
+        "sidecut": 7.9,
+        "noseWidth": 29.4,
+        "tailWidth": 29.4,
+        "waistWidth": 25.2,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 1200,
+        "sidecut": 8.0,
+        "noseWidth": 29.7,
+        "tailWidth": 29.7,
+        "waistWidth": 25.4,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "160": {
+        "size": 160,
+        "wide": false,
+        "effectiveEdge": 1216,
+        "sidecut": 8.1,
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.6,
+        "referenceStance": 58.4,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1180,
+        "sidecut": 7.8,
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 26.0,
+        "referenceStance": 55.9,
+        "weightMin": 57,
+        "weightMax": 84
+      },
+      "157W": {
+        "size": 157,
+        "wide": true,
+        "effectiveEdge": 1196,
+        "sidecut": 7.9,
+        "noseWidth": 30.6,
+        "tailWidth": 30.6,
+        "waistWidth": 26.2,
+        "referenceStance": 55.9,
+        "weightMin": 61,
+        "weightMax": 88
+      },
+      "159W": {
+        "size": 159,
+        "wide": true,
+        "effectiveEdge": 1212,
+        "sidecut": 8.0,
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.4,
+        "referenceStance": 55.9,
+        "weightMin": 66,
+        "weightMax": 95
+      },
+      "161W": {
+        "size": 161,
+        "wide": true,
+        "effectiveEdge": 1228,
+        "sidecut": 8.1,
+        "noseWidth": 31.2,
+        "tailWidth": 31.2,
+        "waistWidth": 26.6,
+        "referenceStance": 58.4,
+        "weightMin": 70,
+        "weightMax": 102
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/OUTERSPACE%20LIVING/CAPiTA_W2024_2025_OUTERSPACE%20LIVING.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "PARADISE",
+    "season": "W2024_2025",
+    "riders": [
+      "WOMEN"
+    ],
+    "sizes": [
+      "139",
+      "141",
+      "143",
+      "145",
+      "147",
+      "149",
+      "151",
+      "148W",
+      "150W",
+      "152W"
+    ],
+    "specs": {
+      "139": {
+        "size": 139,
+        "wide": false,
+        "effectiveEdge": 1056,
+        "sidecut": 7.0,
+        "noseWidth": 26.7,
+        "tailWidth": 26.7,
+        "waistWidth": 23.0,
+        "referenceStance": 45.7,
+        "weightMin": 36,
+        "weightMax": 59
+      },
+      "141": {
+        "size": 141,
+        "wide": false,
+        "effectiveEdge": 1072,
+        "sidecut": 7.1,
+        "noseWidth": 27.0,
+        "tailWidth": 27.0,
+        "waistWidth": 23.2,
+        "referenceStance": 48.3,
+        "weightMin": 38,
+        "weightMax": 61
+      },
+      "143": {
+        "size": 143,
+        "wide": false,
+        "effectiveEdge": 1088,
+        "sidecut": 7.2,
+        "noseWidth": 27.3,
+        "tailWidth": 27.3,
+        "waistWidth": 23.4,
+        "referenceStance": 48.3,
+        "weightMin": 41,
+        "weightMax": 64
+      },
+      "145": {
+        "size": 145,
+        "wide": false,
+        "effectiveEdge": 1104,
+        "sidecut": 7.3,
+        "noseWidth": 27.6,
+        "tailWidth": 27.6,
+        "waistWidth": 23.6,
+        "referenceStance": 50.8,
+        "weightMin": 43,
+        "weightMax": 65
+      },
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1120,
+        "sidecut": 7.4,
+        "noseWidth": 27.9,
+        "tailWidth": 27.9,
+        "waistWidth": 23.8,
+        "referenceStance": 50.8,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "149": {
+        "size": 149,
+        "wide": false,
+        "effectiveEdge": 1136,
+        "sidecut": 7.5,
+        "noseWidth": 28.2,
+        "tailWidth": 28.2,
+        "waistWidth": 24.0,
+        "referenceStance": 50.8,
+        "weightMin": 49,
+        "weightMax": 73
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1152,
+        "sidecut": 7.6,
+        "noseWidth": 28.5,
+        "tailWidth": 28.5,
+        "waistWidth": 24.2,
+        "referenceStance": 53.3,
+        "weightMin": 52,
+        "weightMax": 77
+      },
+      "148W": {
+        "size": 148,
+        "wide": true,
+        "effectiveEdge": 1120,
+        "sidecut": 7.5,
+        "noseWidth": 28.2,
+        "tailWidth": 28.2,
+        "waistWidth": 24.4,
+        "referenceStance": 50.8,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "150W": {
+        "size": 150,
+        "wide": true,
+        "effectiveEdge": 1136,
+        "sidecut": 7.6,
+        "noseWidth": 28.5,
+        "tailWidth": 28.5,
+        "waistWidth": 24.6,
+        "referenceStance": 53.3,
+        "weightMin": 49,
+        "weightMax": 72
+      },
+      "152W": {
+        "size": 152,
+        "wide": true,
+        "effectiveEdge": 1152,
+        "sidecut": 7.7,
+        "noseWidth": 28.8,
+        "tailWidth": 28.8,
+        "waistWidth": 24.8,
+        "referenceStance": 53.3,
+        "weightMin": 52,
+        "weightMax": 79
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/PARADISE/CAPiTA_W2024_2025_PARADISE.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "THE OUTSIDERS",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "150",
+      "152",
+      "154",
+      "156",
+      "158",
+      "152W",
+      "156W"
+    ],
+    "specs": {
+      "150": {
+        "size": 150,
+        "wide": false,
+        "effectiveEdge": 1162,
+        "sidecut": 7.8,
+        "noseWidth": 29.3,
+        "tailWidth": 29.3,
+        "waistWidth": 25.0,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "152": {
+        "size": 152,
+        "wide": false,
+        "effectiveEdge": 1185,
+        "sidecut": 7.9,
+        "noseWidth": 29.5,
+        "tailWidth": 29.5,
+        "waistWidth": 25.2,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 72
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1187,
+        "sidecut": 8.0,
+        "noseWidth": 29.7,
+        "tailWidth": 29.7,
+        "waistWidth": 25.4,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1223,
+        "sidecut": 8.1,
+        "noseWidth": 29.9,
+        "tailWidth": 29.9,
+        "waistWidth": 25.5,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 1245,
+        "sidecut": 8.3,
+        "noseWidth": 30.2,
+        "tailWidth": 30.2,
+        "waistWidth": 25.8,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "152W": {
+        "size": 152,
+        "wide": true,
+        "effectiveEdge": 1185,
+        "sidecut": 7.9,
+        "noseWidth": 29.9,
+        "tailWidth": 29.9,
+        "waistWidth": 25.7,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 72
+      },
+      "156W": {
+        "size": 156,
+        "wide": true,
+        "effectiveEdge": 1220,
+        "sidecut": 8.1,
+        "noseWidth": 30.4,
+        "tailWidth": 30.4,
+        "waistWidth": 26.0,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/THE%20OUTSIDERS/CAPiTA_W2024_2025_THE%20OUTSIDERS.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "INDOOR SURVIVAL",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "150",
+      "152",
+      "154",
+      "156",
+      "158",
+      "160",
+      "155W",
+      "158W",
+      "161W"
+    ],
+    "specs": {
+      "150": {
+        "size": 150,
+        "wide": false,
+        "effectiveEdge": 1165,
+        "sidecut": "7.7/-1.5/7.7",
+        "noseWidth": 29.2,
+        "tailWidth": 29.2,
+        "waistWidth": 24.9,
+        "referenceStance": 50.8,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "152": {
+        "size": 152,
+        "wide": false,
+        "effectiveEdge": 1180,
+        "sidecut": "7.7/-1.5/7.7",
+        "noseWidth": 29.6,
+        "tailWidth": 29.6,
+        "waistWidth": 25.0,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 72
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1196,
+        "sidecut": "7.9/-1.5/7.9",
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.5,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1211,
+        "sidecut": "7.9/-1.5/7.9",
+        "noseWidth": 30.4,
+        "tailWidth": 30.4,
+        "waistWidth": 25.8,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 1227,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 30.8,
+        "tailWidth": 30.8,
+        "waistWidth": 26.0,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "160": {
+        "size": 160,
+        "wide": false,
+        "effectiveEdge": 1242,
+        "sidecut": "8.1/-1.5/8.1",
+        "noseWidth": 31.2,
+        "tailWidth": 31.2,
+        "waistWidth": 26.2,
+        "referenceStance": 58.4,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1203,
+        "sidecut": "7.9/-1.5/7.9",
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.1,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158W": {
+        "size": 158,
+        "wide": true,
+        "effectiveEdge": 1227,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 31.3,
+        "tailWidth": 31.3,
+        "waistWidth": 26.5,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "161W": {
+        "size": 161,
+        "wide": true,
+        "effectiveEdge": 1250,
+        "sidecut": "8.1/-1.5/8.1",
+        "noseWidth": 31.7,
+        "tailWidth": 31.7,
+        "waistWidth": 26.8,
+        "referenceStance": 58.4,
+        "weightMin": 70,
+        "weightMax": 97
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/INDOOR%20SURVIVAL/CAPiTA_W2024_2025_INDOOR%20SURVIVAL.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "SB POWDER TWIN",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "153",
+      "156",
+      "159",
+      "162"
+    ],
+    "specs": {
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1116,
+        "sidecut": 6.5,
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.3,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 77
+      },
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1138,
+        "sidecut": 6.6,
+        "noseWidth": 31.5,
+        "tailWidth": 31.5,
+        "waistWidth": 26.8,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 82
+      },
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1160,
+        "sidecut": 6.7,
+        "noseWidth": 32.1,
+        "tailWidth": 32.1,
+        "waistWidth": 27.3,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "162": {
+        "size": 162,
+        "wide": false,
+        "effectiveEdge": 1182,
+        "sidecut": 6.8,
+        "noseWidth": 32.7,
+        "tailWidth": 32.7,
+        "waistWidth": 27.8,
+        "referenceStance": 58.4,
+        "weightMin": 77,
+        "weightMax": 100
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/SB%20POWDER%20TWIN/CAPiTA_W2024_2025_SB%20POWDER%20TWIN.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "SB RESORT TWIN",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "152",
+      "154",
+      "156",
+      "158",
+      "160",
+      "155W",
+      "158W"
+    ],
+    "specs": {
+      "152": {
+        "size": 152,
+        "wide": false,
+        "effectiveEdge": 1180,
+        "sidecut": "7.7/-1.5/7.7",
+        "noseWidth": 29.6,
+        "tailWidth": 29.6,
+        "waistWidth": 25.0,
+        "referenceStance": 53.3,
+        "weightMin": 49,
+        "weightMax": 77
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1196,
+        "sidecut": "7.9/-1.5/7.9",
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.5,
+        "referenceStance": 53.3,
+        "weightMin": 47,
+        "weightMax": 75
+      },
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1211,
+        "sidecut": "7.9/-1.5/7.9",
+        "noseWidth": 30.4,
+        "tailWidth": 30.4,
+        "waistWidth": 25.8,
+        "referenceStance": 55.9,
+        "weightMin": 52,
+        "weightMax": 79
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 1227,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 30.8,
+        "tailWidth": 30.8,
+        "waistWidth": 26.0,
+        "referenceStance": 55.9,
+        "weightMin": 61,
+        "weightMax": 88
+      },
+      "160": {
+        "size": 160,
+        "wide": false,
+        "effectiveEdge": 1242,
+        "sidecut": "8.1/-1.5/8.1",
+        "noseWidth": 31.2,
+        "tailWidth": 31.2,
+        "waistWidth": 26.2,
+        "referenceStance": 58.4,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1203,
+        "sidecut": "7.9/-1.5/7.9",
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.1,
+        "referenceStance": 55.9,
+        "weightMin": 58,
+        "weightMax": 86
+      },
+      "158W": {
+        "size": 158,
+        "wide": true,
+        "effectiveEdge": 1227,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 31.3,
+        "tailWidth": 31.3,
+        "waistWidth": 26.5,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/SB%20RESORT%20TWIN/CAPiTA_W2024_2025_SB%20RESORT%20TWIN.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "ULTRAFEAR",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "147",
+      "149",
+      "151",
+      "153",
+      "155",
+      "157",
+      "153W",
+      "155W"
+    ],
+    "specs": {
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1129,
+        "sidecut": 7.6,
+        "noseWidth": 28.9,
+        "tailWidth": 28.9,
+        "waistWidth": 24.8,
+        "referenceStance": 50.8,
+        "weightMin": 40,
+        "weightMax": 68
+      },
+      "149": {
+        "size": 149,
+        "wide": false,
+        "effectiveEdge": 1147,
+        "sidecut": 7.6,
+        "noseWidth": 29.2,
+        "tailWidth": 29.2,
+        "waistWidth": 25.0,
+        "referenceStance": 50.8,
+        "weightMin": 43,
+        "weightMax": 68
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1166,
+        "sidecut": 7.7,
+        "noseWidth": 29.5,
+        "tailWidth": 29.5,
+        "waistWidth": 25.2,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 72
+      },
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1182,
+        "sidecut": 7.8,
+        "noseWidth": 29.7,
+        "tailWidth": 29.7,
+        "waistWidth": 25.4,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 77
+      },
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1198,
+        "sidecut": 7.9,
+        "noseWidth": 29.9,
+        "tailWidth": 29.9,
+        "waistWidth": 25.5,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1213,
+        "sidecut": 8.1,
+        "noseWidth": 30.1,
+        "tailWidth": 30.1,
+        "waistWidth": 25.6,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "153W": {
+        "size": 153,
+        "wide": true,
+        "effectiveEdge": 1182,
+        "sidecut": 7.8,
+        "noseWidth": 30.2,
+        "tailWidth": 30.2,
+        "waistWidth": 25.9,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 77
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1198,
+        "sidecut": 7.9,
+        "noseWidth": 30.4,
+        "tailWidth": 30.4,
+        "waistWidth": 26.0,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/ULTRAFEAR/CAPiTA_W2024_2025_ULTRAFEAR.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "PATHFINDER CAMBER",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "145",
+      "147",
+      "149",
+      "151",
+      "153",
+      "155",
+      "157",
+      "151W",
+      "153W",
+      "155W",
+      "157W",
+      "159W",
+      "162W"
+    ],
+    "specs": {
+      "145": {
+        "size": 145,
+        "wide": false,
+        "effectiveEdge": 1154,
+        "sidecut": 7.4,
+        "noseWidth": 29.0,
+        "tailWidth": 29.0,
+        "waistWidth": 24.6,
+        "referenceStance": 50.8,
+        "weightMin": 36,
+        "weightMax": 54
+      },
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1171,
+        "sidecut": 7.5,
+        "noseWidth": 29.2,
+        "tailWidth": 29.2,
+        "waistWidth": 24.8,
+        "referenceStance": 50.8,
+        "weightMin": 41,
+        "weightMax": 63
+      },
+      "149": {
+        "size": 149,
+        "wide": false,
+        "effectiveEdge": 1186,
+        "sidecut": 7.6,
+        "noseWidth": 29.5,
+        "tailWidth": 29.5,
+        "waistWidth": 25.0,
+        "referenceStance": 50.8,
+        "weightMin": 43,
+        "weightMax": 68
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1202,
+        "sidecut": 7.7,
+        "noseWidth": 29.7,
+        "tailWidth": 29.7,
+        "waistWidth": 25.2,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 70
+      },
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1218,
+        "sidecut": 7.8,
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.4,
+        "referenceStance": 53.3,
+        "weightMin": 49,
+        "weightMax": 77
+      },
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1234,
+        "sidecut": 7.9,
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 25.6,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1250,
+        "sidecut": 8.0,
+        "noseWidth": 30.5,
+        "tailWidth": 30.5,
+        "waistWidth": 25.8,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "151W": {
+        "size": 151,
+        "wide": true,
+        "effectiveEdge": 1202,
+        "sidecut": 7.7,
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 25.8,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 68
+      },
+      "153W": {
+        "size": 153,
+        "wide": true,
+        "effectiveEdge": 1218,
+        "sidecut": 7.8,
+        "noseWidth": 30.6,
+        "tailWidth": 30.6,
+        "waistWidth": 26.0,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 77
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1234,
+        "sidecut": 7.9,
+        "noseWidth": 30.8,
+        "tailWidth": 30.8,
+        "waistWidth": 26.1,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "157W": {
+        "size": 157,
+        "wide": true,
+        "effectiveEdge": 1250,
+        "sidecut": 8.0,
+        "noseWidth": 31.0,
+        "tailWidth": 31.0,
+        "waistWidth": 26.3,
+        "referenceStance": 55.9,
+        "weightMin": 64,
+        "weightMax": 91
+      },
+      "159W": {
+        "size": 159,
+        "wide": true,
+        "effectiveEdge": 1265,
+        "sidecut": 8.2,
+        "noseWidth": 31.2,
+        "tailWidth": 31.2,
+        "waistWidth": 26.5,
+        "referenceStance": 55.9,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "162W": {
+        "size": 162,
+        "wide": true,
+        "effectiveEdge": 1298,
+        "sidecut": 8.2,
+        "noseWidth": 31.6,
+        "tailWidth": 31.6,
+        "waistWidth": 26.8,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/PATHFINDER%20CAMBER/CAPiTA_W2024_2025_PATHFINDER%20CAMBER.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "PATHFINDER REVERSE",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "145",
+      "147",
+      "149",
+      "151",
+      "153",
+      "155",
+      "157",
+      "151W",
+      "153W",
+      "155W",
+      "157W",
+      "159W",
+      "162W"
+    ],
+    "specs": {
+      "145": {
+        "size": 145,
+        "wide": false,
+        "effectiveEdge": 1154,
+        "sidecut": 7.4,
+        "noseWidth": 29.0,
+        "tailWidth": 29.0,
+        "waistWidth": 24.6,
+        "referenceStance": 50.8,
+        "weightMin": 36,
+        "weightMax": 54
+      },
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1171,
+        "sidecut": 7.5,
+        "noseWidth": 29.2,
+        "tailWidth": 29.2,
+        "waistWidth": 24.8,
+        "referenceStance": 50.8,
+        "weightMin": 41,
+        "weightMax": 63
+      },
+      "149": {
+        "size": 149,
+        "wide": false,
+        "effectiveEdge": 1186,
+        "sidecut": 7.6,
+        "noseWidth": 29.5,
+        "tailWidth": 29.5,
+        "waistWidth": 25.0,
+        "referenceStance": 50.8,
+        "weightMin": 43,
+        "weightMax": 68
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1202,
+        "sidecut": 7.7,
+        "noseWidth": 29.7,
+        "tailWidth": 29.7,
+        "waistWidth": 25.2,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 70
+      },
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1218,
+        "sidecut": 7.8,
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.4,
+        "referenceStance": 53.3,
+        "weightMin": 49,
+        "weightMax": 77
+      },
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1234,
+        "sidecut": 7.9,
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 25.6,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1250,
+        "sidecut": 8.0,
+        "noseWidth": 30.5,
+        "tailWidth": 30.5,
+        "waistWidth": 25.8,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "151W": {
+        "size": 151,
+        "wide": true,
+        "effectiveEdge": 1202,
+        "sidecut": 7.7,
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 25.8,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 68
+      },
+      "153W": {
+        "size": 153,
+        "wide": true,
+        "effectiveEdge": 1218,
+        "sidecut": 7.8,
+        "noseWidth": 30.6,
+        "tailWidth": 30.6,
+        "waistWidth": 26.0,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 77
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1234,
+        "sidecut": 7.9,
+        "noseWidth": 30.8,
+        "tailWidth": 30.8,
+        "waistWidth": 26.1,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "157W": {
+        "size": 157,
+        "wide": true,
+        "effectiveEdge": 1250,
+        "sidecut": 8.0,
+        "noseWidth": 31.0,
+        "tailWidth": 31.0,
+        "waistWidth": 26.3,
+        "referenceStance": 55.9,
+        "weightMin": 64,
+        "weightMax": 91
+      },
+      "159W": {
+        "size": 159,
+        "wide": true,
+        "effectiveEdge": 1265,
+        "sidecut": 8.2,
+        "noseWidth": 31.2,
+        "tailWidth": 31.2,
+        "waistWidth": 26.5,
+        "referenceStance": 55.9,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "162W": {
+        "size": 162,
+        "wide": true,
+        "effectiveEdge": 1298,
+        "sidecut": 8.2,
+        "noseWidth": 31.6,
+        "tailWidth": 31.6,
+        "waistWidth": 26.8,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/PATHFINDER%20REVERSE/CAPiTA_W2024_2025_PATHFINDER%20REVERSE.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "SPACE METAL FANTASY",
+    "season": "W2024_2025",
+    "riders": [
+      "WOMEN"
+    ],
+    "sizes": [
+      "139",
+      "141",
+      "143",
+      "145",
+      "147",
+      "149",
+      "151",
+      "153",
+      "145W",
+      "149W",
+      "153W"
+    ],
+    "specs": {
+      "139": {
+        "size": 139,
+        "wide": false,
+        "effectiveEdge": 1106,
+        "sidecut": 6.7,
+        "noseWidth": 27.2,
+        "tailWidth": 27.2,
+        "waistWidth": 22.8,
+        "referenceStance": 45.7,
+        "weightMin": 36,
+        "weightMax": 59
+      },
+      "141": {
+        "size": 141,
+        "wide": false,
+        "effectiveEdge": 1121,
+        "sidecut": 6.8,
+        "noseWidth": 27.6,
+        "tailWidth": 27.6,
+        "waistWidth": 23.1,
+        "referenceStance": 48.3,
+        "weightMin": 38,
+        "weightMax": 61
+      },
+      "143": {
+        "size": 143,
+        "wide": false,
+        "effectiveEdge": 1137,
+        "sidecut": 6.9,
+        "noseWidth": 27.8,
+        "tailWidth": 27.8,
+        "waistWidth": 23.3,
+        "referenceStance": 48.3,
+        "weightMin": 41,
+        "weightMax": 63
+      },
+      "145": {
+        "size": 145,
+        "wide": false,
+        "effectiveEdge": 1153,
+        "sidecut": 7.1,
+        "noseWidth": 28.1,
+        "tailWidth": 28.1,
+        "waistWidth": 23.6,
+        "referenceStance": 50.8,
+        "weightMin": 43,
+        "weightMax": 66
+      },
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1179,
+        "sidecut": 7.3,
+        "noseWidth": 28.4,
+        "tailWidth": 28.4,
+        "waistWidth": 23.9,
+        "referenceStance": 50.8,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "149": {
+        "size": 149,
+        "wide": false,
+        "effectiveEdge": 1186,
+        "sidecut": 7.5,
+        "noseWidth": 28.6,
+        "tailWidth": 28.6,
+        "waistWidth": 24.1,
+        "referenceStance": 50.8,
+        "weightMin": 47,
+        "weightMax": 70
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1203,
+        "sidecut": 7.7,
+        "noseWidth": 28.8,
+        "tailWidth": 28.8,
+        "waistWidth": 24.3,
+        "referenceStance": 53.3,
+        "weightMin": 49,
+        "weightMax": 73
+      },
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1219,
+        "sidecut": 7.9,
+        "noseWidth": 29.0,
+        "tailWidth": 29.0,
+        "waistWidth": 24.5,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 77
+      },
+      "145W": {
+        "size": 145,
+        "wide": true,
+        "effectiveEdge": 1154,
+        "sidecut": 7.1,
+        "noseWidth": 28.9,
+        "tailWidth": 28.9,
+        "waistWidth": 24.6,
+        "referenceStance": 50.8,
+        "weightMin": 43,
+        "weightMax": 66
+      },
+      "149W": {
+        "size": 149,
+        "wide": true,
+        "effectiveEdge": 1186,
+        "sidecut": 7.5,
+        "noseWidth": 29.4,
+        "tailWidth": 29.4,
+        "waistWidth": 25.0,
+        "referenceStance": 50.8,
+        "weightMin": 47,
+        "weightMax": 70
+      },
+      "153W": {
+        "size": 153,
+        "wide": true,
+        "effectiveEdge": 1218,
+        "sidecut": 7.9,
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.4,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 77
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/SPACE%20METAL%20FANTASY/CAPiTA_W2024_2025_SPACE%20METAL%20FANTASY.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "MEGA DEATH",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "156",
+      "159",
+      "162",
+      "157W",
+      "161W",
+      "165W"
+    ],
+    "specs": {
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1197,
+        "sidecut": "8.2/7.8/7.6",
+        "noseWidth": 29.6,
+        "tailWidth": 29.5,
+        "waistWidth": 25.6,
+        "taper": 1.1,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1221,
+        "sidecut": "8.4/8.0/7.8",
+        "noseWidth": 30.0,
+        "tailWidth": 29.9,
+        "waistWidth": 25.9,
+        "taper": 1.1,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "162": {
+        "size": 162,
+        "wide": false,
+        "effectiveEdge": 1245,
+        "sidecut": "8.6/8.2/8.0",
+        "noseWidth": 30.4,
+        "tailWidth": 30.2,
+        "waistWidth": 26.2,
+        "taper": 1.1,
+        "referenceStance": 58.4,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "157W": {
+        "size": 157,
+        "wide": true,
+        "effectiveEdge": 1205,
+        "sidecut": "8.2/7.8/7.7",
+        "noseWidth": 30.5,
+        "tailWidth": 30.3,
+        "waistWidth": 26.4,
+        "taper": 2.2,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "161W": {
+        "size": 161,
+        "wide": true,
+        "effectiveEdge": 1237,
+        "sidecut": "8.5/8.1/8.0",
+        "noseWidth": 30.9,
+        "tailWidth": 30.8,
+        "waistWidth": 26.7,
+        "taper": 1.1,
+        "referenceStance": 58.4,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "165W": {
+        "size": 165,
+        "wide": true,
+        "effectiveEdge": 1269,
+        "sidecut": "8.8/8.4/8.2",
+        "noseWidth": 31.2,
+        "tailWidth": 31.1,
+        "waistWidth": 27.0,
+        "taper": 1.0,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/MEGA%20DEATH/CAPiTA_W2024_2025_MEGA%20DEATH.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "MEGA MERC",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "153",
+      "155",
+      "157",
+      "159",
+      "161",
+      "156W",
+      "158W",
+      "160W"
+    ],
+    "specs": {
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1183,
+        "sidecut": "7.5/-1.5/7.5",
+        "noseWidth": 29.6,
+        "tailWidth": 29.6,
+        "waistWidth": 25.3,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 72
+      },
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1199,
+        "sidecut": "7.7/-1.5/7.7",
+        "noseWidth": 29.8,
+        "tailWidth": 29.8,
+        "waistWidth": 25.5,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1215,
+        "sidecut": "7.8/-1.5/7.8",
+        "noseWidth": 30.1,
+        "tailWidth": 30.1,
+        "waistWidth": 25.7,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1223,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 25.9,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "161": {
+        "size": 161,
+        "wide": false,
+        "effectiveEdge": 1247,
+        "sidecut": "8.1/-1.5/8.1",
+        "noseWidth": 30.6,
+        "tailWidth": 30.6,
+        "waistWidth": 26.1,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      },
+      "156W": {
+        "size": 156,
+        "wide": true,
+        "effectiveEdge": 1207,
+        "sidecut": "7.8/-1.5/7.8",
+        "noseWidth": 30.5,
+        "tailWidth": 30.5,
+        "waistWidth": 26.1,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "158W": {
+        "size": 158,
+        "wide": true,
+        "effectiveEdge": 1223,
+        "sidecut": "7.9/-1.5/7.9",
+        "noseWidth": 30.7,
+        "tailWidth": 30.7,
+        "waistWidth": 26.3,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "160W": {
+        "size": 160,
+        "wide": true,
+        "effectiveEdge": 1239,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.5,
+        "referenceStance": 58.4,
+        "weightMin": 63,
+        "weightMax": 90
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/MEGA%20MERC/CAPiTA_W2024_2025_MEGA%20MERC.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "MEGA SPLIT",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "155",
+      "157",
+      "159",
+      "161"
+    ],
+    "specs": {
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1199,
+        "sidecut": "7.7/-1.5/7.7",
+        "noseWidth": 29.8,
+        "tailWidth": 29.8,
+        "waistWidth": 25.5,
+        "referenceStance": 57.5,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1215,
+        "sidecut": "7.8/-1.5/7.8",
+        "noseWidth": 30.1,
+        "tailWidth": 30.1,
+        "waistWidth": 25.7,
+        "referenceStance": 57.5,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1223,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 25.9,
+        "referenceStance": 61.5,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "161": {
+        "size": 161,
+        "wide": false,
+        "effectiveEdge": 1247,
+        "sidecut": "8.1/-1.5/8.1",
+        "noseWidth": 30.6,
+        "tailWidth": 30.6,
+        "waistWidth": 26.1,
+        "referenceStance": 61.5,
+        "weightMin": 72,
+        "weightMax": 99
+      }
+    },
+    "type": "SPLITBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/MEGA%20SPLIT/CAPiTA_W2024_2025_MEGA%20SPLIT.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "SB POWDER GLIDER",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "154",
+      "158",
+      "162"
+    ],
+    "specs": {
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 925,
+        "sidecut": 6.7,
+        "noseWidth": 30.7,
+        "tailWidth": 27.1,
+        "waistWidth": 26.2,
+        "taper": 35.7,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 949,
+        "sidecut": 6.9,
+        "noseWidth": 31.5,
+        "tailWidth": 27.8,
+        "waistWidth": 26.9,
+        "taper": 36.7,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "162": {
+        "size": 162,
+        "wide": false,
+        "effectiveEdge": 973,
+        "sidecut": 7.0,
+        "noseWidth": 32.3,
+        "tailWidth": 28.5,
+        "waistWidth": 27.6,
+        "taper": 37.6,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/SB%20POWDER%20GLIDER/CAPiTA_W2024_2025_SB%20POWDER%20GLIDER.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "THE BLACK SNOWBOARD OF DEATH",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "156",
+      "159",
+      "162",
+      "157W",
+      "161W",
+      "165W",
+      "169W"
+    ],
+    "specs": {
+      "156": {
+        "size": 156,
+        "wide": false,
+        "effectiveEdge": 1197,
+        "sidecut": "8.2/7.8/7.6",
+        "noseWidth": 29.6,
+        "tailWidth": 29.5,
+        "waistWidth": 25.6,
+        "taper": 1.1,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1221,
+        "sidecut": "8.4/8.0/7.8",
+        "noseWidth": 30.0,
+        "tailWidth": 29.9,
+        "waistWidth": 25.9,
+        "taper": 1.1,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "162": {
+        "size": 162,
+        "wide": false,
+        "effectiveEdge": 1245,
+        "sidecut": "8.6/8.2/8.0",
+        "noseWidth": 30.4,
+        "tailWidth": 30.2,
+        "waistWidth": 26.2,
+        "taper": 1.1,
+        "referenceStance": 58.4,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "157W": {
+        "size": 157,
+        "wide": true,
+        "effectiveEdge": 1205,
+        "sidecut": "8.2/7.8/7.7",
+        "noseWidth": 30.5,
+        "tailWidth": 30.3,
+        "waistWidth": 26.4,
+        "taper": 2.2,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "161W": {
+        "size": 161,
+        "wide": true,
+        "effectiveEdge": 1237,
+        "sidecut": "8.5/8.1/8.0",
+        "noseWidth": 30.9,
+        "tailWidth": 30.8,
+        "waistWidth": 26.7,
+        "taper": 1.1,
+        "referenceStance": 58.4,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "165W": {
+        "size": 165,
+        "wide": true,
+        "effectiveEdge": 1269,
+        "sidecut": "8.8/8.4/8.2",
+        "noseWidth": 31.2,
+        "tailWidth": 31.1,
+        "waistWidth": 27.0,
+        "taper": 1.0,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 100
+      },
+      "169W": {
+        "size": 169,
+        "wide": true,
+        "effectiveEdge": 1301,
+        "sidecut": "9.0/8.6/8.5",
+        "noseWidth": 31.7,
+        "tailWidth": 31.6,
+        "waistWidth": 27.4,
+        "taper": 1.1,
+        "referenceStance": 58.4,
+        "weightMin": 77,
+        "weightMax": 104
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/THE%20BLACK%20SNOWBOARD%20OF%20DEATH/CAPiTA_W2024_2025_THE%20BLACK%20SNOWBOARD%20OF%20DEATH.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "KAZU KOKUBO PRO",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "151",
+      "154",
+      "157",
+      "160",
+      "155W",
+      "158W",
+      "161W"
+    ],
+    "specs": {
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1170,
+        "sidecut": 8.0,
+        "noseWidth": 29.6,
+        "tailWidth": 28.9,
+        "waistWidth": 25.1,
+        "taper": 6.3,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1206,
+        "sidecut": 8.2,
+        "noseWidth": 30.0,
+        "tailWidth": 29.2,
+        "waistWidth": 25.3,
+        "taper": 7.7,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 72
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1222,
+        "sidecut": 8.4,
+        "noseWidth": 30.4,
+        "tailWidth": 29.5,
+        "waistWidth": 25.5,
+        "taper": 9.9,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "160": {
+        "size": 160,
+        "wide": false,
+        "effectiveEdge": 1254,
+        "sidecut": 8.6,
+        "noseWidth": 30.7,
+        "tailWidth": 29.7,
+        "waistWidth": 25.7,
+        "taper": 10.0,
+        "referenceStance": 58.4,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1214,
+        "sidecut": 8.3,
+        "noseWidth": 31.0,
+        "tailWidth": 30.2,
+        "waistWidth": 26.3,
+        "taper": 8.0,
+        "referenceStance": 55.9,
+        "weightMin": 50,
+        "weightMax": 77
+      },
+      "158W": {
+        "size": 158,
+        "wide": true,
+        "effectiveEdge": 1244,
+        "sidecut": 8.5,
+        "noseWidth": 31.4,
+        "tailWidth": 30.6,
+        "waistWidth": 26.5,
+        "taper": 8.0,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "161W": {
+        "size": 161,
+        "wide": true,
+        "effectiveEdge": 1262,
+        "sidecut": 8.7,
+        "noseWidth": 31.6,
+        "tailWidth": 30.8,
+        "waistWidth": 26.7,
+        "taper": 8.0,
+        "referenceStance": 58.4,
+        "weightMin": 68,
+        "weightMax": 95
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/KAZU%20KOKUBO%20PRO/CAPiTA_W2024_2025_KAZU%20KOKUBO%20PRO.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "MERCURY",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "147",
+      "150",
+      "153",
+      "155",
+      "157",
+      "159",
+      "161",
+      "156W",
+      "158W",
+      "160W"
+    ],
+    "specs": {
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1135,
+        "sidecut": "7.1/-1.5/7.1",
+        "noseWidth": 29.1,
+        "tailWidth": 29.1,
+        "waistWidth": 24.8,
+        "referenceStance": 50.8,
+        "weightMin": 36,
+        "weightMax": 63
+      },
+      "150": {
+        "size": 150,
+        "wide": false,
+        "effectiveEdge": 1159,
+        "sidecut": "7.3/-1.5/7.3",
+        "noseWidth": 29.3,
+        "tailWidth": 29.3,
+        "waistWidth": 25.1,
+        "referenceStance": 53.3,
+        "weightMin": 40,
+        "weightMax": 68
+      },
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1183,
+        "sidecut": "7.5/-1.5/7.5",
+        "noseWidth": 29.6,
+        "tailWidth": 29.6,
+        "waistWidth": 25.3,
+        "referenceStance": 53.3,
+        "weightMin": 45,
+        "weightMax": 72
+      },
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1199,
+        "sidecut": "7.7/-1.5/7.7",
+        "noseWidth": 29.8,
+        "tailWidth": 29.8,
+        "waistWidth": 25.5,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1215,
+        "sidecut": "7.8/-1.5/7.8",
+        "noseWidth": 30.1,
+        "tailWidth": 30.1,
+        "waistWidth": 25.7,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1223,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 25.9,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "161": {
+        "size": 161,
+        "wide": false,
+        "effectiveEdge": 1247,
+        "sidecut": "8.1/-1.5/8.1",
+        "noseWidth": 30.5,
+        "tailWidth": 30.5,
+        "waistWidth": 26.1,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      },
+      "156W": {
+        "size": 156,
+        "wide": true,
+        "effectiveEdge": 1207,
+        "sidecut": "7.8/-1.5/7.8",
+        "noseWidth": 30.5,
+        "tailWidth": 30.5,
+        "waistWidth": 26.1,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 81
+      },
+      "158W": {
+        "size": 158,
+        "wide": true,
+        "effectiveEdge": 1223,
+        "sidecut": "7.9/-1.5/7.9",
+        "noseWidth": 30.7,
+        "tailWidth": 30.7,
+        "waistWidth": 26.3,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "160W": {
+        "size": 160,
+        "wide": true,
+        "effectiveEdge": 1239,
+        "sidecut": "8.0/-1.5/8.0",
+        "noseWidth": 30.9,
+        "tailWidth": 30.9,
+        "waistWidth": 26.5,
+        "referenceStance": 58.4,
+        "weightMin": 63,
+        "weightMax": 90
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/MERCURY/CAPiTA_W2024_2025_MERCURY.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "SB POWDER RACERS",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "149",
+      "151",
+      "154",
+      "157"
+    ],
+    "specs": {
+      "149": {
+        "size": 149,
+        "wide": false,
+        "effectiveEdge": 1038,
+        "sidecut": 6.5,
+        "noseWidth": 31.6,
+        "tailWidth": 28.4,
+        "waistWidth": 26.3,
+        "taper": 31.3,
+        "referenceStance": 50.8,
+        "weightMin": 49,
+        "weightMax": 72
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1052,
+        "sidecut": 6.6,
+        "noseWidth": 32.0,
+        "tailWidth": 28.8,
+        "waistWidth": 26.7,
+        "taper": 31.7,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 77
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1073,
+        "sidecut": 6.8,
+        "noseWidth": 32.6,
+        "tailWidth": 29.4,
+        "waistWidth": 27.2,
+        "taper": 31.7,
+        "referenceStance": 53.3,
+        "weightMin": 54,
+        "weightMax": 77
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1094,
+        "sidecut": 6.9,
+        "noseWidth": 33.3,
+        "tailWidth": 30.0,
+        "waistWidth": 27.8,
+        "taper": 33.0,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/SB%20POWDER%20RACERS/CAPiTA_W2024_2025_SB%20POWDER%20RACERS.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "THE NAVIGATOR",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "143",
+      "147",
+      "151",
+      "155",
+      "158",
+      "161",
+      "164",
+      "167"
+    ],
+    "specs": {
+      "143": {
+        "size": 143,
+        "wide": false,
+        "effectiveEdge": 1077,
+        "sidecut": "7.1/6.0/7.1",
+        "noseWidth": 28.4,
+        "tailWidth": 27.7,
+        "waistWidth": 24.0,
+        "taper": 7.0,
+        "referenceStance": 48.3,
+        "weightMin": 36,
+        "weightMax": 58
+      },
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1110,
+        "sidecut": "7.3/6.2/7.3",
+        "noseWidth": 28.7,
+        "tailWidth": 27.8,
+        "waistWidth": 24.1,
+        "taper": 8.8,
+        "referenceStance": 50.8,
+        "weightMin": 40,
+        "weightMax": 63
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1140,
+        "sidecut": "7.5/6.4/7.5",
+        "noseWidth": 29.3,
+        "tailWidth": 28.3,
+        "waistWidth": 24.5,
+        "taper": 9.8,
+        "referenceStance": 53.3,
+        "weightMin": 59,
+        "weightMax": 73
+      },
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1182,
+        "sidecut": "8.0/6.8/8.0",
+        "noseWidth": 30.1,
+        "tailWidth": 29.0,
+        "waistWidth": 25.2,
+        "taper": 11.6,
+        "referenceStance": 53.3,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 1195,
+        "sidecut": "8.1/7.0/8.1",
+        "noseWidth": 30.5,
+        "tailWidth": 29.3,
+        "waistWidth": 25.6,
+        "taper": 11.8,
+        "referenceStance": 55.9,
+        "weightMin": 68,
+        "weightMax": 90
+      },
+      "161": {
+        "size": 161,
+        "wide": false,
+        "effectiveEdge": 1222,
+        "sidecut": "8.3/7.2/8.3",
+        "noseWidth": 31.0,
+        "tailWidth": 29.7,
+        "waistWidth": 26.0,
+        "taper": 12.9,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 95
+      },
+      "164": {
+        "size": 164,
+        "wide": false,
+        "effectiveEdge": 1238,
+        "sidecut": "8.5/7.4/8.5",
+        "noseWidth": 31.5,
+        "tailWidth": 30.1,
+        "waistWidth": 26.4,
+        "taper": 13.9,
+        "referenceStance": 58.4,
+        "weightMin": 77,
+        "weightMax": 100
+      },
+      "167": {
+        "size": 167,
+        "wide": false,
+        "effectiveEdge": 1249,
+        "sidecut": "8.7/7.6/8.7",
+        "noseWidth": 32.2,
+        "tailWidth": 30.7,
+        "waistWidth": 26.8,
+        "taper": 14.9,
+        "referenceStance": 58.4,
+        "weightMin": 81,
+        "weightMax": 104
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/THE%20NAVIGATOR/CAPiTA_W2024_2025_THE%20NAVIGATOR.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "NAVIGATOR SPLIT",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN",
+      "WOMEN"
+    ],
+    "sizes": [
+      "147",
+      "151",
+      "155",
+      "158",
+      "161",
+      "164",
+      "167"
+    ],
+    "specs": {
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1110,
+        "sidecut": "7.3/6.2/7.3",
+        "noseWidth": 28.7,
+        "tailWidth": 27.8,
+        "waistWidth": 24.1,
+        "taper": 8.8,
+        "referenceStance": 50.8,
+        "weightMin": 40,
+        "weightMax": 63
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1140,
+        "sidecut": "7.5/6.4/7.5",
+        "noseWidth": 29.3,
+        "tailWidth": 28.3,
+        "waistWidth": 24.5,
+        "taper": 9.8,
+        "referenceStance": 53.3,
+        "weightMin": 59,
+        "weightMax": 73
+      },
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1182,
+        "sidecut": "8.0/6.8/8.0",
+        "noseWidth": 30.1,
+        "tailWidth": 29.0,
+        "waistWidth": 25.2,
+        "taper": 11.6,
+        "referenceStance": 53.3,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "158": {
+        "size": 158,
+        "wide": false,
+        "effectiveEdge": 1195,
+        "sidecut": "8.1/7.0/8.1",
+        "noseWidth": 30.5,
+        "tailWidth": 29.3,
+        "waistWidth": 25.6,
+        "taper": 11.8,
+        "referenceStance": 55.9,
+        "weightMin": 68,
+        "weightMax": 90
+      },
+      "161": {
+        "size": 161,
+        "wide": false,
+        "effectiveEdge": 1222,
+        "sidecut": "8.3/7.2/8.3",
+        "noseWidth": 31.0,
+        "tailWidth": 29.7,
+        "waistWidth": 26.0,
+        "taper": 12.9,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 95
+      },
+      "164": {
+        "size": 164,
+        "wide": false,
+        "effectiveEdge": 1238,
+        "sidecut": "8.5/7.4/8.5",
+        "noseWidth": 31.5,
+        "tailWidth": 30.1,
+        "waistWidth": 26.4,
+        "taper": 13.9,
+        "referenceStance": 58.4,
+        "weightMin": 77,
+        "weightMax": 100
+      },
+      "167": {
+        "size": 167,
+        "wide": false,
+        "effectiveEdge": 1249,
+        "sidecut": "8.7/7.6/8.7",
+        "noseWidth": 32.2,
+        "tailWidth": 30.7,
+        "waistWidth": 26.8,
+        "taper": 14.9,
+        "referenceStance": 58.4,
+        "weightMin": 81,
+        "weightMax": 104
+      }
+    },
+    "type": "SPLITBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/NAVIGATOR%20SPLIT/CAPiTA_W2024_2025_NAVIGATOR%20SPLIT.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "THE EQUALIZER",
+    "season": "W2024_2025",
+    "riders": [
+      "WOMEN"
+    ],
+    "sizes": [
+      "142",
+      "146",
+      "150",
+      "154"
+    ],
+    "specs": {
+      "142": {
+        "size": 142,
+        "wide": false,
+        "effectiveEdge": 1103,
+        "sidecut": 6.8,
+        "noseWidth": 27.3,
+        "tailWidth": 27.1,
+        "waistWidth": 22.9,
+        "referenceStance": 48.3,
+        "weightMin": 41,
+        "weightMax": 64
+      },
+      "146": {
+        "size": 146,
+        "wide": false,
+        "effectiveEdge": 1152,
+        "sidecut": 7.2,
+        "noseWidth": 27.9,
+        "tailWidth": 27.8,
+        "waistWidth": 23.5,
+        "referenceStance": 50.8,
+        "weightMin": 45,
+        "weightMax": 68
+      },
+      "150": {
+        "size": 150,
+        "wide": false,
+        "effectiveEdge": 1166,
+        "sidecut": 7.6,
+        "noseWidth": 28.5,
+        "tailWidth": 28.4,
+        "waistWidth": 24.1,
+        "referenceStance": 50.8,
+        "weightMin": 50,
+        "weightMax": 77
+      },
+      "154": {
+        "size": 154,
+        "wide": false,
+        "effectiveEdge": 1206,
+        "sidecut": 8.0,
+        "noseWidth": 29.1,
+        "tailWidth": 29.0,
+        "waistWidth": 24.7,
+        "referenceStance": 53.3,
+        "weightMin": 55,
+        "weightMax": 86
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/THE%20EQUALIZER/CAPiTA_W2024_2025_THE%20EQUALIZER.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "SB SLUSH SLASHERS",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "139",
+      "143",
+      "147",
+      "151"
+    ],
+    "specs": {
+      "139": {
+        "size": 139,
+        "wide": false,
+        "effectiveEdge": 1133,
+        "sidecut": 6.8,
+        "noseWidth": 31.5,
+        "tailWidth": 30.0,
+        "waistWidth": 26.2,
+        "taper": 15.0,
+        "referenceStance": 50.8,
+        "weightMin": 40,
+        "weightMax": 72
+      },
+      "143": {
+        "size": 143,
+        "wide": false,
+        "effectiveEdge": 1172,
+        "sidecut": 7.0,
+        "noseWidth": 32.0,
+        "tailWidth": 30.0,
+        "waistWidth": 26.3,
+        "taper": 20.0,
+        "referenceStance": 53.3,
+        "weightMin": 50,
+        "weightMax": 77
+      },
+      "147": {
+        "size": 147,
+        "wide": false,
+        "effectiveEdge": 1211,
+        "sidecut": 7.2,
+        "noseWidth": 32.5,
+        "tailWidth": 30.0,
+        "waistWidth": 26.4,
+        "taper": 25.0,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 82
+      },
+      "151": {
+        "size": 151,
+        "wide": false,
+        "effectiveEdge": 1250,
+        "sidecut": 7.4,
+        "noseWidth": 33.0,
+        "tailWidth": 30.0,
+        "waistWidth": 26.5,
+        "taper": 30.0,
+        "referenceStance": 55.9,
+        "weightMin": 67,
+        "weightMax": 91
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/SB%20SLUSH%20SLASHERS/CAPiTA_W2024_2025_SB%20SLUSH%20SLASHERS.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "CHILDREN OF THE POW",
+    "season": "W2024_2025",
+    "riders": [
+      "YOUTH"
+    ],
+    "sizes": [
+      "130",
+      "135",
+      "140"
+    ],
+    "specs": {
+      "130": {
+        "size": 130,
+        "wide": false,
+        "effectiveEdge": 891,
+        "sidecut": 5.7,
+        "noseWidth": 29.0,
+        "tailWidth": 27.0,
+        "waistWidth": 24.6,
+        "taper": 20.0,
+        "referenceStance": 43.2,
+        "weightMin": 31,
+        "weightMax": 47
+      },
+      "135": {
+        "size": 135,
+        "wide": false,
+        "effectiveEdge": 924,
+        "sidecut": 6.2,
+        "noseWidth": 29.5,
+        "tailWidth": 27.5,
+        "waistWidth": 25.1,
+        "taper": 20.0,
+        "referenceStance": 45.7,
+        "weightMin": 36,
+        "weightMax": 52
+      },
+      "140": {
+        "size": 140,
+        "wide": false,
+        "effectiveEdge": 957,
+        "sidecut": 6.7,
+        "noseWidth": 30.0,
+        "tailWidth": 28.0,
+        "waistWidth": 25.6,
+        "taper": 20.0,
+        "referenceStance": 48.3,
+        "weightMin": 41,
+        "weightMax": 61
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/CHILDREN%20OF%20THE%20POW/CAPiTA_W2024_2025_CHILDREN%20OF%20THE%20POW.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "CHILDREN OF THE GNAR",
+    "season": "W2024_2025",
+    "riders": [
+      "YOUTH"
+    ],
+    "sizes": [
+      "137",
+      "141",
+      "145",
+      "149"
+    ],
+    "specs": {
+      "137": {
+        "size": 137,
+        "wide": false,
+        "effectiveEdge": 1054,
+        "sidecut": 6.3,
+        "noseWidth": 28.0,
+        "tailWidth": 28.0,
+        "waistWidth": 23.8,
+        "referenceStance": 45.7,
+        "weightMin": 32,
+        "weightMax": 45
+      },
+      "141": {
+        "size": 141,
+        "wide": false,
+        "effectiveEdge": 1089,
+        "sidecut": 6.7,
+        "noseWidth": 28.3,
+        "tailWidth": 28.3,
+        "waistWidth": 24.1,
+        "referenceStance": 48.3,
+        "weightMin": 36,
+        "weightMax": 50
+      },
+      "145": {
+        "size": 145,
+        "wide": false,
+        "effectiveEdge": 1124,
+        "sidecut": 7.1,
+        "noseWidth": 28.7,
+        "tailWidth": 28.7,
+        "waistWidth": 24.4,
+        "referenceStance": 50.8,
+        "weightMin": 41,
+        "weightMax": 59
+      },
+      "149": {
+        "size": 149,
+        "wide": false,
+        "effectiveEdge": 1159,
+        "sidecut": 7.5,
+        "noseWidth": 29.0,
+        "tailWidth": 29.0,
+        "waistWidth": 24.7,
+        "referenceStance": 50.8,
+        "weightMin": 45,
+        "weightMax": 64
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/CHILDREN%20OF%20THE%20GNAR/CAPiTA_W2024_2025_CHILDREN%20OF%20THE%20GNAR.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "JESS KIMURA MINI",
+    "season": "W2024_2025",
+    "riders": [
+      "YOUTH"
+    ],
+    "sizes": [
+      "115",
+      "120",
+      "125",
+      "130",
+      "135"
+    ],
+    "specs": {
+      "115": {
+        "size": 115,
+        "wide": false,
+        "effectiveEdge": 880,
+        "sidecut": 5.3,
+        "noseWidth": 25.5,
+        "tailWidth": 25.5,
+        "waistWidth": 22.1,
+        "referenceStance": 38.1,
+        "weightMin": 22,
+        "weightMax": 29
+      },
+      "120": {
+        "size": 120,
+        "wide": false,
+        "effectiveEdge": 929,
+        "sidecut": 5.6,
+        "noseWidth": 26.1,
+        "tailWidth": 26.1,
+        "waistWidth": 22.5,
+        "referenceStance": 43.2,
+        "weightMin": 25,
+        "weightMax": 32
+      },
+      "125": {
+        "size": 125,
+        "wide": false,
+        "effectiveEdge": 958,
+        "sidecut": 5.9,
+        "noseWidth": 26.6,
+        "tailWidth": 26.6,
+        "waistWidth": 22.9,
+        "referenceStance": 43.2,
+        "weightMin": 27,
+        "weightMax": 34
+      },
+      "130": {
+        "size": 130,
+        "wide": false,
+        "effectiveEdge": 1001,
+        "sidecut": 6.2,
+        "noseWidth": 27.2,
+        "tailWidth": 27.2,
+        "waistWidth": 23.3,
+        "referenceStance": 43.2,
+        "weightMin": 29,
+        "weightMax": 36
+      },
+      "135": {
+        "size": 135,
+        "wide": false,
+        "effectiveEdge": 1083,
+        "sidecut": 6.5,
+        "noseWidth": 27.6,
+        "tailWidth": 27.6,
+        "waistWidth": 23.7,
+        "referenceStance": 45.7,
+        "weightMin": 32,
+        "weightMax": 39
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/JESS%20KIMURA%20MINI/CAPiTA_W2024_2025_JESS%20KIMURA%20MINI.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "SCOTT STEVENS MINI",
+    "season": "W2024_2025",
+    "riders": [
+      "YOUTH"
+    ],
+    "sizes": [
+      "115",
+      "120",
+      "125",
+      "130",
+      "135"
+    ],
+    "specs": {
+      "115": {
+        "size": 115,
+        "wide": false,
+        "effectiveEdge": 880,
+        "sidecut": 5.3,
+        "noseWidth": 25.5,
+        "tailWidth": 25.5,
+        "waistWidth": 22.1,
+        "referenceStance": 38.1,
+        "weightMin": 22,
+        "weightMax": 29
+      },
+      "120": {
+        "size": 120,
+        "wide": false,
+        "effectiveEdge": 929,
+        "sidecut": 5.6,
+        "noseWidth": 26.1,
+        "tailWidth": 26.1,
+        "waistWidth": 22.5,
+        "referenceStance": 43.2,
+        "weightMin": 25,
+        "weightMax": 32
+      },
+      "125": {
+        "size": 125,
+        "wide": false,
+        "effectiveEdge": 958,
+        "sidecut": 5.9,
+        "noseWidth": 26.6,
+        "tailWidth": 26.6,
+        "waistWidth": 22.9,
+        "referenceStance": 43.2,
+        "weightMin": 27,
+        "weightMax": 34
+      },
+      "130": {
+        "size": 130,
+        "wide": false,
+        "effectiveEdge": 1001,
+        "sidecut": 6.2,
+        "noseWidth": 27.2,
+        "tailWidth": 27.2,
+        "waistWidth": 23.3,
+        "referenceStance": 43.2,
+        "weightMin": 29,
+        "weightMax": 36
+      },
+      "135": {
+        "size": 135,
+        "wide": false,
+        "effectiveEdge": 1083,
+        "sidecut": 6.5,
+        "noseWidth": 27.6,
+        "tailWidth": 27.6,
+        "waistWidth": 23.7,
+        "referenceStance": 45.7,
+        "weightMin": 32,
+        "weightMax": 39
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/SCOTT%20STEVENS%20MINI/CAPiTA_W2024_2025_SCOTT%20STEVENS%20MINI.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "MICRO MINI",
+    "season": "W2024_2025",
+    "riders": [
+      "YOUTH"
+    ],
+    "sizes": [
+      "80",
+      "90",
+      "100",
+      "110"
+    ],
+    "specs": {
+      "80": {
+        "size": 80,
+        "wide": false,
+        "effectiveEdge": 480,
+        "sidecut": 2.9,
+        "noseWidth": 19.6,
+        "tailWidth": 19.6,
+        "waistWidth": 17.9,
+        "referenceStance": 34.0,
+        "weightMin": 15,
+        "weightMax": 22
+      },
+      "90": {
+        "size": 90,
+        "wide": false,
+        "effectiveEdge": 580,
+        "sidecut": 3.5,
+        "noseWidth": 20.7,
+        "tailWidth": 20.7,
+        "waistWidth": 18.5,
+        "referenceStance": 36.0,
+        "weightMin": 18,
+        "weightMax": 24
+      },
+      "100": {
+        "size": 100,
+        "wide": false,
+        "effectiveEdge": 680,
+        "sidecut": 4.2,
+        "noseWidth": 21.8,
+        "tailWidth": 21.8,
+        "waistWidth": 19.3,
+        "referenceStance": 38.0,
+        "weightMin": 20,
+        "weightMax": 27
+      },
+      "110": {
+        "size": 110,
+        "wide": false,
+        "effectiveEdge": 780,
+        "sidecut": 5.0,
+        "noseWidth": 22.9,
+        "tailWidth": 22.9,
+        "waistWidth": 20.1,
+        "referenceStance": 40.0,
+        "weightMin": 22,
+        "weightMax": 29
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/MICRO%20MINI/CAPiTA_W2024_2025_MICRO%20MINI.png"
+  },
+  {
+    "brandname": "CAPiTA",
+    "name": "R-SERIES",
+    "season": "W2024_2025",
+    "riders": [
+      "MEN",
+      "WOMEN"
+    ],
+    "sizes": [
+      "145",
+      "149",
+      "153",
+      "157",
+      "155W",
+      "157W",
+      "159W",
+      "162W"
+    ],
+    "specs": {
+      "145": {
+        "size": 145,
+        "wide": false,
+        "effectiveEdge": 1154,
+        "sidecut": 7.4,
+        "noseWidth": 29.0,
+        "tailWidth": 29.0,
+        "waistWidth": 24.6,
+        "referenceStance": 50.8,
+        "weightMin": 36,
+        "weightMax": 54
+      },
+      "149": {
+        "size": 149,
+        "wide": false,
+        "effectiveEdge": 1186,
+        "sidecut": 7.6,
+        "noseWidth": 29.5,
+        "tailWidth": 29.5,
+        "waistWidth": 25.0,
+        "referenceStance": 50.8,
+        "weightMin": 43,
+        "weightMax": 68
+      },
+      "153": {
+        "size": 153,
+        "wide": false,
+        "effectiveEdge": 1218,
+        "sidecut": 7.8,
+        "noseWidth": 30.0,
+        "tailWidth": 30.0,
+        "waistWidth": 25.4,
+        "referenceStance": 53.3,
+        "weightMin": 49,
+        "weightMax": 77
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1250,
+        "sidecut": 8.0,
+        "noseWidth": 30.5,
+        "tailWidth": 30.5,
+        "waistWidth": 25.8,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90
+      },
+      "155W": {
+        "size": 155,
+        "wide": true,
+        "effectiveEdge": 1234,
+        "sidecut": 7.9,
+        "noseWidth": 30.8,
+        "tailWidth": 30.8,
+        "waistWidth": 26.1,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86
+      },
+      "157W": {
+        "size": 157,
+        "wide": true,
+        "effectiveEdge": 1250,
+        "sidecut": 8.0,
+        "noseWidth": 31.0,
+        "tailWidth": 31.0,
+        "waistWidth": 26.3,
+        "referenceStance": 55.9,
+        "weightMin": 64,
+        "weightMax": 91
+      },
+      "159W": {
+        "size": 159,
+        "wide": true,
+        "effectiveEdge": 1265,
+        "sidecut": 8.2,
+        "noseWidth": 31.2,
+        "tailWidth": 31.2,
+        "waistWidth": 26.5,
+        "referenceStance": 55.9,
+        "weightMin": 68,
+        "weightMax": 95
+      },
+      "162W": {
+        "size": 162,
+        "wide": true,
+        "effectiveEdge": 1298,
+        "sidecut": 8.2,
+        "noseWidth": 31.6,
+        "tailWidth": 31.6,
+        "waistWidth": 26.8,
+        "referenceStance": 58.4,
+        "weightMin": 72,
+        "weightMax": 99
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2024_2025/R-SERIES/CAPiTA_W2024_2025_R-SERIES.png"
+  }
+]
