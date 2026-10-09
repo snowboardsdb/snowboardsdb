@@ -35,6 +35,7 @@ db.on("ready", async function(db) {
     inst.snowboards.bulkAdd(await (await fetch("/snowboards/jones_23.json")).json())
     inst.snowboards.bulkAdd(await (await fetch("/snowboards/lib-tech_23.json")).json())
     inst.snowboards.bulkAdd(await (await fetch("/snowboards/roxy_23.json")).json())
+    inst.snowboards.bulkAdd(await (await fetch("/snowboards/capita_26.json")).json())
     inst.snowboards.bulkAdd(await (await fetch("/snowboards/capita_27.json")).json())
 })
 

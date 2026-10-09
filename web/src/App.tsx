@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { HashRouter, Link, LinkProps, Routes, Route, useParams} from "react-router-dom"
 
 import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, LayerExtendedProps, Main, RadioButtonGroup, Tab, Tabs, Text } from "grommet"
@@ -153,7 +153,7 @@ function Brands() {
 function Brand() {
     const { brand, season } = useParams()
 
-    const [ query ] = useState<{ brandname?: string, season?: string, riders?: string[], }>({ brandname: brand, season })
+    const query = useMemo(() => ({ brandname: brand, season }), [brand, season])
 
     const [ filter, setFilter ] = useState<{ riders?: string[], }>({})
 
@@ -162,6 +162,10 @@ function Brand() {
     const seasons = useSeasons({ brandname: brand }, [ brand ])
 
     const [ pickedSnowboard, setPickedSnowboard ] = useState<Snowboard | undefined>()
+
+    useEffect(() => {
+        setPickedSnowboard(undefined)
+    }, [brand, season])
 
     return (
         <Main pad="medium">
@@ -174,11 +178,15 @@ function Brand() {
                 {seasons &&
                     <Box direction="row" gap="small">
                         {seasons.map((val) => {
+                            const selected = val === season
+
                             return (
                                 <AnchorLink to={`/${brand}/${val}`}
                                     key={val}
+                                    aria-current={selected ? "page" : undefined}
+                                    style={{ textDecoration: "none" }}
                                     label={
-                                        <Box key={val} background="brand" pad={{ vertical: "xsmall", horizontal: "medium"}} round="medium">
+                                        <Box background={selected ? "brand" : "light-2"} pad={{ vertical: "xsmall", horizontal: "medium"}} round="medium">
                                             <Text size="small" weight="bold">{seasonName(val)}</Text>
                                         </Box>
                                     }
