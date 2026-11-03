@@ -2287,6 +2287,39 @@
   },
   {
     "brandname": "CAPiTA",
+    "name": "AERONAUT LTD",
+    "season": "W2026_2027",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "159"
+    ],
+    "specs": {
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1245,
+        "sidecut": "8.6/7.6",
+        "noseWidth": 30.4,
+        "tailWidth": 29.9,
+        "waistWidth": 25.6,
+        "taper": 0.5,
+        "referenceStance": 55.9,
+        "weightMin": 65,
+        "weightMax": 93,
+        "bootSize": "M 8–10"
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2026_2027/AERONAUT%20LTD/CAPiTA_W2026_2027_AERONAUT%20LTD_159.png",
+    "sourceUrl": "https://capitasnowboarding.com/products/capita-aeronaut-ltd-mens-snowboard-2027",
+    "imagesBySize": {
+      "159": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2026_2027/AERONAUT%20LTD/CAPiTA_W2026_2027_AERONAUT%20LTD_159.png"
+    }
+  },
+  {
+    "brandname": "CAPiTA",
     "name": "THE EQUALIZER BY JESS KIMURA",
     "season": "W2026_2027",
     "riders": [
