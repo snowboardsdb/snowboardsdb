@@ -170,7 +170,7 @@ function Brand() {
     return (
         <Main pad="medium">
             <Box direction="row" margin={{ vertical: "medium" }} height="xxsmall">
-                <Button icon={<LinkPrevious/>} href="/"/>
+                <Button icon={<LinkPrevious/>} aria-label="Back to brands" href="#/"/>
                 <Heading level={3} margin="none" alignSelf="center" color="brand">{brand}</Heading>
             </Box>
 
@@ -208,6 +208,8 @@ function Brand() {
                             <Box
                                 key={`${i}-${brandname}-${season}-${name}`}
                                 gap="small"
+                                role="button"
+                                aria-label={name}
                                 onClick={() => setPickedSnowboard(snowboard)}
                             >
                                 <Box width="small" height="small">
@@ -267,11 +269,11 @@ function SnowboardLayer({
     const selectedImageUrl = imagesBySize ? imagesBySize[selectedSize] : snowboardImageUrl(snowboard)
 
     return (
-        <Layer {...layerProps}>
+        <Layer {...layerProps} role="dialog" aria-modal="true" aria-label={`${brandname} ${name}`}>
             <Box pad="medium" gap="medium" fill>
                 <Box direction="row" justify="between">
                     <Heading level={3} margin="none">{brandname} {name} {season.replace(/W\d{4}_(\d{4})/, "$1")}</Heading>
-                    <Button icon={ <FormClose/> } onClick={onClickClose}/>
+                    <Button icon={ <FormClose/> } aria-label="Close" onClick={onClickClose}/>
                 </Box>
                 <Tabs alignControls="start" justify="center">
                     <Tab title="Snowboard">
@@ -314,16 +316,16 @@ function CapitaSpecsTable({
         <Table {...tableProps}>
             <TableHeader>
                 <TableRow>
-                    <TableCell>Size</TableCell>
-                    <TableCell>Effective edge (mm)</TableCell>
-                    <TableCell>Sidecut (m)</TableCell>
-                    <TableCell>Nose (cm)</TableCell>
-                    <TableCell>Tail (cm)</TableCell>
-                    <TableCell>Waist (cm)</TableCell>
-                    <TableCell>Taper (mm)</TableCell>
-                    <TableCell>Ref. stance (cm)</TableCell>
-                    <TableCell>Rider weight (kg)</TableCell>
-                    <TableCell>Boot size</TableCell>
+                    <TableCell scope="col">Size</TableCell>
+                    <TableCell scope="col">Effective edge (mm)</TableCell>
+                    <TableCell scope="col">Sidecut (m)</TableCell>
+                    <TableCell scope="col">Nose (cm)</TableCell>
+                    <TableCell scope="col">Tail (cm)</TableCell>
+                    <TableCell scope="col">Waist (cm)</TableCell>
+                    <TableCell scope="col">Taper (mm)</TableCell>
+                    <TableCell scope="col">Ref. stance (cm)</TableCell>
+                    <TableCell scope="col">Rider weight (kg)</TableCell>
+                    <TableCell scope="col">Boot size</TableCell>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -356,16 +358,16 @@ function MervinSpecsTable({
         <Table {...tableProps}>
             <TableHeader>
                 <TableRow>
-                    <TableCell size="xxsmall" style={{position:"sticky"}}>Size</TableCell>
-                    <TableCell align="center">Contact Length</TableCell>
-                    <TableCell align="center">Side Cut</TableCell>
-                    <TableCell align="center">Nose Width</TableCell>
-                    <TableCell align="center">Tail Width</TableCell>
-                    <TableCell align="center">Waist Width</TableCell>
-                    <TableCell align="center">Stance</TableCell>
-                    <TableCell align="center">Set Back</TableCell>
-                    <TableCell align="center">Flex</TableCell>
-                    <TableCell align="center">Riders Weight</TableCell>
+                    <TableCell scope="col" size="xxsmall" style={{position:"sticky"}}>Size</TableCell>
+                    <TableCell scope="col" align="center">Contact Length</TableCell>
+                    <TableCell scope="col" align="center">Side Cut</TableCell>
+                    <TableCell scope="col" align="center">Nose Width</TableCell>
+                    <TableCell scope="col" align="center">Tail Width</TableCell>
+                    <TableCell scope="col" align="center">Waist Width</TableCell>
+                    <TableCell scope="col" align="center">Stance</TableCell>
+                    <TableCell scope="col" align="center">Set Back</TableCell>
+                    <TableCell scope="col" align="center">Flex</TableCell>
+                    <TableCell scope="col" align="center">Riders Weight</TableCell>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -409,16 +411,16 @@ function JonesSpecsTable({
         <Table {...tableProps}>
             <TableHeader>
                 <TableRow>
-                    <TableCell size="xxsmall" style={{position:"sticky"}}>Size</TableCell>
-                    <TableCell align="center">Contact Length</TableCell>
-                    <TableCell align="center">Side Cut</TableCell>
-                    <TableCell align="center">Nose Width</TableCell>
-                    <TableCell align="center">Tail Width</TableCell>
-                    <TableCell align="center">Waist Width</TableCell>
-                    <TableCell align="center">Stance</TableCell>
-                    <TableCell align="center">Set Back</TableCell>
-                    <TableCell align="center">Flex</TableCell>
-                    <TableCell align="center">Riders Weight</TableCell>
+                    <TableCell scope="col" size="xxsmall" style={{position:"sticky"}}>Size</TableCell>
+                    <TableCell scope="col" align="center">Contact Length</TableCell>
+                    <TableCell scope="col" align="center">Side Cut</TableCell>
+                    <TableCell scope="col" align="center">Nose Width</TableCell>
+                    <TableCell scope="col" align="center">Tail Width</TableCell>
+                    <TableCell scope="col" align="center">Waist Width</TableCell>
+                    <TableCell scope="col" align="center">Stance</TableCell>
+                    <TableCell scope="col" align="center">Set Back</TableCell>
+                    <TableCell scope="col" align="center">Flex</TableCell>
+                    <TableCell scope="col" align="center">Riders Weight</TableCell>
                 </TableRow>
             </TableHeader>
             <TableBody>

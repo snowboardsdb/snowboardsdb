@@ -1,8 +1,9 @@
 import React from "react"
-import { fireEvent, render, screen } from "@testing-library/react"
+import { expect, test, vi } from "vitest"
+import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import App from "./App"
 
-jest.mock("./db/db", () => ({
+vi.mock("./db/db", () => ({
     db: {},
     useSnowboards: ({ season }: { season?: string }) => [
         {
@@ -38,4 +39,21 @@ test("switches the displayed boards when selecting another season", () => {
     fireEvent.click(screen.getByRole("link", { name: "26/27" }))
     expect(screen.getByText("CURRENT BOARD")).toBeInTheDocument()
     expect(screen.queryByText("OLDER BOARD")).not.toBeInTheDocument()
+})
+
+test("opens specifications and returns focus to the board after closing", async () => {
+    window.location.hash = "#/CAPiTA/W2026_2027"
+    render(<App />)
+
+    const board = screen.getByRole("button", { name: /CURRENT BOARD/ })
+    board.focus()
+    fireEvent.click(board)
+    expect(screen.getByRole("dialog")).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole("tab", { name: "Specifications" }))
+    expect(screen.getByRole("columnheader", { name: "Effective edge (mm)" })).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole("button", { name: "Close" }))
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+    await waitFor(() => expect(board).toHaveFocus())
 })
