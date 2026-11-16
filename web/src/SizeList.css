@@ -1,0 +1,42 @@
+.snowboard-sizes {
+    width: calc(100% - 12px);
+    margin-inline: 6px;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    mask-image: linear-gradient(
+        to right,
+        var(--sizes-fade-start, #000),
+        #000 14px,
+        #000 calc(100% - 14px),
+        var(--sizes-fade-end, #000)
+    );
+}
+
+.snowboard-sizes::-webkit-scrollbar {
+    display: none;
+}
+
+.snowboard-sizes[data-overflow-start="true"] {
+    --sizes-fade-start: transparent;
+}
+
+.snowboard-sizes[data-overflow-end="true"] {
+    --sizes-fade-end: transparent;
+}
+
+.snowboard-sizes:focus-visible {
+    outline: 2px solid #7d4cdb;
+    outline-offset: 2px;
+}
+
+.snowboard-sizes-content {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    width: max-content;
+    min-width: 100%;
+    padding-block: 2px;
+    white-space: nowrap;
+}

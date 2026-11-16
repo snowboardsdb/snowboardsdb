@@ -1,9 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react"
-import { HashRouter, Link, LinkProps, Routes, Route, useParams} from "react-router-dom"
+import React, { useContext, useEffect, useMemo, useState } from "react"
+import { HashRouter, Link, LinkProps, Routes, Route, useParams, useNavigate} from "react-router-dom"
 
-import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, LayerExtendedProps, Main, RadioButtonGroup, Tab, Tabs, Text } from "grommet"
+import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, LayerExtendedProps, Main, Stack, Tab, Tabs, Text, ThemeContext } from "grommet"
 import { Table, TableHeader, TableRow, TableCell, TableBody, TableProps } from "grommet"
+import { normalizeColor } from "grommet/es6/utils"
 import { FormClose, LinkPrevious } from "grommet-icons"
+
+import { SizeList } from "./SizeList"
 
 import { useLiveQuery } from "dexie-react-hooks"
 import { db as dexsnowboards, useSnowboards, useSeasons } from "./db/db"
@@ -87,13 +90,16 @@ function Brands() {
         }, [] as string[]))
     }, [ brands ])
 
-    const latestSeasons = useLiveQuery(async () => {
+    const brandSeasons = useLiveQuery(async () => {
         const snowboards = await dexsnowboards.snowboards.toArray()
         return snowboards.reduce((seasons, snowboard) => {
             const current = seasons[snowboard.brandname]
-            if (!current || current < snowboard.season) seasons[snowboard.brandname] = snowboard.season
+            seasons[snowboard.brandname] = {
+                latest: current && current.latest > snowboard.season ? current.latest : snowboard.season,
+                hasNewSeason: Boolean(current?.hasNewSeason || snowboard.season === Season.W2025_2026),
+            }
             return seasons
-        }, {} as Record<string, Season>)
+        }, {} as Record<string, { latest: Season, hasNewSeason: boolean }>)
     })
 
     const renderBrand = ({ name, nameImage, logo }: BrandType) => {
@@ -106,18 +112,23 @@ function Brands() {
                 {logo &&
                     <img src={logo.src} alt="" style={{ height: `${logo.height}px`, width: "auto" }} />
                 }
-                {latestSeasons?.[name] ?
-                    <AnchorLink to={`/${name}/${latestSeasons[name]}`} size="large">{label}</AnchorLink> :
-                    nameImage ? label : <Text size="large" color="dark-3">{label}</Text>
-                }
+                <Stack anchor="top-right" interactiveChild="first">
+                    {brandSeasons?.[name] ?
+                        <AnchorLink to={`/${name}/${brandSeasons[name].latest}`} size="large">{label}</AnchorLink> :
+                        nameImage ? label : <Text size="large" color="dark-3">{label}</Text>
+                    }
+                    {brandSeasons?.[name]?.hasNewSeason &&
+                        <TrapezoidBadge background="#e53935" title="25/26 season available">NEW</TrapezoidBadge>
+                    }
+                </Stack>
             </Box>
         )
     }
 
     return (
-        <Main pad="medium">
-            <Box direction="row" height="xxsmall" margin={{ vertical: "medium" }} pad={{ horizontal: "large" }}>
-                <Heading level={3} alignSelf="center" margin={{ vertical: "none" }}>
+        <Main pad="medium" responsive={false}>
+            <Box direction="row" height="xxsmall" margin={{ bottom: "24px" }} pad={{ horizontal: "large" }} responsive={false}>
+                <Heading level={3} alignSelf="center" margin={{ vertical: "none" }} responsive={false}>
                     <AnchorLink to="/">Snowboards</AnchorLink>
                 </Heading>
             </Box>
@@ -150,8 +161,40 @@ function Brands() {
     )
 }
 
+function TrapezoidBadge({ background, color = "white", title, children, style }: {
+    background: string,
+    color?: string,
+    title: string,
+    children: React.ReactNode,
+    style?: React.CSSProperties,
+}) {
+    const badgeTheme = useContext(ThemeContext)
+
+    return (
+        <Text
+            as="sup"
+            title={title}
+            size="9px"
+            weight={500}
+            color={color}
+            style={{
+                display: "block",
+                transform: "translate(calc(100% + 4px), -20%)",
+                padding: "0 6px 0 5px",
+                background: normalizeColor(background, badgeTheme),
+                lineHeight: "14px",
+                fontStyle: "italic",
+                letterSpacing: "0.03em",
+                clipPath: "polygon(16% 0, 100% 0, 84% 100%, 0 100%)",
+                ...style,
+            }}
+        >{children}</Text>
+    )
+}
+
 function Brand() {
     const { brand, season } = useParams()
+    const navigate = useNavigate()
 
     const query = useMemo(() => ({ brandname: brand, season }), [brand, season])
 
@@ -168,38 +211,68 @@ function Brand() {
     }, [brand, season])
 
     return (
-        <Main pad="medium">
-            <Box direction="row" margin={{ vertical: "medium" }} height="xxsmall">
-                <Button icon={<LinkPrevious/>} aria-label="Back to brands" href="#/"/>
-                <Heading level={3} margin="none" alignSelf="center" color="brand">{brand}</Heading>
+        <Main pad={{ vertical: "medium" }} responsive={false}>
+            <Box direction="row" align="center" margin={{ bottom: "24px" }} pad={{ horizontal: "12px" }} gap="8px" responsive={false}>
+                <Button
+                    plain
+                    icon={<LinkPrevious size="24px" />}
+                    aria-label="Back to brands"
+                    onClick={() => navigate("/")}
+                    style={{
+                        width: "48px",
+                        height: "48px",
+                        padding: 0,
+                        flexShrink: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                />
+                <Heading level={3} margin="none" alignSelf="center" color="brand" responsive={false}>{brand}</Heading>
             </Box>
 
-            <Box direction="row" margin={{ bottom: "large" }} pad={{ horizontal: "large" }} gap="large">
-                {seasons &&
-                    <Box direction="row" gap="small">
-                        {seasons.map((val) => {
-                            const selected = val === season
+            <Box
+                margin={{ bottom: "large" }}
+                overflow={{ horizontal: "auto" }}
+                role="region"
+                aria-label="Seasons and riders"
+                tabIndex={0}
+                style={{ scrollbarWidth: "none" }}
+            >
+                <Box
+                    direction="row"
+                    align="center"
+                    gap="small"
+                    responsive={false}
+                    flex={false}
+                    pad={{ horizontal: "medium", vertical: "xxsmall" }}
+                    style={{ width: "max-content", minWidth: "100%", maxWidth: "none" }}
+                >
+                    {seasons?.map(val => {
+                        const selected = val === season
 
-                            return (
-                                <AnchorLink to={`/${brand}/${val}`}
-                                    key={val}
-                                    aria-current={selected ? "page" : undefined}
-                                    style={{ textDecoration: "none" }}
-                                    label={
-                                        <Box background={selected ? "brand" : "light-2"} pad={{ vertical: "xsmall", horizontal: "medium"}} round="medium">
-                                            <Text size="small" weight="bold">{seasonName(val)}</Text>
-                                        </Box>
-                                    }
-                                />
-                            )
-                        })}
-                    </Box>
-                }
-
-                <Riders onChangeRiders={(riders: string) => setFilter({ ...filter, riders: [riders] })}/>
+                        return (
+                            <AnchorLink
+                                to={`/${brand}/${val}`}
+                                key={val}
+                                aria-current={selected ? "page" : undefined}
+                                style={{ textDecoration: "none", flexShrink: 0 }}
+                                label={
+                                    <Box background={selected ? "brand" : "light-2"} pad={{ vertical: "xsmall", horizontal: "medium" }} round={{ size: "medium" }} responsive={false}>
+                                        <Text size="small" weight="bold">{seasonName(val)}</Text>
+                                    </Box>
+                                }
+                            />
+                        )
+                    })}
+                    <Riders
+                        value={filter.riders?.[0]}
+                        onChangeRiders={rider => setFilter({ ...filter, riders: rider ? [rider] : undefined })}
+                    />
+                </Box>
             </Box>
 
-            <Grid gap="medium" columns="small">
+            <Grid gap={{ row: "large", column: "medium" }} columns="small" margin={{ horizontal: "medium" }}>
                 {snowboards && snowboards.map(
                     (snowboard, i) => {
                         const { brandname, season, name, sizes } = snowboard
@@ -210,31 +283,28 @@ function Brand() {
                                 gap="small"
                                 role="button"
                                 aria-label={name}
+                                style={{ minWidth: 0 }}
                                 onClick={() => setPickedSnowboard(snowboard)}
                             >
-                                <Box width="small" height="small">
-                                    <Image
-                                        fit="contain"
-                                        src={snowboardImageUrl(snowboard)}
-                                        fallback="/snowboards/blank.png"
-                                    />    
-                                </Box>
-                                <Box style={{textAlign: "center"}}><Text>{name}</Text></Box>
-                                <Box direction="row" wrap justify="center">
-                                    {sizes.map((size, i) => {
-                                        return (
-                                            <Box
-                                                key={`${i}-${size}`}
-                                                pad={{horizontal: "xsmall"}}
-                                                background="light-3"
-                                                round="small"
-                                                margin="xxsmall"
-                                            >
-                                                <Text size="small" color="dark-2">{size}</Text>
-                                            </Box>
-                                        )
-                                    })}
-                                </Box>
+                                <Stack anchor="top-right" interactiveChild="first" style={{ alignSelf: "center", maxWidth: "100%" }}>
+                                    <Box width="small" height="small">
+                                        <Image
+                                            fit="contain"
+                                            src={snowboardImageUrl(snowboard)}
+                                            fallback="/snowboards/blank.png"
+                                        />
+                                    </Box>
+                                    <TrapezoidBadge
+                                        background="light-3"
+                                        color="dark-2"
+                                        title={`Season ${seasonName(season)}`}
+                                        style={{ transform: "none", fontStyle: "normal", padding: "0 6px 0 7px" }}
+                                    >
+                                        {seasonName(season)}
+                                    </TrapezoidBadge>
+                                </Stack>
+                                <Box style={{ textAlign: "center" }}><Text>{name}</Text></Box>
+                                <SizeList sizes={sizes} name={name} />
                             </Box>
                         )
                     }
@@ -455,40 +525,35 @@ function JonesSpecsTable({
 }
 
 function Riders({
+    value,
     onChangeRiders,
     ...props
 }: {
-    onChangeRiders?: (val: string) => void,
+    value?: string,
+    onChangeRiders?: (value: string | undefined) => void,
 } & BoxExtendedProps) {
-    const [value, setValue] = useState<string>("")
-
     return (
-        <RadioButtonGroup
-            {...props}
-            name="riders"
-            direction="row"
-            gap="xsmall"
-            options={["MEN", "WOMEN", "YOUTH"]}
-            value={value}
-            onChange={(event) => {
-                setValue(event.target.value)
-                onChangeRiders && onChangeRiders(event.target.value)
-            }}
-        >
-            {(option: string, { checked, focus, hover }: { checked: boolean, focus: boolean, hover: boolean }) => {
-                let background;
-                if (checked) background = 'brand';
-                else if (hover) background = 'light-4';
-                else if (focus) background = 'light-4';
-                else background = 'light-2';
-                return (
-                    // <Box background={background} pad="xsmall">{option}</Box>
-                    <Box background={background} pad={{ vertical: "xsmall", horizontal: "medium"}} round="medium">
-                        <Text size="small" weight="bold">{option}</Text>
-                    </Box>
-                );
-            }}
-        </RadioButtonGroup>
+        <Box {...props} direction="row" gap="small" flex={false} responsive={false} role="group" aria-label="Riders">
+            {["MEN", "WOMEN", "YOUTH"].map(option => (
+                <Button
+                    key={option}
+                    plain
+                    aria-pressed={value === option}
+                    onClick={() => onChangeRiders?.(value === option ? undefined : option)}
+                >
+                    {({ hover, focus }) => (
+                        <Box
+                            background={value === option ? "brand" : hover || focus ? "light-4" : "light-2"}
+                            pad={{ vertical: "xsmall", horizontal: "medium" }}
+                            round={{ size: "medium" }}
+                            responsive={false}
+                        >
+                            <Text size="small" weight="bold">{option}</Text>
+                        </Box>
+                    )}
+                </Button>
+            ))}
+        </Box>
     )
 }
 
