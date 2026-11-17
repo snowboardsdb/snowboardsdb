@@ -4,26 +4,37 @@ import { fireEvent, render, screen, waitFor, within } from "@testing-library/rea
 import App from "./App"
 import { useSnowboards } from "./db/db"
 
+const { boardForSeason } = vi.hoisted(() => ({
+    boardForSeason: (season?: string) => ({
+        brandname: "CAPiTA", season,
+        name: season === "W2024_2025" ? "OLDER BOARD" : season === "W2025_2026" ? "PREVIOUS BOARD" : "CURRENT BOARD",
+        riders: ["MEN"], sizes: ["150", "153W", "156"],
+        imageUrl: "/board-150.png",
+        imagesBySize: { "150": "/board-150.png", "153W": "/board-153W.png" },
+        specs: { "150": { size: 150, wide: false } },
+    }),
+}))
+
 vi.mock("./db/db", () => ({
     db: {
         brands: { toArray: async () => [{ name: "CAPiTA" }, { name: "GNU" }, { name: "Jones" }] },
-        snowboards: { toArray: async () => [
+        snowboards: {
+            where: ({ season }: { season: string }) => ({
+                filter: (predicate: (board: ReturnType<typeof boardForSeason>) => boolean) => ({
+                    first: async () => {
+                        const board = boardForSeason(season)
+                        return predicate(board) ? board : undefined
+                    },
+                }),
+            }),
+            toArray: async () => [
             { brandname: "CAPiTA", season: "W2025_2026" },
             { brandname: "CAPiTA", season: "W2026_2027" },
             { brandname: "GNU", season: "W2024_2025" },
             { brandname: "Jones", season: "W2026_2027" },
         ] },
     },
-    useSnowboards: vi.fn(({ season }: { season?: string }) => [
-        {
-            brandname: "CAPiTA",
-            season,
-            name: season === "W2024_2025" ? "OLDER BOARD" : season === "W2025_2026" ? "PREVIOUS BOARD" : "CURRENT BOARD",
-            riders: ["MEN"],
-            sizes: ["150"],
-            specs: { "150": { size: 150, wide: false } },
-        },
-    ]),
+    useSnowboards: vi.fn(({ season }: { season?: string }) => [boardForSeason(season)]),
     useSeasons: () => ["W2024_2025", "W2025_2026", "W2026_2027"],
 }))
 
@@ -32,13 +43,13 @@ test("switches the displayed boards when selecting another season", () => {
     render(<App />)
 
     expect(screen.getByText("CURRENT BOARD")).toBeInTheDocument()
-    expect(within(screen.getByRole("button", { name: "CURRENT BOARD" })).getByTitle("Season 26/27")).toHaveTextContent("26/27")
+    expect(within(screen.getByRole("link", { name: "CURRENT BOARD" })).getByTitle("Season 26/27")).toHaveTextContent("26/27")
     expect(screen.getByRole("link", { name: "26/27" })).toHaveAttribute("aria-current", "page")
     expect(screen.getByRole("link", { name: "26/27" })).toHaveStyle({ textDecoration: "none" })
     fireEvent.click(screen.getByRole("link", { name: "25/26" }))
 
     expect(screen.getByText("PREVIOUS BOARD")).toBeInTheDocument()
-    expect(within(screen.getByRole("button", { name: "PREVIOUS BOARD" })).getByTitle("Season 25/26")).toHaveTextContent("25/26")
+    expect(within(screen.getByRole("link", { name: "PREVIOUS BOARD" })).getByTitle("Season 25/26")).toHaveTextContent("25/26")
     expect(screen.queryByText("CURRENT BOARD")).not.toBeInTheDocument()
     expect(screen.getByRole("link", { name: "25/26" })).toHaveAttribute("aria-current", "page")
 
@@ -56,10 +67,11 @@ test("opens specifications and returns focus to the board after closing", async 
     window.location.hash = "#/CAPiTA/W2026_2027"
     render(<App />)
 
-    const board = screen.getByRole("button", { name: /CURRENT BOARD/ })
+    const board = screen.getByRole("link", { name: "CURRENT BOARD" })
     board.focus()
     fireEvent.click(board)
-    expect(screen.getByRole("dialog")).toBeInTheDocument()
+    expect(window.location.hash).toBe("#/capita/W2026_2027/current%20board")
+    await screen.findByRole("dialog", { name: "CAPiTA CURRENT BOARD" })
 
     fireEvent.click(screen.getByRole("tab", { name: "Specifications" }))
     expect(screen.getByRole("columnheader", { name: "Effective edge (mm)" })).toBeInTheDocument()
@@ -74,7 +86,7 @@ test("marks brands with a 25/26 season while linking to their latest season", as
     render(<App />)
 
     const capita = await screen.findByRole("link", { name: "CAPiTA" })
-    expect(capita).toHaveAttribute("href", "#/CAPiTA/W2026_2027")
+    expect(capita).toHaveAttribute("href", "#/capita/W2026_2027")
     expect(within(capita.parentElement!.parentElement!).getByText("NEW")).toHaveAttribute("title", "25/26 season available")
 
     const gnu = screen.getByRole("link", { name: "GNU" })
@@ -111,4 +123,63 @@ test("returns to the brands page using the back button", async () => {
     fireEvent.click(screen.getByRole("button", { name: "Back to brands" }))
     expect(window.location.hash).toBe("#/")
     await waitFor(() => expect(screen.getByRole("link", { name: "Snowboards" })).toBeInTheDocument())
+})
+
+
+test("opens a shared board URL over its season catalog and closes into that catalog", async () => {
+    window.history.replaceState(null, "", "#/capita/W2025_2026/previous%20board")
+    render(<App />)
+    await screen.findByRole("dialog", { name: "CAPiTA PREVIOUS BOARD" })
+    expect(screen.getByRole("link", { name: "25/26", hidden: true })).toHaveAttribute("aria-current", "page")
+    fireEvent.click(screen.getByRole("button", { name: "Close" }))
+    await waitFor(() => expect(window.location.hash).toBe("#/capita/W2025_2026"))
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+})
+
+test("preserves the catalog filter and supports browser back and forward", async () => {
+    window.history.replaceState(null, "", "#/CAPiTA/W2026_2027")
+    render(<App />)
+    fireEvent.click(screen.getByRole("button", { name: "MEN" }))
+    fireEvent.click(screen.getByRole("link", { name: "CURRENT BOARD" }))
+    await screen.findByRole("dialog", { name: "CAPiTA CURRENT BOARD" })
+    window.history.back()
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+    expect(screen.getByRole("button", { name: "MEN" })).toHaveAttribute("aria-pressed", "true")
+    window.history.forward()
+    await screen.findByRole("dialog", { name: "CAPiTA CURRENT BOARD" })
+})
+
+test("opens the chosen card size and switches images, including after an image error", async () => {
+    window.history.replaceState(null, "", "#/CAPiTA/W2026_2027")
+    render(<App />)
+    fireEvent.click(screen.getByRole("button", { name: "Open CURRENT BOARD, size 153W" }))
+    const dialog = await screen.findByRole("dialog", { name: "CAPiTA CURRENT BOARD" })
+    expect(await within(dialog).findByRole("img")).toHaveAttribute("src", "/board-153W.png")
+    fireEvent.error(within(dialog).getByRole("img"))
+    fireEvent.click(within(dialog).getByRole("button", { name: "150" }))
+    expect(within(dialog).getByRole("img")).toHaveAttribute("src", "/board-150.png")
+    expect(within(dialog).getByRole("button", { name: "150" })).toHaveAttribute("aria-pressed", "true")
+    fireEvent.click(within(dialog).getByRole("button", { name: "156" }))
+    expect(within(dialog).queryByRole("img")).not.toBeInTheDocument()
+    expect(within(dialog).getByText("Image unavailable for this size")).toBeInTheDocument()
+})
+
+test("handles a missing board and allows closing the modal", async () => {
+    window.history.replaceState(null, "", "#/capita/W2026_2027/missing")
+    render(<App />)
+    await screen.findByText("Snowboard not found")
+    fireEvent.click(screen.getByRole("button", { name: "Close" }))
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
+    expect(window.location.hash).toBe("#/capita/W2026_2027")
+})
+
+
+test("resolves lowercase catalog URLs to the original brand name", async () => {
+    window.history.replaceState(null, "", "#/capita/W2026_2027")
+    render(<App />)
+    await screen.findByRole("heading", { name: "CAPiTA" })
+    expect(screen.getByRole("link", { name: "CURRENT BOARD" })).toHaveAttribute("href", "#/capita/W2026_2027/current%20board")
+    expect(useSnowboards).toHaveBeenCalledWith(
+        { brandname: "CAPiTA", season: "W2026_2027" }, {}, expect.anything()
+    )
 })

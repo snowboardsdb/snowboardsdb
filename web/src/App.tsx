@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useMemo, useState } from "react"
-import { HashRouter, Link, LinkProps, Routes, Route, useParams, useNavigate} from "react-router-dom"
+import { HashRouter, Link, LinkProps, Routes, Route, useParams, useNavigate, useLocation, matchPath, Location} from "react-router-dom"
 
-import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, LayerExtendedProps, Main, Stack, Tab, Tabs, Text, ThemeContext } from "grommet"
+import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, Main, Stack, Tab, Tabs, Text, ThemeContext } from "grommet"
 import { Table, TableHeader, TableRow, TableCell, TableBody, TableProps } from "grommet"
 import { normalizeColor } from "grommet/es6/utils"
 import { FormClose, LinkPrevious } from "grommet-icons"
@@ -43,16 +43,68 @@ function App() {
     return (
         <HashRouter>
             <Grommet theme={theme}>
-                <Routes>
-                    <Route path="/">
-                        <Route index element={<Brands/>}/>
-                    </Route>
-                    <Route path="/:brand/:season">
-                        <Route index element={<Brand/>}/>
-                    </Route>
-                </Routes>
+                <AppRoutes />
             </Grommet>
         </HashRouter>
+    )
+}
+
+// The URL identifies the board; history state keeps the page underneath it.
+type BoardLocationState = { backgroundLocation?: Location, selectedSize?: string }
+
+function boardPath({ brandname, season, name }: Snowboard): string {
+    return `/${[brandname.toLowerCase(), season, name.toLowerCase()].map(encodeURIComponent).join("/")}`
+}
+
+function AppRoutes() {
+    const location = useLocation()
+    const state = location.state as BoardLocationState | null
+    const boardMatch = matchPath("/:brand/:season/:name", location.pathname)
+    const catalogPath = boardMatch
+        ? `/${encodeURIComponent(boardMatch.params.brand!)}/${encodeURIComponent(boardMatch.params.season!)}`
+        : location.pathname
+
+    return (
+        <>
+            <Routes location={boardMatch ? state?.backgroundLocation || catalogPath : location}>
+                <Route path="/" element={<Brands />} />
+                <Route path="/:brand/:season" element={<Brand />} />
+            </Routes>
+            <Routes>
+                <Route path="/:brand/:season/:name" element={<BoardModal />} />
+                <Route path="*" element={null} />
+            </Routes>
+        </>
+    )
+}
+
+function BoardModal() {
+    const { brand, season, name } = useParams()
+    const location = useLocation()
+    const navigate = useNavigate()
+    const state = location.state as BoardLocationState | null
+    const snowboard = useLiveQuery(() =>
+        dexsnowboards.snowboards.where({ season })
+            .filter(board => board.brandname.toLowerCase() === brand?.toLowerCase() && board.name.toLowerCase() === name?.toLowerCase()).first().then(board => board || null),
+        [brand, season, name]
+    )
+    const close = () => {
+        if (state?.backgroundLocation) navigate(-1)
+        else navigate(`/${encodeURIComponent(brand!)}/${encodeURIComponent(season!)}`, { replace: true })
+    }
+
+    return (
+        <Layer role="dialog" aria-modal="true" aria-label={snowboard ? `${snowboard.brandname} ${snowboard.name}` : "Snowboard"}
+            onEsc={close} onClickOutside={close}>
+            {snowboard ?
+                <SnowboardDetails key={boardPath(snowboard)} snowboard={snowboard}
+                    initialSize={state?.selectedSize} onClickClose={close} /> :
+                <Box pad="medium" gap="medium">
+                    <Text>{snowboard === undefined ? "Loading snowboard…" : "Snowboard not found"}</Text>
+                    <Button label="Close" onClick={close} />
+                </Box>
+            }
+        </Layer>
     )
 }
 
@@ -114,7 +166,7 @@ function Brands() {
                 }
                 <Stack anchor="top-right" interactiveChild="first">
                     {brandSeasons?.[name] ?
-                        <AnchorLink to={`/${name}/${brandSeasons[name].latest}`} size="large">{label}</AnchorLink> :
+                        <AnchorLink to={`/${encodeURIComponent(name.toLowerCase())}/${brandSeasons[name].latest}`} size="large">{label}</AnchorLink> :
                         nameImage ? label : <Text size="large" color="dark-3">{label}</Text>
                     }
                     {brandSeasons?.[name]?.hasNewSeason &&
@@ -193,7 +245,9 @@ function TrapezoidBadge({ background, color = "white", title, children, style }:
 }
 
 function Brand() {
-    const { brand, season } = useParams()
+    const { brand: brandParam, season } = useParams()
+    const brands = useLiveQuery(() => dexsnowboards.brands.toArray())
+    const brand = brands?.find(item => item.name.toLowerCase() === brandParam?.toLowerCase())?.name || brandParam
     const navigate = useNavigate()
 
     const query = useMemo(() => ({ brandname: brand, season }), [brand, season])
@@ -204,11 +258,10 @@ function Brand() {
 
     const seasons = useSeasons({ brandname: brand }, [ brand ])
 
-    const [ pickedSnowboard, setPickedSnowboard ] = useState<Snowboard | undefined>()
-
-    useEffect(() => {
-        setPickedSnowboard(undefined)
-    }, [brand, season])
+    const location = useLocation()
+    const openBoard = (snowboard: Snowboard, selectedSize?: string) => {
+        navigate(boardPath(snowboard), { state: { backgroundLocation: location, selectedSize } })
+    }
 
     return (
         <Main pad={{ vertical: "medium" }} responsive={false}>
@@ -253,7 +306,7 @@ function Brand() {
 
                         return (
                             <AnchorLink
-                                to={`/${brand}/${val}`}
+                                to={`/${encodeURIComponent(brand!.toLowerCase())}/${val}`}
                                 key={val}
                                 aria-current={selected ? "page" : undefined}
                                 style={{ textDecoration: "none", flexShrink: 0 }}
@@ -281,98 +334,95 @@ function Brand() {
                             <Box
                                 key={`${i}-${brandname}-${season}-${name}`}
                                 gap="small"
-                                role="button"
-                                aria-label={name}
                                 style={{ minWidth: 0 }}
-                                onClick={() => setPickedSnowboard(snowboard)}
                             >
-                                <Stack anchor="top-right" interactiveChild="first" style={{ alignSelf: "center", maxWidth: "100%" }}>
-                                    <Box width="small" height="small">
-                                        <Image
-                                            fit="contain"
-                                            src={snowboardImageUrl(snowboard)}
-                                            fallback="/snowboards/blank.png"
-                                        />
+                                <AnchorLink to={boardPath(snowboard)} state={{ backgroundLocation: location }}
+                                    aria-label={name} style={{ textDecoration: "none", color: "inherit" }}>
+                                    <Box gap="small">
+                                        <Stack anchor="top-right" interactiveChild="first" style={{ alignSelf: "center", maxWidth: "100%" }}>
+                                            <Box width="small" height="small">
+                                                <Image
+                                                    fit="contain"
+                                                    src={snowboardImageUrl(snowboard)}
+                                                    fallback="/snowboards/blank.png"
+                                                />
+                                            </Box>
+                                            <TrapezoidBadge
+                                                background="light-3"
+                                                color="dark-2"
+                                                title={`Season ${seasonName(season)}`}
+                                                style={{ transform: "none", fontStyle: "normal", padding: "0 6px 0 7px" }}
+                                            >
+                                                {seasonName(season)}
+                                            </TrapezoidBadge>
+                                        </Stack>
+                                        <Box style={{ textAlign: "center" }}><Text>{name}</Text></Box>
                                     </Box>
-                                    <TrapezoidBadge
-                                        background="light-3"
-                                        color="dark-2"
-                                        title={`Season ${seasonName(season)}`}
-                                        style={{ transform: "none", fontStyle: "normal", padding: "0 6px 0 7px" }}
-                                    >
-                                        {seasonName(season)}
-                                    </TrapezoidBadge>
-                                </Stack>
-                                <Box style={{ textAlign: "center" }}><Text>{name}</Text></Box>
-                                <SizeList sizes={sizes} name={name} />
+                                </AnchorLink>
+                                <SizeList sizes={sizes} name={name} onSelectSize={size => openBoard(snowboard, size)} />
                             </Box>
                         )
                     }
                 )}
             </Grid>
-
-            {pickedSnowboard && pickedSnowboard.specs &&
-                <SnowboardLayer
-                    key={`${pickedSnowboard.brandname}-${pickedSnowboard.season}-${pickedSnowboard.name}`}
-                    snowboard={pickedSnowboard}
-                    onClickOutside={() => setPickedSnowboard(undefined)}
-                    onEsc={() => setPickedSnowboard(undefined)}
-                    onClickClose={() => setPickedSnowboard(undefined)}
-                />
-            }
         </Main>
     )
 }
 
-function SnowboardLayer({
+function SnowboardDetails({
     snowboard,
     onClickClose,
-    ...layerProps
+    initialSize,
 }: {
     snowboard: Snowboard,
+    initialSize?: string,
     onClickClose?: () => void,
-} & LayerExtendedProps) {
+}) {
     const { brandname, name, season, specs, sizes, imagesBySize } = snowboard
     const [selectedSize, setSelectedSize] = useState(
-        sizes.find(size => imagesBySize?.[size]) || sizes[0]
+        initialSize && sizes.includes(initialSize) ? initialSize : sizes.find(size => imagesBySize?.[size]) || sizes[0]
     )
     const selectedImageUrl = imagesBySize ? imagesBySize[selectedSize] : snowboardImageUrl(snowboard)
 
     return (
-        <Layer {...layerProps} role="dialog" aria-modal="true" aria-label={`${brandname} ${name}`}>
-            <Box pad="medium" gap="medium" fill>
-                <Box direction="row" justify="between">
-                    <Heading level={3} margin="none">{brandname} {name} {season.replace(/W\d{4}_(\d{4})/, "$1")}</Heading>
-                    <Button icon={ <FormClose/> } aria-label="Close" onClick={onClickClose}/>
-                </Box>
-                <Tabs alignControls="start" justify="center">
-                    <Tab title="Snowboard">
-                        <Box margin={{ top: "medium" }}>
-                            {imagesBySize &&
-                                <Box direction="row" wrap gap="xsmall" justify="center" margin={{ bottom: "medium" }}>
-                                    {sizes.map(size =>
-                                        <Button key={size} label={size} primary={size === selectedSize}
-                                            onClick={() => setSelectedSize(size)}/>
-                                    )}
-                                </Box>
-                            }
+        <Box pad="medium" gap="medium" width="xlarge"
+            style={{ maxWidth: "100vw", maxHeight: "100vh", overflowY: "auto" }}>
+            <Box direction="row" justify="between" align="start" flex={false}>
+                <Heading level={3} margin="none">{brandname} {name} {season.replace(/W\d{4}_(\d{4})/, "$1")}</Heading>
+                <Button icon={ <FormClose/> } aria-label="Close" onClick={onClickClose}/>
+            </Box>
+            <Tabs alignControls="start" justify="center">
+                <Tab title="Snowboard">
+                    <Box margin={{ top: "medium" }}>
+                        {imagesBySize &&
+                            <Box direction="row" wrap gap="xsmall" justify="center" margin={{ bottom: "medium" }}>
+                                {sizes.map(size =>
+                                    <Button key={size} label={size} primary={size === selectedSize} aria-pressed={size === selectedSize}
+                                        onClick={() => setSelectedSize(size)}/>
+                                )}
+                            </Box>
+                        }
+                        <Box flex={false} align="center" justify="center"
+                            style={{ position: "relative", height: "640px", maxHeight: "60vh", minHeight: 0, overflow: "hidden" }}>
                             {selectedImageUrl ?
-                                <Image fit="contain" src={selectedImageUrl} fallback="/snowboards/blank.png"/> :
+                                <Image key={selectedImageUrl} fit="contain" src={selectedImageUrl}
+                                    alt={`${brandname} ${name}, ${selectedSize}`} fallback="/snowboards/blank.png"
+                                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", minHeight: 0 }} /> :
                                 <Text textAlign="center">Image unavailable for this size</Text>
                             }
                         </Box>
-                    </Tab>
-                    <Tab title="Specifications">
-                        <Box width="xlarge" overflow={{horizontal: "auto"}} margin={{ top: "medium" }}>
-                            {brandname === "CAPiTA" ? <CapitaSpecsTable specs={specs}/> : <MervinSpecsTable specs={specs}/>}
-                        </Box>
-                    </Tab>
-                    <Tab title="Technologies">
-                        <Box margin={{ top: "medium" }}></Box>
-                    </Tab>
-                </Tabs>
-            </Box>
-        </Layer>
+                    </Box>
+                </Tab>
+                <Tab title="Specifications">
+                    <Box width="xlarge" overflow={{horizontal: "auto"}} margin={{ top: "medium" }}>
+                        {brandname === "CAPiTA" ? <CapitaSpecsTable specs={specs}/> : <MervinSpecsTable specs={specs}/>}
+                    </Box>
+                </Tab>
+                <Tab title="Technologies">
+                    <Box margin={{ top: "medium" }}></Box>
+                </Tab>
+            </Tabs>
+        </Box>
     )
 }
 
@@ -583,10 +633,14 @@ export type AnchorLinkProps = LinkProps &
   AnchorProps &
   Omit<JSX.IntrinsicElements['a'], 'color'>
 
+const RouterAnchor = React.forwardRef<HTMLAnchorElement, LinkProps & {
+    colorProp?: unknown, hasIcon?: boolean, hasLabel?: boolean, focus?: boolean,
+}>(({ colorProp, hasIcon, hasLabel, focus, ...rest }, ref) => <Link ref={ref} {...rest} />)
+
 const AnchorLink: React.FC<AnchorLinkProps> = (props) => {
     return (
         <Anchor
-            as={({ colorProp, hasIcon, hasLabel, focus, ...rest }) => <Link {...rest} />}
+            as={RouterAnchor}
             {...props}
         />
     )
