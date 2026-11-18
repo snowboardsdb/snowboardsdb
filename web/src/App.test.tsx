@@ -11,7 +11,7 @@ const { boardForSeason } = vi.hoisted(() => ({
         riders: ["MEN"], sizes: ["150", "153W", "156"],
         imageUrl: "/board-150.png",
         imagesBySize: { "150": "/board-150.png", "153W": "/board-153W.png" },
-        specs: { "150": { size: 150, wide: false } },
+        specs: { "150": { size: 150, wide: false }, "153W": { size: 153, wide: true } },
     }),
 }))
 
@@ -79,6 +79,55 @@ test("opens specifications and returns focus to the board after closing", async 
     fireEvent.click(screen.getByRole("button", { name: "Close" }))
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument())
     await waitFor(() => expect(board).toHaveFocus())
+})
+
+test("navigates one document with tabs and follows scrolling", async () => {
+    window.location.hash = "#/capita/W2026_2027/current%20board"
+    render(<App />)
+    const viewport = await screen.findByRole("region", { name: "Snowboard details" })
+    expect(screen.getByRole("heading", { name: "CAPiTA CURRENT BOARD 26/27" })).toBeInTheDocument()
+    expect(viewport).toHaveStyle({ flex: "1 1" })
+    const sections = ["Snowboard", "Specifications"].map(name =>
+        within(viewport).getByRole("region", { name }))
+    vi.spyOn(viewport, "getBoundingClientRect").mockImplementation(() => ({ top: 0 }) as DOMRect)
+    sections.forEach((section, index) => {
+        vi.spyOn(section, "getBoundingClientRect").mockImplementation(() =>
+            ({ top: index * 500 - viewport.scrollTop }) as DOMRect)
+    })
+
+    fireEvent.click(screen.getByRole("tab", { name: "Specifications" }))
+    expect(viewport.scrollTop).toBe(500)
+    expect(screen.getByRole("tab", { name: "Specifications" })).toHaveAttribute("aria-selected", "true")
+    expect(within(viewport).getByRole("img")).toBeInTheDocument()
+    expect(within(viewport).getByRole("columnheader", { name: "Size" })).toHaveStyle({ position: "sticky" })
+    expect(within(viewport).getByRole("rowheader", { name: "150" })).toHaveStyle({ position: "sticky" })
+    const wideRow = within(viewport).getByRole("rowheader", { name: "153W" }).closest("tr")!
+    fireEvent.click(within(wideRow).getAllByRole("cell")[0])
+    expect(within(wideRow).getAllByRole("cell")[0]).toHaveStyle({ backgroundColor: "#f2f2f2" })
+    expect(within(viewport).getByRole("img")).toHaveAttribute("src", "/board-153W.png")
+    expect(within(viewport).getByRole("button", { name: "153W" })).toHaveAttribute("aria-pressed", "true")
+    fireEvent.click(within(viewport).getByRole("button", { name: "150" }))
+    expect(within(viewport).queryByRole("checkbox")).not.toBeInTheDocument()
+    const regularRow = within(viewport).getByRole("rowheader", { name: "150" }).closest("tr")!
+    expect(within(regularRow).getAllByRole("cell")[0]).toHaveStyle({ backgroundColor: "#f2f2f2" })
+    expect(within(wideRow).getAllByRole("cell")[0]).not.toHaveStyle({ backgroundColor: "#f2f2f2" })
+
+    expect(screen.queryByRole("tab", { name: "Technologies" })).not.toBeInTheDocument()
+    expect(within(viewport).queryByRole("region", { name: "Technologies" })).not.toBeInTheDocument()
+    // A short final section can reach the bottom before its heading reaches the top.
+    Object.defineProperties(viewport, {
+        clientHeight: { configurable: true, value: 400 },
+        scrollHeight: { configurable: true, value: 700 },
+    })
+    viewport.scrollTop = 300
+    fireEvent.scroll(viewport)
+    expect(screen.getByRole("tab", { name: "Specifications" })).toHaveAttribute("aria-selected", "true")
+    const tableScroll = within(viewport).getByRole("region", { name: "Specifications table" })
+    tableScroll.scrollLeft = 200
+    viewport.scrollTop = 0
+    fireEvent.scroll(viewport)
+    expect(tableScroll.scrollLeft).toBe(0)
+    expect(screen.getByRole("tab", { name: "Snowboard" })).toHaveAttribute("aria-selected", "true")
 })
 
 test("marks brands with a 25/26 season while linking to their latest season", async () => {

@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useMemo, useState } from "react"
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react"
 import { HashRouter, Link, LinkProps, Routes, Route, useParams, useNavigate, useLocation, matchPath, Location} from "react-router-dom"
 
 import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, Main, Stack, Tab, Tabs, Text, ThemeContext } from "grommet"
-import { Table, TableHeader, TableRow, TableCell, TableBody, TableProps } from "grommet"
+import { Table, TableHeader, TableRow, TableCell, TableBody, TableProps, DataTable, ColumnConfig } from "grommet"
 import { normalizeColor } from "grommet/es6/utils"
 import { FormClose, LinkPrevious } from "grommet-icons"
 
 import { SizeList } from "./SizeList"
+import "./App.css"
 
 import { useLiveQuery } from "dexie-react-hooks"
 import { db as dexsnowboards, useSnowboards, useSeasons } from "./db/db"
@@ -94,7 +95,7 @@ function BoardModal() {
     }
 
     return (
-        <Layer role="dialog" aria-modal="true" aria-label={snowboard ? `${snowboard.brandname} ${snowboard.name}` : "Snowboard"}
+        <Layer className="snowboard-modal" role="dialog" aria-modal="true" aria-label={snowboard ? `${snowboard.brandname} ${snowboard.name}` : "Snowboard"}
             onEsc={close} onClickOutside={close}>
             {snowboard ?
                 <SnowboardDetails key={boardPath(snowboard)} snowboard={snowboard}
@@ -382,26 +383,59 @@ function SnowboardDetails({
     const [selectedSize, setSelectedSize] = useState(
         initialSize && sizes.includes(initialSize) ? initialSize : sizes.find(size => imagesBySize?.[size]) || sizes[0]
     )
+    const [activeSection, setActiveSection] = useState(0)
+    const documentRef = useRef<HTMLDivElement>(null)
+    const tableScrollRef = useRef<HTMLDivElement>(null)
+    const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
+    const technologies = snowboard.technology || []
+    const sectionTitles = ["Snowboard", "Specifications", ...(technologies.length ? ["Technologies"] : [])]
+    const navigateToSection = (index: number) => {
+        const viewport = documentRef.current
+        const section = sectionRefs.current[index]
+        if (!viewport || !section) return
+        viewport.scrollTop += section.getBoundingClientRect().top - viewport.getBoundingClientRect().top
+        setActiveSection(index)
+    }
+    const updateActiveSection = () => {
+        const viewport = documentRef.current
+        if (!viewport) return
+        if (viewport.scrollTop <= 1 && tableScrollRef.current) tableScrollRef.current.scrollLeft = 0
+        const top = viewport.getBoundingClientRect().top
+        let index = 0
+        sectionRefs.current.forEach((section, sectionIndex) => {
+            if (section && section.getBoundingClientRect().top <= top + 40) index = sectionIndex
+        })
+        if (viewport.scrollTop > 0 && viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 1) {
+            index = sectionTitles.length - 1
+        }
+        setActiveSection(index)
+    }
     const selectedImageUrl = imagesBySize ? imagesBySize[selectedSize] : snowboardImageUrl(snowboard)
 
     return (
-        <Box pad="medium" gap="medium" width="xlarge"
-            style={{ maxWidth: "100vw", maxHeight: "100vh", overflowY: "auto" }}>
-            <Box direction="row" justify="between" align="start" flex={false}>
-                <Heading level={3} margin="none">{brandname} {name} {season.replace(/W\d{4}_(\d{4})/, "$1")}</Heading>
+        <Box className="snowboard-modal-details" pad={{ vertical: "medium" }} gap="small" width="xlarge" flex={false}
+            style={{ height: "100%", maxWidth: "100%", maxHeight: "100%", overflow: "hidden" }}>
+            <Box direction="row" justify="between" align="start" flex={false} pad={{ horizontal: "medium" }}>
+                <Heading level={3} margin="none" style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
+                    <span>{brandname} {name}</span>
+                    <TrapezoidBadge background="light-3" color="dark-2" title={`Season ${seasonName(season)}`}
+                        style={{ transform: "translateY(-4px)", alignSelf: "flex-start", fontStyle: "normal", fontSize: "12px", lineHeight: "20px", padding: "0 10px", flexShrink: 0 }}>
+                        {seasonName(season)}
+                    </TrapezoidBadge>
+                </Heading>
                 <Button icon={ <FormClose/> } aria-label="Close" onClick={onClickClose}/>
             </Box>
-            <Tabs alignControls="start" justify="center">
-                <Tab title="Snowboard">
-                    <Box margin={{ top: "medium" }}>
-                        {imagesBySize &&
-                            <Box direction="row" wrap gap="xsmall" justify="center" margin={{ bottom: "medium" }}>
-                                {sizes.map(size =>
-                                    <Button key={size} label={size} primary={size === selectedSize} aria-pressed={size === selectedSize}
-                                        onClick={() => setSelectedSize(size)}/>
-                                )}
-                            </Box>
-                        }
+            <ThemeContext.Extend value={{ tab: { margin: "none", pad: { vertical: "xsmall" } }, tabs: { gap: "medium" } }}>
+                <Tabs alignControls="start" justify="start" flex={false} margin={{ horizontal: "medium" }}
+                    activeIndex={activeSection} onActive={navigateToSection}>
+                    {sectionTitles.map(title => <Tab key={title} title={title} />)}
+                </Tabs>
+            </ThemeContext.Extend>
+            <Box ref={documentRef} className="snowboard-modal-document" flex
+                overflow={{ vertical: "auto" }} pad={{ horizontal: "medium" }}
+                onScroll={updateActiveSection} role="region" aria-label="Snowboard details" tabIndex={0}>
+                    <Box as="section" ref={element => { sectionRefs.current[0] = element }} flex={false}
+                        aria-label="Snowboard" pad={{ bottom: "large" }}>
                         <Box flex={false} align="center" justify="center"
                             style={{ position: "relative", height: "640px", maxHeight: "60vh", minHeight: 0, overflow: "hidden" }}>
                             {selectedImageUrl ?
@@ -411,113 +445,93 @@ function SnowboardDetails({
                                 <Text textAlign="center">Image unavailable for this size</Text>
                             }
                         </Box>
+                        {imagesBySize &&
+                            <Box className="snowboard-modal-sizes" margin={{ top: "medium" }} overflow={{ horizontal: "auto" }}
+                                role="region" aria-label={`Sizes for ${name}`} tabIndex={0}
+                                style={{ scrollbarWidth: "none", overscrollBehaviorX: "contain" }}>
+                                <Box className="snowboard-modal-sizes-content" direction="row" gap="small" justify="center" flex={false} responsive={false}
+                                    pad={{ vertical: "xxsmall" }}
+                                    style={{ width: "max-content", minWidth: "100%", maxWidth: "none" }}>
+                                    {sizes.map(size =>
+                                        <Button key={size} plain aria-pressed={size === selectedSize}
+                                            style={{ flexShrink: 0 }}
+                                            onClick={() => setSelectedSize(size)}>
+                                            {({ hover, focus }) => (
+                                                <Box
+                                                    background={size === selectedSize ? "brand" : hover || focus ? "light-4" : "light-2"}
+                                                    pad={{ vertical: "xsmall", horizontal: "medium" }}
+                                                    round={{ size: "medium" }}
+                                                    responsive={false}
+                                                >
+                                                    <Text size="small" weight="bold">{size}</Text>
+                                                </Box>
+                                            )}
+                                        </Button>
+                                    )}
+                                </Box>
+                            </Box>
+                        }
                     </Box>
-                </Tab>
-                <Tab title="Specifications">
-                    <Box width="xlarge" overflow={{horizontal: "auto"}} margin={{ top: "medium" }}>
-                        {brandname === "CAPiTA" ? <CapitaSpecsTable specs={specs}/> : <MervinSpecsTable specs={specs}/>}
+                    <Box as="section" ref={element => { sectionRefs.current[1] = element }} flex={false}
+                        aria-label="Specifications" pad={{ bottom: technologies.length ? "large" : "none" }}>
+                        <Heading level={4} margin={{ top: "none", bottom: "medium" }}>Specifications</Heading>
+                        <Box ref={tableScrollRef} overflow={{ horizontal: "auto" }} flex={false}
+                            role="region" aria-label="Specifications table">
+                            <SpecsTable specs={specs} capita={brandname === "CAPiTA"}
+                                selectedSize={selectedSize} onSelectSize={setSelectedSize} />
+                        </Box>
                     </Box>
-                </Tab>
-                <Tab title="Technologies">
-                    <Box margin={{ top: "medium" }}></Box>
-                </Tab>
-            </Tabs>
+                    {technologies.length > 0 && <Box as="section" ref={element => { sectionRefs.current[2] = element }} flex={false}
+                        aria-label="Technologies">
+                        <Heading level={4} margin={{ top: "none", bottom: "medium" }}>Technologies</Heading>
+                        {technologies.map(technology => <Text key={technology} margin={{ bottom: "small" }}>{technology.replace(/_/g, " ")}</Text>)}
+                    </Box>}
+            </Box>
         </Box>
     )
 }
 
-function CapitaSpecsTable({
-    specs,
-    ...tableProps
-}: {
-    specs: {[key: string]: Spec}
-} & TableProps) {
-    return (
-        <Table {...tableProps}>
-            <TableHeader>
-                <TableRow>
-                    <TableCell scope="col">Size</TableCell>
-                    <TableCell scope="col">Effective edge (mm)</TableCell>
-                    <TableCell scope="col">Sidecut (m)</TableCell>
-                    <TableCell scope="col">Nose (cm)</TableCell>
-                    <TableCell scope="col">Tail (cm)</TableCell>
-                    <TableCell scope="col">Waist (cm)</TableCell>
-                    <TableCell scope="col">Taper (mm)</TableCell>
-                    <TableCell scope="col">Ref. stance (cm)</TableCell>
-                    <TableCell scope="col">Rider weight (kg)</TableCell>
-                    <TableCell scope="col">Boot size</TableCell>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {Object.entries(specs).map(([key, spec]) => (
-                    <TableRow key={key}>
-                        <TableCell><Text weight="bold">{key}</Text></TableCell>
-                        <TableCell align="right">{spec.effectiveEdge}</TableCell>
-                        <TableCell align="right">{spec.sidecut}</TableCell>
-                        <TableCell align="right">{spec.noseWidth}</TableCell>
-                        <TableCell align="right">{spec.tailWidth}</TableCell>
-                        <TableCell align="right">{spec.waistWidth}</TableCell>
-                        <TableCell align="right">{spec.taper}</TableCell>
-                        <TableCell align="right">{spec.referenceStance}</TableCell>
-                        <TableCell align="right">{spec.weightMin}–{spec.weightMax}</TableCell>
-                        <TableCell>{spec.bootSize}</TableCell>
-                    </TableRow>
-                ))}
-            </TableBody>
-        </Table>
-    )
-}
+type SpecRow = Spec & { sizeLabel: string, sizeKey: string }
 
-function MervinSpecsTable({
-    specs,
-    ...tableProps
-}: {
-    specs: {[key: string]: Spec}
-} & TableProps) {
-    return (
-        <Table {...tableProps}>
-            <TableHeader>
-                <TableRow>
-                    <TableCell scope="col" size="xxsmall" style={{position:"sticky"}}>Size</TableCell>
-                    <TableCell scope="col" align="center">Contact Length</TableCell>
-                    <TableCell scope="col" align="center">Side Cut</TableCell>
-                    <TableCell scope="col" align="center">Nose Width</TableCell>
-                    <TableCell scope="col" align="center">Tail Width</TableCell>
-                    <TableCell scope="col" align="center">Waist Width</TableCell>
-                    <TableCell scope="col" align="center">Stance</TableCell>
-                    <TableCell scope="col" align="center">Set Back</TableCell>
-                    <TableCell scope="col" align="center">Flex</TableCell>
-                    <TableCell scope="col" align="center">Riders Weight</TableCell>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {Object.keys(specs).sort().map(key => {
-                    const {
-                        size, wide, contactLength, sidecut,
-                        noseWidth, tailWidth, waistWidth,
-                        stanceMin, stanceMax, stanceSetBack, stanceSetBack_in,
-                        flex, weightMin,
-                    } = specs[key]
+function SpecsTable({ specs, capita, selectedSize, onSelectSize }: {
+    specs: Record<string, Spec>, capita: boolean, selectedSize: string, onSelectSize: (size: string) => void,
+}) {
+    const columns: ColumnConfig<SpecRow>[] = [
+        { property: "sizeLabel", header: "Size", primary: true, pin: true,
+            render: row => <Text weight="bold" data-selected={row.sizeKey === selectedSize}>{row.sizeLabel}</Text> },
+        ...(capita ? [
+            { property: "effectiveEdge", header: "Effective edge (mm)" },
+            { property: "sidecut", header: "Sidecut (m)" },
+            { property: "noseWidth", header: "Nose (cm)" },
+            { property: "tailWidth", header: "Tail (cm)" },
+            { property: "waistWidth", header: "Waist (cm)" },
+            { property: "taper", header: "Taper (mm)" },
+            { property: "referenceStance", header: "Ref. stance (cm)" },
+            { property: "weightMin", header: "Rider weight (kg)", render: (row: SpecRow) => `${row.weightMin ?? ""}–${row.weightMax ?? ""}` },
+            { property: "bootSize", header: "Boot size" },
+        ] : [
+            { property: "contactLength", header: "Contact Length" },
+            { property: "sidecut", header: "Side Cut" },
+            { property: "noseWidth", header: "Nose Width", render: (row: SpecRow) => row.noseWidth?.toLocaleString() },
+            { property: "tailWidth", header: "Tail Width" },
+            { property: "waistWidth", header: "Waist Width" },
+            { property: "stanceMin", header: "Stance", render: (row: SpecRow) => `${row.stanceMin ?? ""}–${row.stanceMax ?? ""}` },
+            { property: "stanceSetBack", header: "Set Back", render: (row: SpecRow) => setBack(row) },
+            { property: "flex", header: "Flex" },
+            { property: "weightMin", header: "Riders Weight", render: (row: SpecRow) => `${row.weightMin ?? ""}+ kg` },
+        ]).map(column => ({ ...column, align: "end" as const })),
+    ]
+    const entries = Object.entries(specs)
+    if (!capita) entries.sort(([left], [right]) => left.localeCompare(right))
+    const data = entries.map(([key, spec]) => ({ ...spec, sizeKey: key, sizeLabel: capita ? key : `${spec.size}${spec.wide ? "W" : ""}` }))
+    const selectedRow = data.find(row => row.sizeKey === selectedSize)
 
-                    return (
-                        <TableRow key={key}>
-                            <TableCell style={{position:"sticky"}}><Text weight="bold">{size}{wide && "W"}</Text></TableCell>
-                            <TableCell align="right">{contactLength}</TableCell>
-                            <TableCell align="right">{sidecut}</TableCell>
-                            <TableCell align="right">{noseWidth?.toLocaleString()}</TableCell>
-                            <TableCell align="right">{tailWidth}</TableCell>
-                            <TableCell align="right">{waistWidth}</TableCell>
-                            <TableCell align="right">{stanceMin}&ndash;{stanceMax}</TableCell>
-                            <TableCell align="right">
-                                {setBack({ stanceSetBack, stanceSetBack_in })}
-                            </TableCell>
-                            <TableCell align="right">{flex}</TableCell>
-                            <TableCell align="right">{weightMin}+ kg</TableCell>
-                        </TableRow>
-                    )
-                })}
-            </TableBody>
-        </Table>
+    return (
+        <DataTable className="snowboard-specs" columns={columns}
+            data={data}
+            rowProps={selectedRow ? { [selectedRow.sizeLabel]: { background: "light-2" } } : undefined}
+            onClickRow={({ datum }) => onSelectSize(datum.sizeKey)}
+            primaryKey="sizeLabel" sortable={false} background={{ pinned: "white" }} />
     )
 }
 

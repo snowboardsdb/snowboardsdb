@@ -1,0 +1,89 @@
+.snowboard-modal[role="dialog"] {
+    --modal-inset: 24px;
+    border-radius: 16px;
+    height: min(900px, 90dvh);
+}
+
+.snowboard-modal .snowboard-modal-sizes {
+    width: calc(100% + 2 * var(--modal-inset));
+    max-width: none;
+    margin-inline: calc(-1 * var(--modal-inset));
+}
+
+.snowboard-modal .snowboard-modal-sizes-content {
+    padding-inline: var(--modal-inset);
+}
+
+.snowboard-modal-document {
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #00000030 transparent;
+}
+
+@supports selector(::-webkit-scrollbar) {
+    .snowboard-modal-document {
+        scrollbar-width: auto;
+        scrollbar-color: auto;
+    }
+
+    .snowboard-modal-document::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .snowboard-modal-document::-webkit-scrollbar-track {
+        background: transparent;
+        border: none;
+    }
+
+    .snowboard-modal-document::-webkit-scrollbar-thumb {
+        background: #00000030;
+        border-radius: 999px;
+    }
+
+    .snowboard-modal-document::-webkit-scrollbar-thumb:hover {
+        background: #00000050;
+    }
+
+    .snowboard-modal-document::-webkit-scrollbar-button {
+        display: none;
+    }
+}
+
+.snowboard-specs th,
+.snowboard-specs td {
+    white-space: nowrap;
+}
+
+.snowboard-specs tr > :first-child {
+    background: white;
+    z-index: 2;
+}
+
+.snowboard-specs tbody tr:has([data-selected="true"]):not(:hover) > :first-child {
+    background: #f2f2f2;
+}
+
+.snowboard-specs tbody tr:hover > th,
+.snowboard-specs tbody tr:hover > td {
+    background: #ededed;
+}
+
+@media (max-width: 768px) {
+    .snowboard-modal[role="dialog"] {
+        --modal-inset: 12px;
+        height: 100dvh;
+        max-height: 100dvh;
+        border-radius: 0;
+    }
+
+    .snowboard-modal .snowboard-modal-details {
+        padding-top: max(12px, env(safe-area-inset-top));
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+}
+
+@media (min-width: 1024px) {
+    .snowboard-modal[role="dialog"] {
+        max-width: 50vw;
+    }
+}
