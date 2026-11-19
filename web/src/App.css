@@ -14,6 +14,22 @@
     padding-inline: var(--modal-inset);
 }
 
+.snowboard-modal .snowboard-modal-hero {
+    position: relative;
+    height: 640px;
+    max-height: 60vh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.snowboard-modal .snowboard-modal-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
 .snowboard-modal-document {
     min-height: 0;
     scrollbar-width: thin;
@@ -59,27 +75,234 @@
     z-index: 2;
 }
 
-.snowboard-specs tbody tr:has([data-selected="true"]):not(:hover) > :first-child {
+.snowboard-modal:not(.snowboard-modal--mobile) .snowboard-specs tbody tr:has([data-selected="true"]):not(:hover) > :first-child {
     background: #f2f2f2;
 }
 
-.snowboard-specs tbody tr:hover > th,
-.snowboard-specs tbody tr:hover > td {
+.snowboard-modal:not(.snowboard-modal--mobile) .snowboard-specs tbody tr:hover > :is(th, td) {
     background: #ededed;
 }
 
-@media (max-width: 768px) {
-    .snowboard-modal[role="dialog"] {
-        --modal-inset: 12px;
-        height: 100dvh;
-        max-height: 100dvh;
-        border-radius: 0;
-    }
+.snowboard-modal--mobile[role="dialog"] {
+    --modal-inset: 20px;
+    --sheet-background: #292b30;
+    --sheet-secondary-text: #c4c5ca;
+    --table-header-background: #3c3e44;
+    --table-row-background: #33353b;
+    --table-selected-background: #4b4562;
+    --table-divider: #ffffff1a;
+    --sheet-top-gap: max(12px, env(safe-area-inset-top));
+    height: calc(100dvh - var(--sheet-top-gap));
+    max-height: calc(100dvh - var(--sheet-top-gap));
+    overflow: hidden;
+    border-radius: 28px 28px 0 0;
+    background: var(--sheet-background);
+    color: #f8f8fa;
+    font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
-    .snowboard-modal .snowboard-modal-details {
-        padding-top: max(12px, env(safe-area-inset-top));
-        padding-bottom: max(12px, env(safe-area-inset-bottom));
-    }
+.snowboard-modal--mobile .snowboard-modal-details {
+    padding: 0;
+}
+
+.snowboard-modal--mobile .snowboard-modal-header {
+    position: absolute;
+    z-index: 3;
+    top: 14px;
+    left: max(14px, env(safe-area-inset-left));
+    padding: 0;
+}
+
+.snowboard-modal--mobile .snowboard-modal-close {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #ffffff55;
+    border-radius: 50%;
+    background: #20212680;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    color: #fff;
+}
+
+.snowboard-modal--mobile .snowboard-modal-close svg {
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.snowboard-modal--mobile .snowboard-modal-document {
+    padding: 0 0 max(32px, env(safe-area-inset-bottom));
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    scroll-padding-block: 66px 16px;
+}
+
+.snowboard-modal--mobile .snowboard-modal-document::-webkit-scrollbar {
+    display: none;
+}
+
+.snowboard-modal--mobile .snowboard-modal-overview {
+    padding-bottom: 0;
+}
+
+.snowboard-modal--mobile .snowboard-modal-hero {
+    isolation: isolate;
+    height: clamp(220px, 44dvh, 460px);
+    max-height: none;
+    background: radial-gradient(ellipse at 50% 40%, #fff 12%, #e7e9ed 90%);
+    color: #44464c;
+}
+
+.snowboard-modal--mobile .snowboard-modal-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: clamp(106px, 44%, 176px);
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        color-mix(in srgb, var(--sheet-background) 8%, transparent) 22%,
+        color-mix(in srgb, var(--sheet-background) 35%, transparent) 49%,
+        color-mix(in srgb, var(--sheet-background) 74%, transparent) 75%,
+        color-mix(in srgb, var(--sheet-background) 95%, transparent) 92%,
+        var(--sheet-background)
+    );
+    pointer-events: none;
+}
+
+.snowboard-modal--mobile .snowboard-modal-image {
+    box-sizing: border-box;
+    padding: 16px 24px 48px;
+    mix-blend-mode: multiply;
+}
+
+.snowboard-modal--mobile .snowboard-modal-identity,
+.snowboard-modal--mobile .snowboard-modal-section {
+    min-width: 0;
+    padding-inline: var(--modal-inset);
+}
+
+.snowboard-modal--mobile .snowboard-modal-title {
+    margin: 0;
+    font-size: clamp(30px, 8.5vw, 46px);
+    font-weight: 750;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+    max-width: none;
+}
+
+.snowboard-modal--mobile .snowboard-modal-season {
+    margin-block: 16px 0;
+}
+
+.snowboard-modal--mobile .snowboard-modal-season dt,
+.snowboard-modal--mobile .snowboard-modal-size-label {
+    color: var(--sheet-secondary-text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.snowboard-modal--mobile .snowboard-modal-season dd {
+    margin: 2px 0 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.snowboard-modal--mobile .snowboard-modal-size-picker {
+    margin-top: 16px;
+}
+
+.snowboard-modal--mobile .snowboard-modal-sizes {
+    margin-top: 4px;
+}
+
+.snowboard-modal--mobile .snowboard-modal-sizes-content {
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+.snowboard-modal--mobile .snowboard-modal-sizes button {
+    border-radius: 999px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.snowboard-modal--mobile .snowboard-modal-sizes button:active {
+    opacity: 0.75;
+}
+
+.snowboard-modal--mobile .snowboard-modal-size {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 12px;
+    align-items: center;
+    justify-content: center;
+    background: #3d3f46;
+    color: inherit;
+    font-variant-numeric: tabular-nums;
+}
+
+.snowboard-modal--mobile [aria-pressed="true"] .snowboard-modal-size {
+    background: #e6e0fb;
+    color: #2c2443;
+}
+
+.snowboard-modal--mobile :is(.snowboard-modal-close, .snowboard-modal-table, .snowboard-modal-sizes, .snowboard-modal-sizes button):focus-visible {
+    outline: 2px solid #c4afff;
+    outline-offset: 2px;
+}
+
+.snowboard-modal--mobile .snowboard-modal-section {
+    margin-top: 28px;
+    padding-bottom: 0;
+}
+
+.snowboard-modal--mobile .snowboard-modal-section-title {
+    margin: 0 0 12px;
+    font-size: 23px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.snowboard-modal--mobile .snowboard-modal-table {
+    border: 1px solid var(--table-divider);
+    border-radius: 14px;
+    overscroll-behavior-x: contain;
+}
+
+.snowboard-modal--mobile .snowboard-specs {
+    font-variant-numeric: tabular-nums;
+}
+
+.snowboard-modal--mobile .snowboard-specs :is(th, td) {
+    padding: 12px;
+    color: inherit;
+    font-size: 14px;
+    line-height: 19px;
+    border-bottom: 1px solid var(--table-divider);
+}
+
+.snowboard-modal--mobile .snowboard-specs [data-selected] {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.snowboard-modal--mobile .snowboard-specs thead th {
+    background: var(--table-header-background);
+}
+
+.snowboard-modal--mobile .snowboard-specs tbody tr > :is(th, td) {
+    background: var(--table-row-background);
+}
+
+.snowboard-modal--mobile .snowboard-specs tbody tr:has([data-selected="true"]) > :is(th, td) {
+    background: var(--table-selected-background);
+}
+
+.snowboard-modal--mobile .snowboard-specs tbody tr:last-child > :is(th, td) {
+    border-bottom: 0;
 }
 
 @media (min-width: 1024px) {

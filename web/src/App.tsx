@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react"
+import React, { useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react"
 import { HashRouter, Link, LinkProps, Routes, Route, useParams, useNavigate, useLocation, matchPath, Location} from "react-router-dom"
 
 import { Anchor, AnchorProps, Box, BoxExtendedProps, Button, Grid, Grommet, Heading, Image, Layer, Main, Stack, Tab, Tabs, Text, ThemeContext } from "grommet"
@@ -13,6 +13,18 @@ import { useLiveQuery } from "dexie-react-hooks"
 import { db as dexsnowboards, useSnowboards, useSeasons } from "./db/db"
 
 import { Season, Brand as BrandType, Snowboard, Spec  } from "./db/model"
+
+const mobileBoardQuery = "(max-width: 768px)"
+
+function subscribeToMobileBoard(onChange: () => void) {
+    const query = window.matchMedia?.(mobileBoardQuery)
+    query?.addEventListener("change", onChange)
+    return () => query?.removeEventListener("change", onChange)
+}
+
+function isMobileBoard() {
+    return window.matchMedia?.(mobileBoardQuery).matches ?? false
+}
 
 const theme = {
     global: {
@@ -83,6 +95,7 @@ function BoardModal() {
     const { brand, season, name } = useParams()
     const location = useLocation()
     const navigate = useNavigate()
+    const mobile = useSyncExternalStore(subscribeToMobileBoard, isMobileBoard)
     const state = location.state as BoardLocationState | null
     const snowboard = useLiveQuery(() =>
         dexsnowboards.snowboards.where({ season })
@@ -95,10 +108,12 @@ function BoardModal() {
     }
 
     return (
-        <Layer className="snowboard-modal" role="dialog" aria-modal="true" aria-label={snowboard ? `${snowboard.brandname} ${snowboard.name}` : "Snowboard"}
+        <Layer className={mobile ? "snowboard-modal snowboard-modal--mobile" : "snowboard-modal"}
+            position={mobile ? "bottom" : "center"} full={mobile ? "horizontal" : false} responsive={false}
+            role="dialog" aria-modal="true" aria-label={snowboard ? `${snowboard.brandname} ${snowboard.name}` : "Snowboard"}
             onEsc={close} onClickOutside={close}>
             {snowboard ?
-                <SnowboardDetails key={boardPath(snowboard)} snowboard={snowboard}
+                <SnowboardDetails key={boardPath(snowboard)} snowboard={snowboard} mobile={mobile}
                     initialSize={state?.selectedSize} onClickClose={close} /> :
                 <Box pad="medium" gap="medium">
                     <Text>{snowboard === undefined ? "Loading snowboard…" : "Snowboard not found"}</Text>
@@ -372,10 +387,12 @@ function Brand() {
 
 function SnowboardDetails({
     snowboard,
+    mobile,
     onClickClose,
     initialSize,
 }: {
     snowboard: Snowboard,
+    mobile: boolean,
     initialSize?: string,
     onClickClose?: () => void,
 }) {
@@ -400,6 +417,7 @@ function SnowboardDetails({
         const viewport = documentRef.current
         if (!viewport) return
         if (viewport.scrollTop <= 1 && tableScrollRef.current) tableScrollRef.current.scrollLeft = 0
+        if (mobile) return
         const top = viewport.getBoundingClientRect().top
         let index = 0
         sectionRefs.current.forEach((section, sectionIndex) => {
@@ -411,79 +429,92 @@ function SnowboardDetails({
         setActiveSection(index)
     }
     const selectedImageUrl = imagesBySize ? imagesBySize[selectedSize] : snowboardImageUrl(snowboard)
+    const sizePicker = sizes.length > 0 && (mobile || imagesBySize) && (
+        <Box className="snowboard-modal-sizes" margin={{ top: "medium" }} overflow={{ horizontal: "auto" }}
+            role="region" aria-label={`Sizes for ${name}`} tabIndex={0}
+            style={{ scrollbarWidth: "none", overscrollBehaviorX: "contain" }}>
+            <Box className="snowboard-modal-sizes-content" direction="row" gap={mobile ? undefined : "small"} justify="center" flex={false} responsive={false}
+                pad={{ vertical: "xxsmall" }}
+                style={{ width: "max-content", minWidth: "100%", maxWidth: "none" }}>
+                {sizes.map(size =>
+                    <Button key={size} plain aria-pressed={size === selectedSize}
+                        style={{ flexShrink: 0 }}
+                        onClick={() => setSelectedSize(size)}>
+                        {({ hover, focus }) => (
+                            <Box className="snowboard-modal-size"
+                                background={size === selectedSize ? "brand" : hover || focus ? "light-4" : "light-2"}
+                                pad={{ vertical: "xsmall", horizontal: "medium" }}
+                                round={{ size: "medium" }}
+                                responsive={false}
+                            >
+                                <Text size="small" weight="bold">{size}</Text>
+                            </Box>
+                        )}
+                    </Button>
+                )}
+            </Box>
+        </Box>
+    )
 
     return (
-        <Box className="snowboard-modal-details" pad={{ vertical: "medium" }} gap="small" width="xlarge" flex={false}
+        <Box className="snowboard-modal-details" pad={{ vertical: "medium" }} gap={mobile ? undefined : "small"} width="xlarge" flex={false}
             style={{ height: "100%", maxWidth: "100%", maxHeight: "100%", overflow: "hidden" }}>
-            <Box direction="row" justify="between" align="start" flex={false} pad={{ horizontal: "medium" }}>
-                <Heading level={3} margin="none" style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
+            <Box className="snowboard-modal-header" direction="row" justify="between" align="start" flex={false} pad={{ horizontal: "medium" }}>
+                {!mobile && <Heading level={3} margin="none" style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
                     <span>{brandname} {name}</span>
                     <TrapezoidBadge background="light-3" color="dark-2" title={`Season ${seasonName(season)}`}
                         style={{ transform: "translateY(-4px)", alignSelf: "flex-start", fontStyle: "normal", fontSize: "12px", lineHeight: "20px", padding: "0 10px", flexShrink: 0 }}>
                         {seasonName(season)}
                     </TrapezoidBadge>
-                </Heading>
-                <Button icon={ <FormClose/> } aria-label="Close" onClick={onClickClose}/>
+                </Heading>}
+                <Button className="snowboard-modal-close" icon={<FormClose aria-hidden="true" />} aria-label="Close" onClick={onClickClose} />
             </Box>
-            <ThemeContext.Extend value={{ tab: { margin: "none", pad: { vertical: "xsmall" } }, tabs: { gap: "medium" } }}>
+            {!mobile && <ThemeContext.Extend value={{ tab: { margin: "none", pad: { vertical: "xsmall" } }, tabs: { gap: "medium" } }}>
                 <Tabs alignControls="start" justify="start" flex={false} margin={{ horizontal: "medium" }}
                     activeIndex={activeSection} onActive={navigateToSection}>
                     {sectionTitles.map(title => <Tab key={title} title={title} />)}
                 </Tabs>
-            </ThemeContext.Extend>
+            </ThemeContext.Extend>}
             <Box ref={documentRef} className="snowboard-modal-document" flex
                 overflow={{ vertical: "auto" }} pad={{ horizontal: "medium" }}
                 onScroll={updateActiveSection} role="region" aria-label="Snowboard details" tabIndex={0}>
-                    <Box as="section" ref={element => { sectionRefs.current[0] = element }} flex={false}
+                    <Box as="section" className="snowboard-modal-overview" ref={element => { sectionRefs.current[0] = element }} flex={false}
                         aria-label="Snowboard" pad={{ bottom: "large" }}>
-                        <Box flex={false} align="center" justify="center"
-                            style={{ position: "relative", height: "640px", maxHeight: "60vh", minHeight: 0, overflow: "hidden" }}>
+                        <Box className="snowboard-modal-hero" flex={false} align="center" justify="center">
                             {selectedImageUrl ?
-                                <Image key={selectedImageUrl} fit="contain" src={selectedImageUrl}
-                                    alt={`${brandname} ${name}, ${selectedSize}`} fallback="/snowboards/blank.png"
-                                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", minHeight: 0 }} /> :
+                                <Image className="snowboard-modal-image" key={selectedImageUrl} fit="contain" src={selectedImageUrl}
+                                    alt={`${brandname} ${name}${selectedSize ? `, ${selectedSize}` : ""}`} fallback="/snowboards/blank.png" /> :
                                 <Text textAlign="center">Image unavailable for this size</Text>
                             }
                         </Box>
-                        {imagesBySize &&
-                            <Box className="snowboard-modal-sizes" margin={{ top: "medium" }} overflow={{ horizontal: "auto" }}
-                                role="region" aria-label={`Sizes for ${name}`} tabIndex={0}
-                                style={{ scrollbarWidth: "none", overscrollBehaviorX: "contain" }}>
-                                <Box className="snowboard-modal-sizes-content" direction="row" gap="small" justify="center" flex={false} responsive={false}
-                                    pad={{ vertical: "xxsmall" }}
-                                    style={{ width: "max-content", minWidth: "100%", maxWidth: "none" }}>
-                                    {sizes.map(size =>
-                                        <Button key={size} plain aria-pressed={size === selectedSize}
-                                            style={{ flexShrink: 0 }}
-                                            onClick={() => setSelectedSize(size)}>
-                                            {({ hover, focus }) => (
-                                                <Box
-                                                    background={size === selectedSize ? "brand" : hover || focus ? "light-4" : "light-2"}
-                                                    pad={{ vertical: "xsmall", horizontal: "medium" }}
-                                                    round={{ size: "medium" }}
-                                                    responsive={false}
-                                                >
-                                                    <Text size="small" weight="bold">{size}</Text>
-                                                </Box>
-                                            )}
-                                        </Button>
-                                    )}
-                                </Box>
-                            </Box>
-                        }
+                        {mobile ? (
+                            <div className="snowboard-modal-identity">
+                                <Heading className="snowboard-modal-title" level={3} margin="none">{brandname} {name}</Heading>
+                                <dl className="snowboard-modal-season">
+                                    <dt>Season</dt>
+                                    <dd>{season.replace(/^W(\d{4})_(\d{4})$/, "$1–$2")}</dd>
+                                </dl>
+                                {sizePicker && (
+                                    <div className="snowboard-modal-size-picker">
+                                        <div className="snowboard-modal-size-label">Sizes</div>
+                                        {sizePicker}
+                                    </div>
+                                )}
+                            </div>
+                        ) : sizePicker}
                     </Box>
-                    <Box as="section" ref={element => { sectionRefs.current[1] = element }} flex={false}
+                    <Box as="section" className="snowboard-modal-section" ref={element => { sectionRefs.current[1] = element }} flex={false}
                         aria-label="Specifications" pad={{ bottom: technologies.length ? "large" : "none" }}>
-                        <Heading level={4} margin={{ top: "none", bottom: "medium" }}>Specifications</Heading>
-                        <Box ref={tableScrollRef} overflow={{ horizontal: "auto" }} flex={false}
-                            role="region" aria-label="Specifications table">
+                        <Heading className="snowboard-modal-section-title" level={4} margin={{ top: "none", bottom: "medium" }}>Specifications</Heading>
+                        <Box className="snowboard-modal-table" ref={tableScrollRef} overflow={{ horizontal: "auto" }} flex={false}
+                            role="region" aria-label="Specifications table" tabIndex={mobile ? 0 : undefined}>
                             <SpecsTable specs={specs} capita={brandname === "CAPiTA"}
                                 selectedSize={selectedSize} onSelectSize={setSelectedSize} />
                         </Box>
                     </Box>
-                    {technologies.length > 0 && <Box as="section" ref={element => { sectionRefs.current[2] = element }} flex={false}
+                    {technologies.length > 0 && <Box as="section" className="snowboard-modal-section" ref={element => { sectionRefs.current[2] = element }} flex={false}
                         aria-label="Technologies">
-                        <Heading level={4} margin={{ top: "none", bottom: "medium" }}>Technologies</Heading>
+                        <Heading className="snowboard-modal-section-title" level={4} margin={{ top: "none", bottom: "medium" }}>Technologies</Heading>
                         {technologies.map(technology => <Text key={technology} margin={{ bottom: "small" }}>{technology.replace(/_/g, " ")}</Text>)}
                     </Box>}
             </Box>
