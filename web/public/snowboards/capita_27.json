@@ -968,6 +968,71 @@
   },
   {
     "brandname": "CAPiTA",
+    "name": "MERCURY LTD",
+    "season": "W2026_2027",
+    "riders": [
+      "MEN"
+    ],
+    "sizes": [
+      "155",
+      "157",
+      "159"
+    ],
+    "specs": {
+      "155": {
+        "size": 155,
+        "wide": false,
+        "effectiveEdge": 1199,
+        "sidecut": "7.7/3/-1.5/3/7.7",
+        "noseWidth": 29.9,
+        "tailWidth": 29.9,
+        "waistWidth": 25.5,
+        "taper": 0.0,
+        "referenceStance": 55.9,
+        "weightMin": 54,
+        "weightMax": 81,
+        "bootSize": "US Men 8–10 / EU 41–43"
+      },
+      "157": {
+        "size": 157,
+        "wide": false,
+        "effectiveEdge": 1215,
+        "sidecut": "7.85/3/-1.5/3/7.85",
+        "noseWidth": 30.1,
+        "tailWidth": 30.1,
+        "waistWidth": 25.7,
+        "taper": 0.0,
+        "referenceStance": 55.9,
+        "weightMin": 59,
+        "weightMax": 86,
+        "bootSize": "US Men 8–10 / EU 41–43"
+      },
+      "159": {
+        "size": 159,
+        "wide": false,
+        "effectiveEdge": 1231,
+        "sidecut": "8/3/-1.5/3/8",
+        "noseWidth": 30.3,
+        "tailWidth": 30.3,
+        "waistWidth": 25.9,
+        "taper": 0.0,
+        "referenceStance": 55.9,
+        "weightMin": 63,
+        "weightMax": 90,
+        "bootSize": "US Men 8–10 / EU 41–43"
+      }
+    },
+    "type": "SNOWBOARD",
+    "imageUrl": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2026_2027/MERCURY%20LTD/CAPiTA_W2026_2027_MERCURY%20LTD_155.png",
+    "sourceUrl": "https://eu.capitasnowboarding.com/products/capita-mercury-ltd-mens-snowboard-2027",
+    "imagesBySize": {
+      "155": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2026_2027/MERCURY%20LTD/CAPiTA_W2026_2027_MERCURY%20LTD_155.png",
+      "157": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2026_2027/MERCURY%20LTD/CAPiTA_W2026_2027_MERCURY%20LTD_157.png",
+      "159": "https://storage.yandexcloud.net/snowboardsdb/images/CAPiTA/W2026_2027/MERCURY%20LTD/CAPiTA_W2026_2027_MERCURY%20LTD_159.png"
+    }
+  },
+  {
+    "brandname": "CAPiTA",
     "name": "BIRDS OF A FEATHER",
     "season": "W2026_2027",
     "riders": [
